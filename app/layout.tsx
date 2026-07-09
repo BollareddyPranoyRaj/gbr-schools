@@ -27,8 +27,11 @@ export default function RootLayout({
         </div>
 
         {/* Global Navigation Header */}
+        {/* Global Navigation Header */}
         <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-12 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          
+          {/* 1. Make the Logo Clickable to "/" */}
+          <a href="/" className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer">
             <div className="w-10 h-10 bg-[#0B2046] flex items-center justify-center rounded text-amber-400 font-bold text-xl font-serif">
               G
             </div>
@@ -36,9 +39,11 @@ export default function RootLayout({
               <span className="text-[#0B2046] font-bold text-lg block tracking-tight font-serif">GBR INSTITUTIONS</span>
               <span className="text-gray-500 text-xs block -mt-1 tracking-widest uppercase">Legacy Since 1979</span>
             </div>
-          </div>
+          </a>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
+            {/* 2. Added an explicit Home link */}
+            <a href="/" className="hover:text-[#0B2046] transition">Home</a>
             <a href="/about" className="hover:text-[#0B2046] transition">About Us</a>
             <a href="/schools" className="hover:text-[#0B2046] transition">Our Schools</a>
             <a href="/junior-college" className="hover:text-[#0B2046] transition">Junior College</a>
