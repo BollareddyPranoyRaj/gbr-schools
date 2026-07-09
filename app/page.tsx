@@ -25,6 +25,7 @@ export default function HomePage() {
         </div>
 
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
+          <a href="/about" className="hover:text-[#0B2046] transition">About Us</a>
           <a href="/schools" className="hover:text-[#0B2046] transition">Our Schools</a>
           <a href="/junior-college" className="hover:text-[#0B2046] transition">Junior College</a>
           <a href="/degree-pg/programs-eligibility-fee" className="hover:text-[#0B2046] transition">Programs & Fees</a>
