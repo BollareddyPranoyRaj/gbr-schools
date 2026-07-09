@@ -1,44 +1,11 @@
 import React from 'react';
-import { ArrowRight, Calendar, GraduationCap, School, BookOpen, Users } from 'lucide-react';
+import { ArrowRight, GraduationCap, School, BookOpen, Users } from 'lucide-react';
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-white font-sans text-gray-900">
-      {/* 1. Global Announcement Ticker */}
-      <div className="bg-[#0B2046] text-white py-2 px-4 text-center text-sm font-medium border-b border-white/10">
-        <span className="inline-flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-          Admissions Open for Academic Year 2026-2027 — Secure Your Seat Today
-        </span>
-      </div>
-
-      {/* 2. Global Navigation Header */}
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-12 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-[#0B2046] flex items-center justify-center rounded text-amber-400 font-bold text-xl font-serif">
-            G
-          </div>
-          <div>
-            <span className="text-[#0B2046] font-bold text-lg block tracking-tight font-serif">GBR INSTITUTIONS</span>
-            <span className="text-gray-500 text-xs block -mt-1 tracking-widest uppercase">Legacy Since 1979</span>
-          </div>
-        </div>
-
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
-          <a href="/about" className="hover:text-[#0B2046] transition">About Us</a>
-          <a href="/schools" className="hover:text-[#0B2046] transition">Our Schools</a>
-          <a href="/junior-college" className="hover:text-[#0B2046] transition">Junior College</a>
-          <a href="/degree-pg/programs-eligibility-fee" className="hover:text-[#0B2046] transition">Programs & Fees</a>
-          <a href="/academic-calendar" className="hover:text-[#0B2046] transition">Academic Calendar</a>
-          <a href="/admissions" className="hover:text-[#0B2046] transition text-[#0B2046] font-semibold">Admissions</a>
-        </nav>
-
-        <a href="/admissions" className="bg-[#0B2046] text-white px-5 py-2.5 rounded text-sm font-semibold hover:bg-opacity-90 transition shadow-sm">
-          Enquire Now
-        </a>
-      </header>
-
-      {/* 3. Immersive Hero Stage with Background Video Layout */}
+      
+      {/* 1. Immersive Hero Stage with Background Video Layout */}
       <section className="relative w-full h-[85vh] overflow-hidden bg-[#0B2046]">
         {/* HTML5 Full-Bleed High-Quality Streaming Video Engine */}
         <video
@@ -66,7 +33,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. Strategic Institutional Entry Points (Segmented Cards Layout) */}
+      {/* 2. Strategic Institutional Entry Points (Segmented Cards Layout) */}
       <section className="relative z-30 max-w-7xl mx-auto px-6 -mt-28 mb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           
@@ -125,7 +92,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Core Operational Metrics Grid Layout */}
+      {/* 3. Core Operational Metrics Grid Layout */}
       <section className="bg-gray-50 border-y border-gray-100 py-16 px-6 md:px-12">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           <div>
