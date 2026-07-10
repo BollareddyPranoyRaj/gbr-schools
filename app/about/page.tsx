@@ -1,5 +1,5 @@
 import React from 'react';
-import { History, Target, Eye, Award } from 'lucide-react';
+import { History, Target, Eye, Award, Users } from 'lucide-react';
 
 export const metadata = {
   title: 'About GBR Institutions | Legacy Since 1979',
@@ -22,7 +22,7 @@ export default function AboutPage() {
       <div className="max-w-6xl mx-auto px-6 md:px-12 py-16">
         
         {/* Vision & Mission Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
           <div className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400 opacity-5 rounded-bl-full"></div>
             <Eye className="text-amber-500 mb-6" size={40} />
@@ -39,6 +39,80 @@ export default function AboutPage() {
             <p className="text-gray-600 leading-relaxed text-lg">
               To provide accessible, high-quality education across all levels—from early childhood to postgraduate studies—while instilling discipline, cultural values, and a lifelong love for learning.
             </p>
+          </div>
+        </div>
+
+        {/* Founders & Key Architects Section - Alternating Layout */}
+        <div className="mb-24">
+          <div className="text-center mb-16 flex flex-col items-center">
+            <Users className="text-amber-500 mb-4" size={40} />
+            <h2 className="text-3xl font-bold text-[#0B2046] font-serif">The Architects of Our Legacy</h2>
+            <p className="text-gray-600 mt-3 max-w-2xl mx-auto text-lg">
+              The vision, struggle, and dedication of our core founding members built the enduring foundation of GBR Educational Institutions.
+            </p>
+          </div>
+
+          <div className="space-y-12">
+            
+            {/* 1. Founder (Photo Left) */}
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row hover:shadow-md transition">
+              {/* Photo Block (Square) */}
+              <div className="w-full md:w-1/3 aspect-square bg-amber-50 flex items-center justify-center shrink-0 border-b md:border-b-0 md:border-r border-gray-100">
+                {/* NOTE: Replace the <span> below with an <img> tag when you have real photos */}
+                <span className="text-8xl font-serif font-bold text-amber-200">G</span>
+              </div>
+              {/* Text Block */}
+              <div className="w-full md:w-2/3 p-8 md:p-12 flex flex-col justify-center">
+                <h3 className="font-bold text-[#0B2046] text-3xl font-serif mb-2">Late Sri Goluguri Bapi Raju Reddy</h3>
+                <p className="text-amber-600 text-sm uppercase tracking-widest font-bold mb-6">The Founder</p>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  The visionary who laid the original foundation. His lifelong dedication to accessible education continues to be the guiding light for all our institutions.
+                </p>
+              </div>
+            </div>
+
+            {/* 2. Correspondent (Photo Right) - Notice the "md:flex-row-reverse" */}
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row-reverse hover:shadow-md transition">
+              <div className="w-full md:w-1/3 aspect-square bg-blue-50 flex items-center justify-center shrink-0 border-b md:border-b-0 md:border-l border-gray-100">
+                <span className="text-8xl font-serif font-bold text-blue-200">T</span>
+              </div>
+              <div className="w-full md:w-2/3 p-8 md:p-12 flex flex-col justify-center">
+                <h3 className="font-bold text-[#0B2046] text-3xl font-serif mb-2">Sri Tetali Adi Reddy (Kondababu)</h3>
+                <p className="text-blue-600 text-sm uppercase tracking-widest font-bold mb-6">Correspondent</p>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  Actively managing and guiding the institution&apos;s current growth, ensuring the founder&apos;s vision thrives and adapts in the modern educational landscape.
+                </p>
+              </div>
+            </div>
+
+            {/* 3. Director (Photo Left) */}
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row hover:shadow-md transition">
+              <div className="w-full md:w-1/3 aspect-square bg-emerald-50 flex items-center justify-center shrink-0 border-b md:border-b-0 md:border-r border-gray-100">
+                <span className="text-8xl font-serif font-bold text-emerald-200">B</span>
+              </div>
+              <div className="w-full md:w-2/3 p-8 md:p-12 flex flex-col justify-center">
+                <h3 className="font-bold text-[#0B2046] text-3xl font-serif mb-2">Sri Bollareddy Ratna Reddy</h3>
+                <p className="text-emerald-600 text-sm uppercase tracking-widest font-bold mb-6">Director & 1st Degree Principal</p>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  The driving force behind elevating GBR to a Degree College. His relentless push for higher education successfully shaped our academic structure.
+                </p>
+              </div>
+            </div>
+
+            {/* 4. Key Architect (Photo Right) - Notice the "md:flex-row-reverse" */}
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row-reverse hover:shadow-md transition">
+              <div className="w-full md:w-1/3 aspect-square bg-purple-50 flex items-center justify-center shrink-0 border-b md:border-b-0 md:border-l border-gray-100">
+                <span className="text-8xl font-serif font-bold text-purple-200">A</span>
+              </div>
+              <div className="w-full md:w-2/3 p-8 md:p-12 flex flex-col justify-center">
+                <h3 className="font-bold text-[#0B2046] text-3xl font-serif mb-2">Sri Ammi Reddy</h3>
+                <p className="text-purple-600 text-sm uppercase tracking-widest font-bold mb-6">Key Architect</p>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  Fought tirelessly alongside the founder to secure the necessary government permissions and approvals, legally making this institution a reality.
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -87,7 +161,7 @@ export default function AboutPage() {
           <Award className="mx-auto text-amber-500 mb-6" size={48} />
           <h2 className="text-3xl font-bold text-[#0B2046] font-serif mb-6">Leadership Message</h2>
           <blockquote className="text-xl text-gray-700 italic leading-relaxed mb-6">
-            "Education is not merely about accumulating facts; it is about building character. At GBR, we don't just prepare students for exams; we prepare them for life. We are committed to maintaining a campus where tradition meets modern innovation."
+            &ldquo;Education is not merely about accumulating facts; it is about building character. At GBR, we don&apos;t just prepare students for exams; we prepare them for life. We are committed to maintaining a campus where tradition meets modern innovation.&rdquo;
           </blockquote>
           <p className="font-bold text-gray-900 uppercase tracking-widest text-sm">— Management Committee, GBR Institutions</p>
         </div>
