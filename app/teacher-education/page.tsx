@@ -17,7 +17,7 @@ export default function TeacherEducationPage() {
         </h1>
         <p className="text-white/80 mt-4 text-lg max-w-2xl mx-auto font-light">
           Approved by NCTE & Affiliated to Adikavi Nannaya University. 
-          Building the nation's future by training exceptional educators.
+          Building the nation&apos;s future by training exceptional educators.
         </p>
       </div>
 
