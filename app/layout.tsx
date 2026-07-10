@@ -1,7 +1,8 @@
-// 1. app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "./components/Header"; // Imported the new header!
+import BackButton from "./components/BackButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} flex flex-col min-h-screen`}>
+        
         {/* Global Announcement Ticker */}
         <div className="bg-[#0B2046] text-white py-2 px-4 text-center text-sm font-medium border-b border-white/10">
           <span className="inline-flex items-center gap-2">
@@ -26,38 +28,77 @@ export default function RootLayout({
           </span>
         </div>
 
-        {/* Global Navigation Header */}
-        {/* Global Navigation Header */}
-        <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-6 md:px-12 py-4 flex items-center justify-between">
-          
-          {/* 1. Make the Logo Clickable to "/" */}
-          <a href="/" className="flex items-center gap-3 hover:opacity-80 transition cursor-pointer">
-            <div className="w-10 h-10 bg-[#0B2046] flex items-center justify-center rounded text-amber-400 font-bold text-xl font-serif">
-              G
+        {/* New Responsive Client-Side Header */}
+        <Header />
+
+        {/* Main Content Area */}
+        <div className="flex-grow">
+          <BackButton />
+          {children}
+        </div>
+
+        {/* Global Footer */}
+        <footer className="bg-[#0B2046] text-white pt-16 pb-8 border-t-[6px] border-amber-500 mt-auto">
+          <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+              
+              {/* Brand & Vision */}
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 bg-white flex items-center justify-center rounded text-[#0B2046] font-bold text-xl font-serif">
+                    G
+                  </div>
+                  <div>
+                    <span className="text-white font-bold text-lg block tracking-tight font-serif">GBR INSTITUTIONS</span>
+                    <span className="text-amber-400 text-xs block -mt-1 tracking-widest uppercase">Legacy Since 1979</span>
+                  </div>
+                </div>
+                <p className="text-white/70 text-sm leading-relaxed pr-4">
+                  Empowering generations through quality education, from early childhood foundation to advanced postgraduate tracks in Anaparthi.
+                </p>
+              </div>
+
+              {/* Quick Links */}
+              <div>
+                <h4 className="text-amber-400 font-bold font-serif mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
+                <ul className="space-y-3 text-sm text-white/80">
+                  <li><a href="/about" className="hover:text-amber-400 transition">About the Trust</a></li>
+                  <li><a href="/schools" className="hover:text-amber-400 transition">GBR Schools (AC/Non-AC)</a></li>
+                  <li><a href="/junior-college" className="hover:text-amber-400 transition">Junior College Programs</a></li>
+                  <li><a href="/degree-pg/programs-eligibility-fee" className="hover:text-amber-400 transition">Degree & PG Admissions</a></li>
+                </ul>
+              </div>
+
+              {/* Contact Info */}
+              <div>
+                <h4 className="text-amber-400 font-bold font-serif mb-6 uppercase tracking-wider text-sm">Contact Us</h4>
+                <ul className="space-y-3 text-sm text-white/80">
+                  <li>GBR Campus, Main Road</li>
+                  <li>Anaparthi, East Godavari, AP - 533342</li>
+                  <li>Phone: +91 8857 22xxxx</li>
+                  <li>Email: admissions@gbr.edu.in</li>
+                </ul>
+              </div>
             </div>
-            <div>
-              <span className="text-[#0B2046] font-bold text-lg block tracking-tight font-serif">GBR INSTITUTIONS</span>
-              <span className="text-gray-500 text-xs block -mt-1 tracking-widest uppercase">Legacy Since 1979</span>
+
+            {/* Copyright & Developer Credit */}
+            <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/50">
+              <p>&copy; {new Date().getFullYear()} GBR Educational Institutions. All rights reserved.</p>
+              <p>
+                Designed by{' '}
+                <a 
+                  href="https://bollareddypranoyraj.github.io/Portfolio/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-amber-400 hover:text-white transition font-medium text-[13px]"
+                >
+                  Bollareddy Pranoy Raj
+                </a>
+              </p>
             </div>
-          </a>
+          </div>
+        </footer>
 
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
-            {/* 2. Added an explicit Home link */}
-            <a href="/" className="hover:text-[#0B2046] transition">Home</a>
-            <a href="/about" className="hover:text-[#0B2046] transition">About Us</a>
-            <a href="/schools" className="hover:text-[#0B2046] transition">Our Schools</a>
-            <a href="/junior-college" className="hover:text-[#0B2046] transition">Junior College</a>
-            <a href="/degree-pg/programs-eligibility-fee" className="hover:text-[#0B2046] transition">Programs & Fees</a>
-            <a href="/academic-calendar" className="hover:text-[#0B2046] transition">Academic Calendar</a>
-            <a href="/admissions" className="hover:text-[#0B2046] transition text-[#0B2046] font-semibold">Admissions</a>
-          </nav>
-
-          <a href="/admissions" className="bg-[#0B2046] text-white px-5 py-2.5 rounded text-sm font-semibold hover:bg-opacity-90 transition shadow-sm">
-            Enquire Now
-          </a>
-        </header>
-
-        {children}
       </body>
     </html>
   );
