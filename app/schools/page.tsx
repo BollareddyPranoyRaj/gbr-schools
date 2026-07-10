@@ -1,6 +1,7 @@
 // app/schools/page.tsx
 import React from 'react';
-import { Snowflake, Sun, Bus, ShieldCheck, BookOpen, Users } from 'lucide-react';
+import { Snowflake, Sun, Bus, ShieldCheck, BookOpen, Users, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export const metadata = {
   title: 'GBR English Medium Schools (AC & Non-AC) | Anaparthi',
@@ -15,47 +16,43 @@ export default function SchoolsPage() {
           GBR English Medium Schools
         </h1>
         <p className="text-white/80 mt-4 text-lg max-w-2xl mx-auto font-light">
-          Nurturing young minds with a perfect blend of academics, discipline, and modern infrastructure.
+          Nurturing young minds with a perfect blend of academics, discipline, and modern infrastructure. Select a campus below to explore.
         </p>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 md:px-12 -mt-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
-          <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-8 flex flex-col items-center text-center">
-            <div className="w-16 h-16 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mb-6">
+          <Link href="/schools/ac-campus" className="bg-white rounded-xl shadow-lg border border-gray-100 p-8 flex flex-col items-center text-center group hover:-translate-y-2 hover:shadow-2xl transition duration-300 cursor-pointer">
+            <div className="w-16 h-16 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-500 group-hover:text-white transition duration-300">
               <Snowflake size={32} />
             </div>
             <h2 className="text-2xl font-bold text-[#0B2046] font-serif">AC Campus</h2>
             <p className="text-gray-600 mt-3 text-sm leading-relaxed">
               Fully air-conditioned classrooms designed to provide a comfortable, dust-free, and focused learning environment for primary and secondary students, ensuring peak concentration during peak summer months.
             </p>
-            <ul className="mt-6 space-y-2 text-sm text-gray-700 text-left w-full bg-gray-50 p-4 rounded-lg">
-              <li className="flex items-center gap-2">✔ Smart Board Equipped</li>
-              <li className="flex items-center gap-2">✔ Climate Controlled Environment</li>
-              <li className="flex items-center gap-2">✔ Restricted Batch Sizes</li>
-            </ul>
-          </div>
+            <div className="mt-8 flex items-center gap-2 text-blue-600 font-bold">
+              Explore AC Campus <ArrowRight className="group-hover:translate-x-1 transition" size={20} />
+            </div>
+          </Link>
 
-          <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-8 flex flex-col items-center text-center">
-            <div className="w-16 h-16 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center mb-6">
+          <Link href="/schools/standard-campus" className="bg-white rounded-xl shadow-lg border border-gray-100 p-8 flex flex-col items-center text-center group hover:-translate-y-2 hover:shadow-2xl transition duration-300 cursor-pointer">
+            <div className="w-16 h-16 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center mb-6 group-hover:bg-amber-500 group-hover:text-white transition duration-300">
               <Sun size={32} />
             </div>
             <h2 className="text-2xl font-bold text-[#0B2046] font-serif">Standard Campus</h2>
             <p className="text-gray-600 mt-3 text-sm leading-relaxed">
               Our traditional, highly ventilated campus focusing on rigorous academic standards, discipline, and holistic development. Features expansive open areas, natural lighting, and dedicated sports facilities.
             </p>
-            <ul className="mt-6 space-y-2 text-sm text-gray-700 text-left w-full bg-gray-50 p-4 rounded-lg">
-              <li className="flex items-center gap-2">✔ Spacious & Highly Ventilated</li>
-              <li className="flex items-center gap-2">✔ Direct Access to Playgrounds</li>
-              <li className="flex items-center gap-2">✔ Traditional Gurukul Discipline</li>
-            </ul>
-          </div>
+            <div className="mt-8 flex items-center gap-2 text-amber-600 font-bold">
+              Explore Standard Campus <ArrowRight className="group-hover:translate-x-1 transition" size={20} />
+            </div>
+          </Link>
           
         </div>
 
         <div className="mt-16">
-          <h3 className="text-2xl font-bold text-[#0B2046] font-serif mb-8 text-center">Campus Facilities & Infrastructure</h3>
+          <h3 className="text-2xl font-bold text-[#0B2046] font-serif mb-8 text-center">Shared Campus Infrastructure</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             
             <div className="bg-white p-6 rounded-lg border border-gray-100 shadow-sm text-center">
