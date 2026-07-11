@@ -1,18 +1,79 @@
-import React from 'react';
-import { Award, Star, Quote, ChevronRight } from 'lucide-react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { Award, Star, Quote, ChevronRight, Stethoscope, Microscope } from 'lucide-react';
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'Junior College | GBR Educational Institutions',
-  description: 'Premium Intermediate education with integrated competitive coaching.',
-};
+// NOTE: Metadata must be moved to layout.tsx or a separate server component since this is now a Client Component
+// export const metadata = {
+//   title: 'Junior College | GBR Educational Institutions',
+//   description: 'Premium Intermediate education with integrated competitive coaching.',
+// };
+
+const rankersData = [
+  {
+    category: "Intermediate Board Toppers",
+    color: "text-amber-400",
+    students: [
+      { name: "K. Srinivas", stat: "992/1000", badge: "District First", icon: Award, img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+      { name: "T. Bhavani", stat: "989/1000", badge: "State Top 10", icon: Award, img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+      { name: "V. Karthik", stat: "985/1000", badge: "College Topper", icon: Award, img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" }
+    ]
+  },
+  {
+    category: "JEE Main Scorers",
+    color: "text-blue-400",
+    students: [
+      { name: "S. Aditya", stat: "99.98 Percentile", badge: "Top Scorer", icon: Star, img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+      { name: "N. Pradeep", stat: "99.85 Percentile", badge: "Top Scorer", icon: Star, img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+      { name: "M. Harika", stat: "99.70 Percentile", badge: "Top Scorer", icon: Star, img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" }
+    ]
+  },
+  {
+    category: "AP EAPCET State Ranks",
+    color: "text-emerald-400",
+    students: [
+      { name: "Priya Reddy", stat: "State Rank: 12", badge: "Top Category", icon: Award, img: "https://images.unsplash.com/photo-1628157588553-5eeea00af15c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+      { name: "M. Harsha", stat: "State Rank: 45", badge: "Agriculture", icon: Award, img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+      { name: "K. Laya", stat: "State Rank: 89", badge: "Engineering", icon: Award, img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" }
+    ]
+  },
+  {
+    category: "IIT Advanced Selections",
+    color: "text-purple-400",
+    students: [
+      { name: "Rahul Varma", stat: "AIR: 142", badge: "IIT Madras", icon: Microscope, img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+      { name: "B. Shiva", stat: "AIR: 560", badge: "IIT Bombay", icon: Microscope, img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+      { name: "D. Akhil", stat: "AIR: 1024", badge: "IIT Kharagpur", icon: Microscope, img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" }
+    ]
+  },
+  {
+    category: "NEET Medical Achievers",
+    color: "text-rose-400",
+    students: [
+      { name: "G. Sravya", stat: "Score: 680/720", badge: "AIIMS Seat", icon: Stethoscope, img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+      { name: "A. Meghana", stat: "Score: 665/720", badge: "Top Govt. Med", icon: Stethoscope, img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+      { name: "P. Sahithi", stat: "Score: 650/720", badge: "Top Govt. Med", icon: Stethoscope, img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" }
+    ]
+  }
+];
 
 export default function JuniorCollegePage() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto-scroll every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % rankersData.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <main className="min-h-screen bg-white pb-20">
+      
       {/* 1. Cinematic Hero Section */}
       <div className="bg-[#0B2046] text-white py-24 px-6 md:px-12 text-center border-b-[6px] border-amber-500 relative overflow-hidden">
-        {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         <div className="relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold font-serif max-w-4xl mx-auto leading-tight">
@@ -31,10 +92,8 @@ export default function JuniorCollegePage() {
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-20">
         <div className="bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100 shadow-lg flex flex-col md:flex-row gap-12 items-center">
           
-          {/* Principal's Photo */}
           <div className="w-full md:w-1/3 flex flex-col items-center text-center shrink-0">
             <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-amber-500 shadow-xl mb-6 bg-gray-200">
-              {/* Replace src with actual Principal photo */}
               <img 
                 src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                 alt="Junior College Principal" 
@@ -46,7 +105,6 @@ export default function JuniorCollegePage() {
             <p className="text-gray-500 text-sm mt-2">M.Sc., Ph.D. with 25+ years of academic excellence.</p>
           </div>
 
-          {/* Message Content */}
           <div className="w-full md:w-2/3 relative">
             <Quote className="absolute -top-6 -left-6 text-amber-200 opacity-50" size={80} />
             <div className="relative z-10">
@@ -65,57 +123,69 @@ export default function JuniorCollegePage() {
         </div>
       </section>
 
-      {/* 3. The Wall of Excellence (JEE / EAPCET Highlights) */}
-      <section className="bg-[#0B2046] py-20 px-6 md:px-12 text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto">
+      {/* 3. The Wall of Excellence (Auto-Scrolling Carousel) */}
+      <section className="bg-[#0B2046] py-20 text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
           
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold font-serif text-white mb-4">The Wall of Excellence</h2>
-            <p className="text-amber-400 text-lg">Celebrating our top achievers from the recent academic year.</p>
+            <p className="text-amber-400 text-lg">Celebrating our top achievers across all competitive formats.</p>
           </div>
 
-          {/* Highlight Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            {/* Ranker 1 */}
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 text-center hover:-translate-y-2 transition duration-300">
-              <div className="w-24 h-24 mx-auto rounded-full bg-white mb-4 overflow-hidden border-2 border-amber-400">
-                 <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Student" className="w-full h-full object-cover" />
-              </div>
-              <h4 className="font-bold text-xl font-serif">Rahul Varma</h4>
-              <p className="text-amber-400 font-semibold mb-3">JEE Advanced Rank: 142</p>
-              <div className="inline-flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full text-sm">
-                <Award size={16} /> Secured seat in IIT Madras
-              </div>
-            </div>
+          {/* Slider Container */}
+          <div className="relative w-full overflow-hidden">
+            <div 
+              className="flex transition-transform duration-700 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {rankersData.map((categoryGroup, idx) => (
+                <div key={idx} className="w-full shrink-0 flex flex-col items-center">
+                  
+                  {/* Category Title */}
+                  <h3 className={`text-2xl md:text-3xl font-bold font-serif mb-8 border-b border-white/20 pb-4 ${categoryGroup.color}`}>
+                    {categoryGroup.category}
+                  </h3>
 
-            {/* Ranker 2 */}
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 text-center hover:-translate-y-2 transition duration-300 scale-105 shadow-2xl">
-              <div className="w-24 h-24 mx-auto rounded-full bg-white mb-4 overflow-hidden border-2 border-amber-400">
-                 <img src="https://images.unsplash.com/photo-1628157588553-5eeea00af15c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Student" className="w-full h-full object-cover" />
-              </div>
-              <h4 className="font-bold text-xl font-serif">Priya Reddy</h4>
-              <p className="text-amber-400 font-semibold mb-3">AP EAPCET Rank: 12</p>
-              <div className="inline-flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full text-sm">
-                <Star size={16} /> Top Medical Category
-              </div>
+                  {/* 3 Cards Grid for this category */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+                    {categoryGroup.students.map((student, studentIdx) => {
+                      const Icon = student.icon;
+                      return (
+                        <div key={studentIdx} className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 text-center shadow-lg">
+                          <div className={`w-24 h-24 mx-auto rounded-full bg-white mb-4 overflow-hidden border-2 border-current ${categoryGroup.color}`}>
+                            <img src={student.img} alt={student.name} className="w-full h-full object-cover" />
+                          </div>
+                          <h4 className="font-bold text-xl font-serif text-white">{student.name}</h4>
+                          <p className={`font-semibold mb-3 ${categoryGroup.color}`}>{student.stat}</p>
+                          <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-1.5 rounded-full text-sm font-medium">
+                            <Icon size={16} /> {student.badge}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
             </div>
-
-            {/* Ranker 3 */}
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 text-center hover:-translate-y-2 transition duration-300">
-              <div className="w-24 h-24 mx-auto rounded-full bg-white mb-4 overflow-hidden border-2 border-amber-400">
-                 <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Student" className="w-full h-full object-cover" />
-              </div>
-              <h4 className="font-bold text-xl font-serif">K. Srinivas</h4>
-              <p className="text-amber-400 font-semibold mb-3">IPE Board Marks: 992/1000</p>
-              <div className="inline-flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full text-sm">
-                <Award size={16} /> District First
-              </div>
-            </div>
-
           </div>
+
+          {/* Slider Indicators */}
+          <div className="flex justify-center gap-3 mt-12">
+            {rankersData.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  currentSlide === idx ? 'bg-amber-500 w-8' : 'bg-white/30 hover:bg-white/50'
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+
         </div>
       </section>
+
       {/* 4. Campus Life & Infrastructure (Cinematic Bento Grid) */}
       <section className="py-24 px-6 md:px-12 bg-gray-50">
         <div className="max-w-7xl mx-auto">
@@ -129,7 +199,6 @@ export default function JuniorCollegePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-[800px] md:h-[600px]">
             
-            {/* Smart Classrooms (Large Tile) */}
             <div className="relative group overflow-hidden rounded-2xl md:col-span-2 md:row-span-2 shadow-sm">
               <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Classroom" className="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B2046]/90 via-[#0B2046]/40 to-transparent opacity-80 group-hover:opacity-100 transition duration-500" />
@@ -141,7 +210,6 @@ export default function JuniorCollegePage() {
               </div>
             </div>
 
-            {/* Study Hours (Wide Tile) */}
             <div className="relative group overflow-hidden rounded-2xl md:col-span-2 shadow-sm">
               <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Study Hours" className="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B2046]/90 via-[#0B2046]/20 to-transparent opacity-80 group-hover:opacity-100 transition duration-500" />
@@ -153,7 +221,6 @@ export default function JuniorCollegePage() {
               </div>
             </div>
 
-            {/* Corridors (Small Tile) */}
             <div className="relative group overflow-hidden rounded-2xl shadow-sm">
               <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Corridor" className="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B2046]/90 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition duration-500" />
@@ -165,7 +232,6 @@ export default function JuniorCollegePage() {
               </div>
             </div>
 
-            {/* Mentorship (Small Tile) */}
             <div className="relative group overflow-hidden rounded-2xl shadow-sm">
               <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mentorship" className="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B2046]/90 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition duration-500" />
