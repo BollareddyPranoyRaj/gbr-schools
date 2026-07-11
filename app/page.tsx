@@ -5,6 +5,8 @@ import Link from 'next/link';
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-white font-sans text-gray-900">
+      
+      {/* 1. Cinematic Hero Section */}
       <section className="relative w-full h-[85vh] overflow-hidden bg-[#0B2046]">
         <video
           autoPlay
@@ -31,6 +33,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 2. Core Institutions Grid */}
       <section className="relative z-30 max-w-7xl mx-auto px-6 -mt-28 mb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
@@ -115,6 +118,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 3. Global Stats */}
       <section className="bg-gray-50 border-y border-gray-100 py-16 px-6 md:px-12">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           <div>
@@ -135,6 +139,25 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* 4. Transport CTA Highlight */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 py-20">
+        <div className="bg-gradient-to-r from-[#0B2046] to-blue-900 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between shadow-xl">
+          <div className="text-white mb-6 md:mb-0 md:max-w-xl">
+            <h2 className="text-3xl font-bold font-serif mb-3">Extensive Transport Network</h2>
+            <p className="text-blue-100 text-lg">
+              Safe, daily commutes covering Rajahmundry, Anaparthi, and 40+ surrounding villages with a dedicated fleet.
+            </p>
+          </div>
+          <Link 
+            href="/transport" 
+            className="shrink-0 bg-amber-500 text-[#0B2046] px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-400 transition shadow-lg flex items-center gap-2"
+          >
+            View All Routes <ArrowRight size={20} />
+          </Link>
+        </div>
+      </section>
+
     </main>
   );
 }
