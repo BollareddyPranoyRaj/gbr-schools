@@ -8,7 +8,6 @@ export const metadata = {
   description: 'Extensive and safe transport network covering Anaparthi, Rajahmundry, and 40+ surrounding villages.',
 };
 
-// You can easily edit these village names with your exact route data
 const routesData = [
   {
     hub: "Rajahmundry & Urban Route",
@@ -58,44 +57,101 @@ export default function TransportPage() {
         </div>
       </div>
 
-      {/* 2. Real Safety Protocols */}
+      {/* 2. Safety Commitment & Fleet Showcase */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-20">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-[#0B2046] font-serif mb-4">Our Safety Commitment</h2>
           <p className="text-gray-500 max-w-2xl mx-auto">We take the responsibility of your child&apos;s daily commute seriously with strict operational protocols.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
-            <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-4">
-              <ShieldCheck size={24} />
+        {/* Safety Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden group hover:shadow-lg transition duration-300">
+            <div className="h-64 bg-gray-200 relative overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                alt="Fleet & Speed Control" 
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+              />
+              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-xl text-blue-600 shadow-sm flex items-center gap-2">
+                <ShieldCheck size={24} />
+                <span className="font-bold text-sm">Speed Governors</span>
+              </div>
             </div>
-            <h3 className="font-bold text-[#0B2046] mb-2">Speed Governors</h3>
-            <p className="text-sm text-gray-500">Every bus is equipped with speed limiters to ensure strictly controlled, safe driving speeds at all times.</p>
+            <div className="p-8">
+              <h3 className="text-2xl font-bold text-[#0B2046] mb-3">Speed Governors</h3>
+              <p className="text-gray-600 leading-relaxed text-lg">Every bus is equipped with speed limiters to ensure strictly controlled, safe driving speeds at all times, prioritizing student safety over everything else.</p>
+            </div>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
-            <div className="w-12 h-12 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center mb-4">
-              <Users size={24} />
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden group hover:shadow-lg transition duration-300">
+            <div className="h-64 bg-gray-200 relative overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1576267423048-15c0040fec78?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                alt="Bus Attendants" 
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+              />
+              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-xl text-amber-600 shadow-sm flex items-center gap-2">
+                <Users size={24} />
+                <span className="font-bold text-sm">Bus Attendants</span>
+              </div>
             </div>
-            <h3 className="font-bold text-[#0B2046] mb-2">Bus Attendants</h3>
-            <p className="text-sm text-gray-500">Dedicated support staff on board to assist young students with boarding, seating, and de-boarding safely.</p>
+            <div className="p-8">
+              <h3 className="text-2xl font-bold text-[#0B2046] mb-3">Bus Attendants</h3>
+              <p className="text-gray-600 leading-relaxed text-lg">Dedicated support staff on board to assist young students with boarding, seating, and de-boarding safely, ensuring a smooth and monitored journey.</p>
+            </div>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
-            <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mb-4">
-              <AlertCircle size={24} />
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden group hover:shadow-lg transition duration-300">
+            <div className="h-64 bg-gray-200 relative overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                alt="Experienced Drivers" 
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+              />
+              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-xl text-emerald-600 shadow-sm flex items-center gap-2">
+                <AlertCircle size={24} />
+                <span className="font-bold text-sm">Experienced Drivers</span>
+              </div>
             </div>
-            <h3 className="font-bold text-[#0B2046] mb-2">Experienced Drivers</h3>
-            <p className="text-sm text-gray-500">Our fleet is operated only by verified, highly experienced drivers with flawless local route knowledge.</p>
+            <div className="p-8">
+              <h3 className="text-2xl font-bold text-[#0B2046] mb-3">Experienced Drivers</h3>
+              <p className="text-gray-600 leading-relaxed text-lg">Our fleet is operated only by verified, highly experienced drivers with flawless local route knowledge and a strong track record of safe driving.</p>
+            </div>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
-            <div className="w-12 h-12 bg-rose-50 text-rose-600 rounded-full flex items-center justify-center mb-4">
-              <MapPin size={24} />
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden group hover:shadow-lg transition duration-300">
+            <div className="h-64 bg-gray-200 relative overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1558227845-a764d93bd052?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                alt="Designated Stops" 
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+              />
+              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-xl text-rose-600 shadow-sm flex items-center gap-2">
+                <MapPin size={24} />
+                <span className="font-bold text-sm">Designated Stops</span>
+              </div>
             </div>
-            <h3 className="font-bold text-[#0B2046] mb-2">Designated Stops</h3>
-            <p className="text-sm text-gray-500">Fixed, secure pickup and drop-off points planned meticulously to minimize walk time for students.</p>
+            <div className="p-8">
+              <h3 className="text-2xl font-bold text-[#0B2046] mb-3">Designated Stops</h3>
+              <p className="text-gray-600 leading-relaxed text-lg">Fixed, secure pickup and drop-off points planned meticulously to minimize walk time for students and streamline the daily transport schedule.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Massive Fleet Photo Below the 4 Cards */}
+        <div className="rounded-3xl overflow-hidden shadow-2xl border border-gray-100 relative group">
+          <img 
+            src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" /* Replace this src with your exact fleet image path */
+            alt="GBR Transport Fleet on Campus" 
+            className="w-full h-[400px] md:h-[600px] object-cover group-hover:scale-105 transition duration-700 ease-in-out"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B2046]/90 via-[#0B2046]/20 to-transparent opacity-70 group-hover:opacity-90 transition duration-500" />
+          <div className="absolute bottom-0 left-0 p-8 md:p-12 translate-y-4 group-hover:translate-y-0 transition duration-500">
+            <h3 className="text-3xl md:text-5xl font-bold text-white font-serif mb-3">Our Massive Fleet</h3>
+            <p className="text-white/90 text-lg md:text-xl max-w-2xl font-light">
+              One of the largest institutional transport networks in the region, ready to safely commute thousands of students every single day.
+            </p>
           </div>
         </div>
       </section>
