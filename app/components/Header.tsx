@@ -17,6 +17,7 @@ export default function Header() {
     { name: "Degree & PG", href: "/degree-pg/programs-eligibility-fee" },
     { name: "B.Ed / D.Ed", href: "/teacher-education" },
     { name: "Nursing", href: "/nursing" },
+    { name: "Transport", href: "/transport" }, // Added Transport Link here
   ];
 
   return (
@@ -35,7 +36,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-6 text-[13px] xl:text-sm">
+        <nav className="hidden xl:flex items-center gap-6 text-[13px] xl:text-sm">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -55,7 +56,7 @@ export default function Header() {
         </nav>
 
         {/* Desktop Button */}
-        <div className="hidden lg:block shrink-0 ml-4">
+        <div className="hidden xl:block shrink-0 ml-4">
           <Link href="/admissions" className="bg-[#0B2046] text-white px-5 py-2.5 rounded text-sm font-semibold hover:bg-opacity-90 transition shadow-sm">
             Enquire Now
           </Link>
@@ -63,7 +64,7 @@ export default function Header() {
 
         {/* Mobile Hamburger Button */}
         <button 
-          className="lg:hidden text-[#0B2046] p-2 hover:bg-gray-100 rounded transition"
+          className="xl:hidden text-[#0B2046] p-2 hover:bg-gray-100 rounded transition"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -72,7 +73,7 @@ export default function Header() {
 
       {/* Mobile Navigation Dropdown Menu */}
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-xl py-4 px-6 flex flex-col gap-4 z-50">
+        <div className="xl:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-xl py-4 px-6 flex flex-col gap-4 z-50">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
