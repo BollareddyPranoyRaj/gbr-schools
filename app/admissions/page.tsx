@@ -1,183 +1,151 @@
-import React from 'react';
-import { Phone, Mail, MapPin, Send, CheckCircle2, ArrowRight } from 'lucide-react';
+'use client';
 
-export const metadata = {
-  title: 'Admissions | GBR Educational Institutions',
-  description: 'Apply for admissions at GBR Institutions for the academic year 2026-2027.',
-};
+import React, { useState } from 'react';
+import { MapPin, Phone, Mail, Send, CheckCircle2 } from 'lucide-react';
 
 export default function AdmissionsPage() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // We will connect this to your email backend later!
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  };
+
   return (
-    <main className="min-h-screen bg-[#F8F9FA] pb-20">
-      {/* Hero Section */}
-      <div className="bg-[#0B2046] text-white py-20 px-6 md:px-12 text-center border-b-[6px] border-amber-500">
-        <h1 className="text-4xl md:text-5xl font-bold font-serif max-w-4xl mx-auto leading-tight">
-          Begin Your Journey With Us
+    <main className="min-h-screen bg-gray-50 text-gray-900 font-sans pb-24">
+      
+      {/* Hero Header */}
+      <div className="bg-[#0B2046] text-white py-20 px-6 md:px-12 text-center border-b-[6px] border-red-600">
+        <h1 className="text-4xl md:text-5xl font-black font-serif uppercase tracking-tight mb-4">
+          Admissions Open
         </h1>
-        <p className="text-white/80 mt-4 text-lg max-w-2xl mx-auto font-light">
-          Admissions are now open for the 2026-2027 academic year across all GBR campuses.
+        <p className="text-white/80 max-w-2xl mx-auto text-lg">
+          Secure your child's future at GBR Schools. Fill out the inquiry form below, and our admissions team will contact you shortly.
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16">
-        <div className="flex flex-col lg:flex-row gap-12">
+      <section className="max-w-7xl mx-auto px-6 md:px-12 py-16 -mt-10 relative z-20">
+        <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col lg:flex-row">
           
-          {/* Left Column: Info & Process */}
-          <div className="w-full lg:w-5/12 space-y-12">
+          {/* Left Side: Contact Information */}
+          <div className="w-full lg:w-1/3 bg-[#0B2046] p-10 md:p-14 text-white flex flex-col justify-between relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-red-600 rounded-full filter blur-[100px] opacity-20 pointer-events-none"></div>
             
-            {/* Contact Details */}
-            <div>
-              <h2 className="text-2xl font-bold text-[#0B2046] font-serif mb-6">Admissions Office</h2>
-              <div className="space-y-4 text-gray-600">
+            <div className="relative z-10">
+              <h2 className="text-3xl font-bold font-serif uppercase tracking-tight mb-2">Get in Touch</h2>
+              <p className="text-white/70 mb-10 text-sm">We are here to answer all your questions regarding the admission process, campus facilities, and transport routes.</p>
+              
+              <div className="space-y-8">
                 <div className="flex items-start gap-4">
-                  <MapPin className="text-amber-500 shrink-0 mt-1" size={24} />
-                  <p>GBR Campus, Main Road, <br />Anaparthi, East Godavari, AP - 533342</p>
+                  <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                    <MapPin size={20} className="text-red-400" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold uppercase tracking-wider text-sm mb-1">Campus Address</h4>
+                    <p className="text-white/80 text-sm leading-relaxed">GBR Educational Institutions,<br/>Anaparthi, East Godavari District,<br/>Andhra Pradesh, India</p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <Phone className="text-amber-500 shrink-0" size={24} />
-                  <p>+91 8857 22xxxx / +91 9848x xxxxx</p>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                    <Phone size={20} className="text-red-400" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold uppercase tracking-wider text-sm mb-1">Admissions Helpdesk</h4>
+                    <p className="text-white/80 text-sm leading-relaxed">+91 98765 43210<br/>+91 98765 43211</p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <Mail className="text-amber-500 shrink-0" size={24} />
-                  <p>admissions@gbr.edu.in</p>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+                    <Mail size={20} className="text-red-400" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold uppercase tracking-wider text-sm mb-1">Email Us</h4>
+                    <p className="text-white/80 text-sm leading-relaxed">admissions@gbrschools.com</p>
+                  </div>
                 </div>
               </div>
             </div>
-
-            {/* Admission Process */}
-            <div>
-              <h2 className="text-2xl font-bold text-[#0B2046] font-serif mb-6">How to Apply</h2>
-              <div className="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-200 before:to-transparent">
-                
-                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-amber-100 text-amber-600 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow">
-                    1
-                  </div>
-                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-100 bg-white shadow-sm">
-                    <h3 className="font-bold text-[#0B2046]">Submit Enquiry</h3>
-                    <p className="text-sm text-gray-500 mt-1">Fill out the digital form with your basic details and program of interest.</p>
-                  </div>
-                </div>
-
-                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-amber-100 text-amber-600 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow">
-                    2
-                  </div>
-                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-100 bg-white shadow-sm">
-                    <h3 className="font-bold text-[#0B2046]">Campus Visit</h3>
-                    <p className="text-sm text-gray-500 mt-1">Our counselors will contact you to schedule a campus tour and interaction.</p>
-                  </div>
-                </div>
-
-                <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-amber-100 text-amber-600 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow">
-                    3
-                  </div>
-                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-100 bg-white shadow-sm">
-                    <h3 className="font-bold text-[#0B2046]">Enrollment</h3>
-                    <p className="text-sm text-gray-500 mt-1">Submit required documents and fee to secure your seat for the academic year.</p>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
           </div>
 
-          {/* Right Column: Application Form */}
-          <div className="w-full lg:w-7/12">
-            <div className="bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-gray-100">
-              <h2 className="text-2xl font-bold text-[#0B2046] font-serif mb-2">Online Enquiry Form</h2>
-              <p className="text-gray-500 mb-8 text-sm">Fill out the form below and our admissions team will get back to you within 24 hours.</p>
-              
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Student&apos;s Full Name *</label>
-                    <input 
-                      type="text" 
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-gray-50 focus:bg-white"
-                      placeholder="Enter student name"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Parent/Guardian Name *</label>
-                    <input 
-                      type="text" 
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-gray-50 focus:bg-white"
-                      placeholder="Enter parent name"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
-                    <input 
-                      type="tel" 
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-gray-50 focus:bg-white"
-                      placeholder="+91"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                    <input 
-                      type="email" 
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-gray-50 focus:bg-white"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Program of Interest *</label>
-                  <select 
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-gray-50 focus:bg-white appearance-none" 
-                    defaultValue="" 
-                    required
-                  >
-                    <option value="" disabled>Select a program...</option>
-                    <option value="school-primary">GBR Schools (Primary)</option>
-                    <option value="school-high">GBR Schools (High School)</option>
-                    <option value="inter-mpc">Junior College (MPC)</option>
-                    <option value="inter-bipc">Junior College (BiPC)</option>
-                    <option value="inter-cec">Junior College (CEC)</option>
-                    <option value="degree">Degree College (B.Sc / B.Com / B.A)</option>
-                    <option value="pg">PG College (MBA / MCA)</option>
-                    <option value="bed">College of Education (B.Ed / D.Ed)</option>
-                    <option value="nursing">Nursing College</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Any specific questions?</label>
-                  <textarea 
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition bg-gray-50 focus:bg-white resize-none"
-                    placeholder="Tell us about your educational background or requirements..."
-                  ></textarea>
-                </div>
-
+          {/* Right Side: The Form */}
+          <div className="w-full lg:w-2/3 p-10 md:p-14">
+            {isSubmitted ? (
+              <div className="h-full flex flex-col items-center justify-center text-center py-20 animate-in fade-in zoom-in duration-500">
+                <CheckCircle2 size={80} className="text-green-500 mb-6" />
+                <h2 className="text-3xl font-bold font-serif text-[#0B2046] mb-4">Inquiry Received!</h2>
+                <p className="text-gray-500 max-w-md">Thank you for choosing GBR Schools. Our admissions counselor will call you within 24 hours with further details.</p>
                 <button 
-                  type="submit" 
-                  className="w-full bg-[#0B2046] text-white py-4 rounded-lg font-bold text-lg hover:bg-opacity-90 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                  onClick={() => setIsSubmitted(false)}
+                  className="mt-8 text-red-600 font-bold uppercase text-sm hover:underline"
                 >
-                  <Send size={20} />
-                  Submit Enquiry
+                  Submit another inquiry
                 </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <h3 className="text-2xl font-bold font-serif text-[#0B2046] uppercase tracking-tight mb-8">Student Inquiry Form</h3>
                 
-                <p className="text-xs text-gray-400 text-center mt-4">
-                  By submitting this form, you agree to allow GBR Institutions to contact you regarding admissions.
-                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-[#0B2046] uppercase tracking-wider">Parent/Guardian Name *</label>
+                    <input required type="text" className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition" placeholder="John Doe" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-[#0B2046] uppercase tracking-wider">Student Name *</label>
+                    <input required type="text" className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition" placeholder="Jane Doe" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-[#0B2046] uppercase tracking-wider">Phone Number *</label>
+                    <input required type="tel" className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition" placeholder="+91 XXXXX XXXXX" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-[#0B2046] uppercase tracking-wider">Email Address</label>
+                    <input type="email" className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition" placeholder="email@example.com" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-[#0B2046] uppercase tracking-wider">Campus Preference *</label>
+                    <select required className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition text-gray-700">
+                      <option value="">Select a Campus...</option>
+                      <option value="ac">The AC Campus</option>
+                      <option value="standard">The Standard Campus</option>
+                      <option value="undecided">Not Sure Yet</option>
+                    </select>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-[#0B2046] uppercase tracking-wider">Grade Seeking *</label>
+                    <select required className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition text-gray-700">
+                      <option value="">Select a Grade...</option>
+                      <option value="nursery">Nursery / LKG / UKG</option>
+                      <option value="1-5">Grades 1 to 5</option>
+                      <option value="6-8">Grades 6 to 8</option>
+                      <option value="9-10">Grades 9 & 10</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-[#0B2046] uppercase tracking-wider">Additional Questions (Optional)</label>
+                  <textarea rows={4} className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition resize-none" placeholder="Let us know if you need transport details or have specific queries..."></textarea>
+                </div>
+
+                <button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 rounded-lg transition duration-300 shadow-lg shadow-red-600/20 tracking-widest uppercase flex items-center justify-center gap-2 group">
+                  Submit Inquiry <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition" />
+                </button>
               </form>
-            </div>
+            )}
           </div>
 
         </div>
-      </div>
+      </section>
     </main>
   );
 }

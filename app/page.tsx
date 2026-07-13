@@ -1,159 +1,188 @@
 import React from 'react';
-import { ArrowRight, GraduationCap, School, BookOpen, Users, HeartPulse, Baby, Briefcase } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Bus, Award, Sparkles, Building2, Compass } from 'lucide-react';
 import Link from 'next/link';
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-white font-sans text-gray-900">
+    <main className="min-h-screen bg-white text-gray-900 font-sans overflow-x-hidden">
       
-      {/* 1. Cinematic Hero Section */}
-      <section className="relative w-full h-[85vh] overflow-hidden bg-[#0B2046]">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-60"
-        >
-          <source 
-            src="https://www.w3schools.com/html/mov_bbb.mp4" 
-            type="video/mp4" 
-          />
-        </video>
+      {/* 1. Cinematic Video Hero */}
+      <section className="relative w-full h-[85vh] flex items-center justify-center bg-[#0B2046]">
+        <div className="absolute inset-0 z-0 opacity-50">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+          </video>
+        </div>
+        
+        {/* Gradient Mask for Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B2046]/80 via-[#0B2046]/50 to-[#0B2046]/90 z-10" />
 
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/40 via-[#0B2046]/40 to-[#0B2046] z-10" />
-
-        <div className="relative z-20 flex flex-col items-center justify-center w-full h-full text-center px-6 pb-20">
-          <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-bold font-serif max-w-5xl tracking-tight leading-none">
-            Empowering Generations <br />Through Quality Education
+        <div className="relative z-20 max-w-6xl mx-auto px-6 text-center">
+          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest text-white uppercase mb-6 backdrop-blur-sm shadow-sm">
+            <Sparkles size={14} className="text-red-500" /> Shaping Futures Since 1979
+          </div>
+          <h1 className="text-4xl md:text-7xl lg:text-8xl font-black font-serif tracking-tight leading-none text-white uppercase">
+            The Standard of <br />
+            <span className="text-red-500">
+              Modern Education
+            </span>
           </h1>
-          <p className="text-white/90 text-lg md:text-2xl mt-6 font-light max-w-2xl">
-            From Playschool AC Classrooms to Advanced Postgraduate & Nursing Tracks.
+          <p className="text-white/90 text-lg md:text-xl mt-8 max-w-2xl mx-auto font-light leading-relaxed">
+            A comprehensive Nursery to 10th-grade ecosystem offering parents the ultimate choice: premium climate-controlled digital spaces or sprawling, traditional environments.
           </p>
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/admissions" className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 rounded-lg transition duration-300 shadow-xl shadow-red-600/20 tracking-wide flex items-center justify-center gap-2 group">
+              Begin Online Inquiry <ArrowRight size={18} className="group-hover:translate-x-1 transition" />
+            </Link>
+            <Link href="/about" className="bg-white hover:bg-gray-50 text-[#0B2046] font-bold px-8 py-4 rounded-lg transition duration-300 tracking-wide flex items-center justify-center shadow-lg">
+              Our Foundational History
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* 2. Core Institutions Grid */}
-      <section className="relative z-30 max-w-7xl mx-auto px-6 -mt-28 mb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* 2. Dual Campus Separation Split Section */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 py-24 relative z-20">
+        <div className="text-center mb-16">
+          <span className="text-red-600 uppercase tracking-widest text-xs font-black block mb-2">The Ultimate Choice</span>
+          <h2 className="text-3xl md:text-5xl font-bold font-serif uppercase tracking-tight text-[#0B2046]">Two Distinct Campuses</h2>
+          <p className="text-gray-500 mt-3 max-w-xl mx-auto text-lg">Both offering complete Nursery to 10th-grade academics, tailored to your preferred educational lifestyle.</p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           
-          <Link href="/schools" className="bg-white p-8 rounded-xl shadow-xl border border-gray-100 group hover:-translate-y-1 transition duration-300 flex flex-col justify-between min-h-[220px]">
-            <div>
-              <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-5 group-hover:bg-blue-600 group-hover:text-white transition duration-300">
-                <Baby size={24} />
+          {/* AC Campus Card */}
+          <div className="bg-white border border-gray-100 shadow-2xl shadow-gray-200/50 rounded-3xl p-8 md:p-12 flex flex-col justify-between hover:-translate-y-2 transition duration-500 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-blue-50 rounded-bl-full opacity-50 group-hover:scale-110 transition duration-500"></div>
+            <div className="relative z-10">
+              <div className="w-16 h-16 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-8 border border-red-100 shadow-sm">
+                <Sparkles size={32} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 font-serif">GBR Schools</h3>
-              <p className="text-gray-500 text-sm mt-2">Playschool, Primary & High School. Featuring state-of-the-art AC and traditional Non-AC campuses.</p>
+              <h3 className="text-3xl font-bold font-serif mb-2 uppercase tracking-tight text-[#0B2046]">The AC Campus</h3>
+              <p className="text-red-600 text-sm font-bold uppercase tracking-widest mb-6 border-b border-gray-100 pb-4">Nursery to 10th Grade</p>
+              <p className="text-gray-600 text-base leading-relaxed mb-8">
+                A pristine, completely climate-controlled interactive environment. Safeguarded from extreme heat and external dust, prioritizing absolute focus and digital integration.
+              </p>
+              <ul className="space-y-4 text-sm text-gray-700 mb-8 font-medium">
+                <li className="flex items-center gap-3"><ShieldCheck className="text-red-600 shrink-0" size={20} /> 100% Dust-Free Smart Classrooms</li>
+                <li className="flex items-center gap-3"><ShieldCheck className="text-red-600 shrink-0" size={20} /> Premium Climate Control</li>
+                <li className="flex items-center gap-3"><ShieldCheck className="text-red-600 shrink-0" size={20} /> Advanced Digital Learning Integration</li>
+              </ul>
             </div>
-            <span className="text-sm font-semibold text-blue-600 inline-flex items-center gap-1 mt-4">
-              Explore Schools <ArrowRight size={16} className="group-hover:translate-x-1 transition" />
-            </span>
-          </Link>
+            <Link href="/ac-campus" className="inline-flex items-center gap-2 font-bold text-[#0B2046] hover:text-red-600 transition group/link relative z-10">
+              Explore AC Campus <ArrowRight size={18} className="group-hover/link:translate-x-1 transition" />
+            </Link>
+          </div>
 
-          <Link href="/junior-college" className="bg-white p-8 rounded-xl shadow-xl border border-gray-100 group hover:-translate-y-1 transition duration-300 flex flex-col justify-between min-h-[220px]">
-            <div>
-              <div className="w-12 h-12 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center mb-5 group-hover:bg-amber-600 group-hover:text-white transition duration-300">
-                <BookOpen size={24} />
+          {/* Standard Campus Card */}
+          <div className="bg-white border border-gray-100 shadow-2xl shadow-gray-200/50 rounded-3xl p-8 md:p-12 flex flex-col justify-between hover:-translate-y-2 transition duration-500 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-amber-50 rounded-bl-full opacity-50 group-hover:scale-110 transition duration-500"></div>
+            <div className="relative z-10">
+              <div className="w-16 h-16 bg-[#0B2046]/5 text-[#0B2046] rounded-2xl flex items-center justify-center mb-8 border border-[#0B2046]/10 shadow-sm">
+                <Building2 size={32} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 font-serif">Junior College</h3>
-              <p className="text-gray-500 text-sm mt-2">Premium Intermediate education (MPC, BiPC, CEC) with integrated competitive coaching.</p>
+              <h3 className="text-3xl font-bold font-serif mb-2 uppercase tracking-tight text-[#0B2046]">The Standard Campus</h3>
+              <p className="text-red-600 text-sm font-bold uppercase tracking-widest mb-6 border-b border-gray-100 pb-4">Nursery to 10th Grade</p>
+              <p className="text-gray-600 text-base leading-relaxed mb-8">
+                A monumental physical layout geared towards massive sports grounds, high-ventilation corridors, and an unyielding foundation of traditional Gurukul discipline.
+              </p>
+              <ul className="space-y-4 text-sm text-gray-700 mb-8 font-medium">
+                <li className="flex items-center gap-3"><ShieldCheck className="text-red-600 shrink-0" size={20} /> Highly Ventilated Open Architecture</li>
+                <li className="flex items-center gap-3"><ShieldCheck className="text-red-600 shrink-0" size={20} /> Sprawling Athletic Grounds & Courts</li>
+                <li className="flex items-center gap-3"><ShieldCheck className="text-red-600 shrink-0" size={20} /> Ironclad Behavioral Discipline</li>
+              </ul>
             </div>
-            <span className="text-sm font-semibold text-amber-600 inline-flex items-center gap-1 mt-4">
-              Explore Intermediate <ArrowRight size={16} className="group-hover:translate-x-1 transition" />
-            </span>
-          </Link>
-
-          <Link href="/degree-pg/programs-eligibility-fee" className="bg-white p-8 rounded-xl shadow-xl border border-gray-100 group hover:-translate-y-1 transition duration-300 flex flex-col justify-between min-h-[220px]">
-            <div>
-              <div className="w-12 h-12 bg-purple-50 text-purple-600 rounded-lg flex items-center justify-center mb-5 group-hover:bg-purple-600 group-hover:text-white transition duration-300">
-                <GraduationCap size={24} />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 font-serif">Degree College</h3>
-              <p className="text-gray-500 text-sm mt-2">Comprehensive Undergraduate programs (B.Sc, B.Com, B.A) preparing students for modern careers.</p>
-            </div>
-            <span className="text-sm font-semibold text-purple-600 inline-flex items-center gap-1 mt-4">
-              Explore UG Programs <ArrowRight size={16} className="group-hover:translate-x-1 transition" />
-            </span>
-          </Link>
-
-          <Link href="/degree-pg/programs-eligibility-fee" className="bg-white p-8 rounded-xl shadow-xl border border-gray-100 group hover:-translate-y-1 transition duration-300 flex flex-col justify-between min-h-[220px]">
-            <div>
-              <div className="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition duration-300">
-                <Briefcase size={24} />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 font-serif">PG College</h3>
-              <p className="text-gray-500 text-sm mt-2">Advanced Postgraduate professional tracks including MBA, MCA, and M.Sc.</p>
-            </div>
-            <span className="text-sm font-semibold text-indigo-600 inline-flex items-center gap-1 mt-4">
-              Explore PG Tracks <ArrowRight size={16} className="group-hover:translate-x-1 transition" />
-            </span>
-          </Link>
-
-          <Link href="/teacher-education" className="bg-white p-8 rounded-xl shadow-xl border border-gray-100 group hover:-translate-y-1 transition duration-300 flex flex-col justify-between min-h-[220px]">
-            <div>
-              <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center mb-5 group-hover:bg-emerald-600 group-hover:text-white transition duration-300">
-                <Users size={24} />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 font-serif">Teacher Education</h3>
-              <p className="text-gray-500 text-sm mt-2">NCTE-Approved professional B.Ed and D.Ed training courses with in-house practice teaching.</p>
-            </div>
-            <span className="text-sm font-semibold text-emerald-600 inline-flex items-center gap-1 mt-4">
-              Explore Education <ArrowRight size={16} className="group-hover:translate-x-1 transition" />
-            </span>
-          </Link>
-
-          <Link href="/nursing" className="bg-white p-8 rounded-xl shadow-xl border border-gray-100 group hover:-translate-y-1 transition duration-300 flex flex-col justify-between min-h-[220px]">
-            <div>
-              <div className="w-12 h-12 bg-rose-50 text-rose-600 rounded-lg flex items-center justify-center mb-5 group-hover:bg-rose-600 group-hover:text-white transition duration-300">
-                <HeartPulse size={24} />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 font-serif">Nursing College</h3>
-              <p className="text-gray-500 text-sm mt-2">Top-tier healthcare education and clinical training for the next generation of nursing professionals.</p>
-            </div>
-            <span className="text-sm font-semibold text-rose-600 inline-flex items-center gap-1 mt-4">
-              Explore Nursing <ArrowRight size={16} className="group-hover:translate-x-1 transition" />
-            </span>
-          </Link>
+            <Link href="/standard-campus" className="inline-flex items-center gap-2 font-bold text-[#0B2046] hover:text-red-600 transition group/link relative z-10">
+              Explore Standard Campus <ArrowRight size={18} className="group-hover/link:translate-x-1 transition" />
+            </Link>
+          </div>
 
         </div>
       </section>
 
-      {/* 3. Global Stats */}
-      <section className="bg-gray-50 border-y border-gray-100 py-16 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-          <div>
-            <span className="block text-4xl md:text-5xl font-bold text-[#0B2046] font-serif">45+</span>
-            <span className="block text-gray-500 text-sm mt-1 uppercase tracking-wider">Years Legacy</span>
+      {/* 3. High-Contrast Premium White Section for Hard Statistics */}
+      <section className="bg-gray-50 py-24 px-6 md:px-12 border-y border-gray-200">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center border-b border-gray-200 pb-16">
+            <div>
+              <span className="block text-5xl md:text-7xl font-black font-serif tracking-tight text-red-600">45+</span>
+              <span className="block text-[#0B2046] font-bold text-xs md:text-sm uppercase tracking-widest mt-3">Years Legacy</span>
+            </div>
+            <div>
+              <span className="block text-5xl md:text-7xl font-black font-serif tracking-tight text-[#0B2046]">10K+</span>
+              <span className="block text-[#0B2046] font-bold text-xs md:text-sm uppercase tracking-widest mt-3">Alumni Network</span>
+            </div>
+            <div>
+              <span className="block text-5xl md:text-7xl font-black font-serif tracking-tight text-red-600">100%</span>
+              <span className="block text-[#0B2046] font-bold text-xs md:text-sm uppercase tracking-widest mt-3">Board Pass Rate</span>
+            </div>
+            <div>
+              <span className="block text-5xl md:text-7xl font-black font-serif tracking-tight text-[#0B2046]">40+</span>
+              <span className="block text-[#0B2046] font-bold text-xs md:text-sm uppercase tracking-widest mt-3">Villages Covered</span>
+            </div>
           </div>
-          <div>
-            <span className="block text-4xl md:text-5xl font-bold text-[#0B2046] font-serif">10,000+</span>
-            <span className="block text-gray-500 text-sm mt-1 uppercase tracking-wider">Alumni Base</span>
-          </div>
-          <div>
-            <span className="block text-4xl md:text-5xl font-bold text-[#0B2046] font-serif">100%</span>
-            <span className="block text-gray-500 text-sm mt-1 uppercase tracking-wider">Placement Support</span>
-          </div>
-          <div>
-            <span className="block text-4xl md:text-5xl font-bold text-[#0B2046] font-serif">6+</span>
-            <span className="block text-gray-500 text-sm mt-1 uppercase tracking-wider">Core Institutions</span>
+
+          {/* Quick Advantage Blocks */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
+            <div className="flex gap-5">
+              <div className="w-12 h-12 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0">
+                <Award size={24} />
+              </div>
+              <div>
+                <h4 className="font-bold text-xl uppercase tracking-tight font-serif text-[#0B2046] mb-2">Unparalleled Track Record</h4>
+                <p className="text-gray-600 text-sm leading-relaxed">GBR continues to capture top board marks inside East Godavari districts year after year through pure systematic execution.</p>
+              </div>
+            </div>
+            <div className="flex gap-5">
+              <div className="w-12 h-12 rounded-full bg-blue-100 text-[#0B2046] flex items-center justify-center shrink-0">
+                <Compass size={24} />
+              </div>
+              <div>
+                <h4 className="font-bold text-xl uppercase tracking-tight font-serif text-[#0B2046] mb-2">Holistic Blueprint</h4>
+                <p className="text-gray-600 text-sm leading-relaxed">Physical education matches mental discipline. We cultivate strong minds housed in exceptionally resilient bodies.</p>
+              </div>
+            </div>
+            <div className="flex gap-5">
+              <div className="w-12 h-12 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0">
+                <ShieldCheck size={24} />
+              </div>
+              <div>
+                <h4 className="font-bold text-xl uppercase tracking-tight font-serif text-[#0B2046] mb-2">Ironclad Discipline</h4>
+                <p className="text-gray-600 text-sm leading-relaxed">Punctuality, profound mutual respect, and focused behavioral frameworks form the core foundation of our daily operations.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 4. Transport CTA Highlight */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 py-20">
-        <div className="bg-gradient-to-r from-[#0B2046] to-blue-900 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between shadow-xl">
-          <div className="text-white mb-6 md:mb-0 md:max-w-xl">
-            <h2 className="text-3xl font-bold font-serif mb-3">Extensive Transport Network</h2>
-            <p className="text-blue-100 text-lg">
-              Safe, daily commutes covering Rajahmundry, Anaparthi, and 40+ surrounding villages with a dedicated fleet.
+      {/* 4. Strategic Logistical Infrastructure Banner */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 py-24">
+        <div className="bg-[#0B2046] rounded-3xl p-10 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 relative overflow-hidden shadow-2xl">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full filter blur-3xl pointer-events-none"></div>
+          
+          <div className="max-w-xl relative z-10">
+            <div className="inline-flex items-center gap-2 text-red-400 font-bold uppercase tracking-widest text-xs mb-4">
+              <Bus size={16} /> Logistical Superiority
+            </div>
+            <h3 className="text-3xl md:text-5xl font-bold font-serif uppercase tracking-tight text-white mb-4">
+              Massive Transport Grid
+            </h3>
+            <p className="text-white/80 text-lg leading-relaxed">
+              Serving Rajahmundry, Anaparthi, and 40+ surrounding rural hubs with an extensive, highly optimized institutional transport fleet.
             </p>
           </div>
+          
           <Link 
             href="/transport" 
-            className="shrink-0 bg-amber-500 text-[#0B2046] px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-400 transition shadow-lg flex items-center gap-2"
+            className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-5 rounded-xl transition shadow-xl shadow-red-900/50 flex items-center gap-3 tracking-wide text-lg uppercase shrink-0 relative z-10"
           >
-            View All Routes <ArrowRight size={20} />
+            Review Village Routes <ArrowRight size={20} />
           </Link>
         </div>
       </section>
