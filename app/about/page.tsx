@@ -114,13 +114,13 @@ export default function AboutPage() {
               <div className="w-full md:w-1/3 aspect-square bg-emerald-50 flex items-center justify-center shrink-0 border-b md:border-b-0 md:border-r border-gray-100">
                 <span className="text-8xl font-serif font-bold text-emerald-200">B</span>
               </div>
-              <div className="w-full md:w-2/3 p-8 md:p-12 flex flex-col justify-center">
+              {/* <div className="w-full md:w-2/3 p-8 md:p-12 flex flex-col justify-center">
                 <h3 className="font-bold text-[#0B2046] text-3xl font-serif mb-2">Sri Bollareddy Ratna Reddy</h3>
                 <p className="text-emerald-600 text-sm uppercase tracking-widest font-bold mb-6">Director & 1st Degree Principal</p>
                 <p className="text-gray-600 text-lg leading-relaxed">
                   The driving force behind elevating GBR to a Degree College. His relentless push for higher education successfully shaped our academic structure.
                 </p>
-              </div>
+              </div> */}
             </div>
 
             {/* 4. Key Architect (Photo Right) */}
