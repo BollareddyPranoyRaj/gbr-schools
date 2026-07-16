@@ -1,8 +1,6 @@
-// middleware.ts
-
 import { NextResponse } from 'next/server';
 
-export function middleware() {
+export function proxy() {
   const response = NextResponse.next();
 
   response.headers.set('X-Frame-Options', 'DENY');
@@ -17,5 +15,7 @@ export function middleware() {
 }
 
 export const config = {
-  matcher: '/:path*',
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)',
+  ],
 };
