@@ -20,27 +20,17 @@ export default function HeroVideo() {
   }, []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-black">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="absolute top-0 left-0 w-full h-full object-cover opacity-60 pointer-events-none"
-      >
-        <source src="https://res.cloudinary.com/demo/video/upload/v1689798418/samples/sea-turtle.mp4" type="video/mp4" />
-      </video>
+    <div className="relative w-full overflow-hidden rounded-lg border border-primary/10 bg-primary px-6 py-10 shadow-sm">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:28px_28px]" />
+      <div className="absolute -right-24 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-accent/25 blur-3xl" />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30" />
-
-      <div className="relative z-10 text-center px-4 max-w-4xl">
-        <p className="text-sm uppercase tracking-widest text-gray-300 mb-3 font-semibold">
-          Welcome to Excellence
+      <div className="relative z-10 max-w-3xl">
+        <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-accent">
+          GBR Learning Focus
         </p>
-        <h1 className="text-4xl md:text-6xl font-bold text-white transition-all duration-500 ease-in-out">
+        <h2 className="text-3xl font-bold text-white transition-all duration-500 ease-in-out md:text-5xl">
           {HERO_TEXTS[index]}
-        </h1>
+        </h2>
       </div>
     </div>
   );
