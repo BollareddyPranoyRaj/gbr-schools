@@ -2,6 +2,22 @@
 
 import Link from 'next/link';
 import { schoolData } from './lib/schoolData';
+import HeroVideo from './components/HeroVideo';
+
+const sectionLinks = [
+  { href: "/about", title: "About GBR", description: "Learn about our school legacy and vision." },
+  { href: "/leadership", title: "Leadership", description: "Meet the team guiding school growth." },
+  { href: "/facilities", title: "Facilities", description: "Explore labs, transport, library, and sports spaces." },
+  { href: "/student-life", title: "Student Life", description: "See co-curricular activities and house culture." },
+  { href: "/gallery", title: "Gallery", description: "Browse campus and activity highlights." },
+  { href: "/news", title: "Updates", description: "Read school news and announcements." },
+  { href: "/notices", title: "Notices", description: "Check important circulars and dates." },
+  { href: "/calendar", title: "Calendar", description: "View the academic calendar." },
+  { href: "/alumni", title: "Alumni", description: "Connect with the GBR alumni network." },
+  { href: "/careers", title: "Careers", description: "Find open roles at GBR Schools." },
+  { href: "/faq", title: "FAQ", description: "Get answers to common parent questions." },
+  { href: "/contact", title: "Contact", description: "Reach the school office and admissions team." },
+];
 
 export default function HomePage() {
   return (
@@ -35,6 +51,10 @@ export default function HomePage() {
       {/* Cards Section */}
       <div className="w-full bg-white py-24 border-t border-gray-100 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-16">
+            <HeroVideo />
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Link href="/admissions" className="group p-8 bg-[var(--color-surface)] border border-gray-200 rounded-xl hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
               <h3 className="text-xl font-semibold text-primary mb-3 group-hover:text-accent transition-colors">Admissions</h3>
@@ -55,6 +75,27 @@ export default function HomePage() {
               <h3 className="text-xl font-semibold text-primary mb-3 group-hover:text-accent transition-colors">Guidelines</h3>
               <p className="text-text-muted text-sm leading-relaxed">Read our transport, uniform, and general rules.</p>
             </Link>
+          </div>
+
+          <div className="mt-20">
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold text-primary">Explore Every Section</h2>
+              <p className="mt-2 max-w-2xl text-text-muted">
+                Every public page in the app is linked here so families can reach the full GBR Schools experience from the homepage.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {sectionLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="group rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition hover:border-primary/30 hover:shadow-md"
+                >
+                  <h3 className="text-lg font-semibold text-primary group-hover:text-accent">{link.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-text-muted">{link.description}</p>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>
