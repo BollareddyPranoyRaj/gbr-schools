@@ -1,4 +1,5 @@
 // app/calendar/page.tsx
+import React from 'react';
 
 export default function CalendarPage() {
   const festivals = [
@@ -26,31 +27,80 @@ export default function CalendarPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-background pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-primary mb-4">Academic Calendar</h1>
-        <p className="text-text-muted">List of festivals and holidays for the academic year 2026-2027.</p>
-      </div>
+    <main className="min-h-screen bg-[#f8fafc] pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto space-y-10">
+        
+        {/* Page Header */}
+        <div className="text-center">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+            Academic Calendar
+          </h1>
+          <p className="text-lg text-gray-500 max-w-xl mx-auto">
+            List of festivals and holidays for the academic year 2026-2027.
+          </p>
+        </div>
 
-      <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-        <table className="w-full text-left border-collapse">
-          <thead>
-            <tr className="bg-primary/5 border-b border-gray-200 text-primary">
-              <th className="py-4 px-6 font-semibold">DATE</th>
-              <th className="py-4 px-6 font-semibold">DAY</th>
-              <th className="py-4 px-6 font-semibold">LIST OF FESTIVALS</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-100">
-            {festivals.map((festival, index) => (
-              <tr key={index} className="hover:bg-primary/[0.02] transition-colors">
-                <td className="py-3 px-6 text-text-muted">{festival.date}</td>
-                <td className="py-3 px-6 text-text-muted">{festival.day}</td>
-                <td className="py-3 px-6 text-text-main font-medium">{festival.name}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        {/* Calendar Table */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse min-w-[500px]">
+              
+              <thead>
+                <tr className="bg-gray-50 border-b border-gray-200">
+                  <th className="py-4 px-6 text-xs font-bold text-gray-500 uppercase tracking-wider w-1/4">
+                    Date
+                  </th>
+                  <th className="py-4 px-6 text-xs font-bold text-gray-500 uppercase tracking-wider w-1/4">
+                    Day
+                  </th>
+                  <th className="py-4 px-6 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                    Festival / Holiday
+                  </th>
+                </tr>
+              </thead>
+              
+              <tbody className="divide-y divide-gray-100">
+                {festivals.map((festival, index) => {
+                  const isWeekend = festival.day === 'Sat' || festival.day === 'Sun';
+                  
+                  return (
+                    <tr 
+                      key={index} 
+                      className="hover:bg-blue-50/50 transition-colors group"
+                    >
+                      {/* Date Column */}
+                      <td className="py-4 px-6">
+                        <span className="font-semibold text-gray-900 tabular-nums text-base">
+                          {festival.date}
+                        </span>
+                      </td>
+                      
+                      {/* Day Column */}
+                      <td className="py-4 px-6">
+                        <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wide ${
+                          isWeekend 
+                            ? 'bg-red-50 text-red-600 border border-red-100' 
+                            : 'bg-gray-100 text-gray-600 border border-gray-200'
+                        }`}>
+                          {festival.day}
+                        </span>
+                      </td>
+                      
+                      {/* Festival Name Column */}
+                      <td className="py-4 px-6">
+                        <span className="text-gray-900 font-medium group-hover:text-blue-700 transition-colors">
+                          {festival.name}
+                        </span>
+                      </td>
+                      
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </div>
     </main>
   );
