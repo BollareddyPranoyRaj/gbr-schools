@@ -19,7 +19,7 @@ const mobileLinks = [
   ...navLinks,
   { href: "/facilities", label: "Facilities" },
   { href: "/student-life", label: "Student Life" },
-  { href: "/gallery", label: "Gallery" },
+  { href: "/events", label: "Events" },
   { href: "/leadership", label: "Leadership" },
   { href: "/alumni", label: "Alumni" },
   { href: "/parents", label: "Parent Portal" },

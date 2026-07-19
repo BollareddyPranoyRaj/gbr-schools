@@ -1,0 +1,325 @@
+.section {
+  position: relative;
+}
+
+.eventRow {
+  position: relative;
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  will-change: transform;
+  animation: marquee var(--scroll-duration, 34s) linear infinite;
+}
+
+.eventRow[data-hovering="true"] .marquee {
+  animation-play-state: paused;
+}
+
+.trackWindow {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(30, 58, 138, 0.12);
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(circle at top left, rgba(212, 175, 55, 0.08), transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(249, 250, 251, 0.92));
+  box-shadow: 0 24px 60px rgba(17, 24, 39, 0.06);
+}
+
+.card {
+  flex: 0 0 auto;
+  width: clamp(16rem, 36vw, 20rem);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid rgba(30, 58, 138, 0.12);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 16px 40px rgba(17, 24, 39, 0.08);
+  transform: translateY(0) scale(1);
+  transition:
+    transform 260ms ease,
+    filter 260ms ease,
+    opacity 260ms ease,
+    box-shadow 260ms ease;
+  filter: none;
+  opacity: 1;
+}
+
+.eventRow[data-hovering="true"] .card {
+  filter: blur(2.5px) saturate(0.72);
+  opacity: 0.48;
+  transform: scale(0.985);
+}
+
+.eventRow[data-hovering="true"] .card[data-active="true"] {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.05) translateY(-6px);
+  box-shadow: 0 24px 48px rgba(17, 24, 39, 0.16);
+  z-index: 2;
+}
+
+.imageFrame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.01);
+  transition: transform 300ms ease;
+}
+
+.card:hover .thumbnail {
+  transform: scale(1.08);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 1rem;
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0), rgba(17, 24, 39, 0.75));
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 9999px;
+  padding: 0.4rem 0.75rem;
+  background: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.modalShell {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  animation: shellFadeIn 400ms ease forwards;
+}
+
+.modalShellClosing {
+  animation: shellFadeOut 400ms ease forwards;
+}
+
+.modalBackdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0);
+  transition:
+    background 400ms ease,
+    backdrop-filter 400ms ease;
+}
+
+.modalBackdropOpen {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+}
+
+.modalStage {
+  position: relative;
+  z-index: 1;
+  transition:
+    top 400ms cubic-bezier(0.2, 0.85, 0.2, 1),
+    left 400ms cubic-bezier(0.2, 0.85, 0.2, 1),
+    width 400ms cubic-bezier(0.2, 0.85, 0.2, 1),
+    height 400ms cubic-bezier(0.2, 0.85, 0.2, 1),
+    border-radius 400ms ease,
+    box-shadow 400ms ease,
+    background 400ms ease,
+    transform 400ms cubic-bezier(0.2, 0.85, 0.2, 1);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0.72), rgba(17, 24, 39, 0.9));
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.48);
+  overflow: hidden;
+  will-change: top, left, width, height, border-radius, transform;
+}
+
+.modalStageOpening {
+  transform: translateZ(0) scale(0.98);
+}
+
+.modalStageOpen {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  border-radius: 0;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transform: translateZ(0) scale(1);
+}
+
+.modalStageClosing {
+  transition-duration: 400ms;
+  transform: translateZ(0) scale(0.98);
+}
+
+.modalContent {
+  width: min(96vw, 92rem);
+  height: min(92vh, 60rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(18rem, 0.9fr);
+  gap: 0;
+  border-radius: 2rem;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  transform: translateZ(0);
+}
+
+.modalImageWrap {
+  position: relative;
+  min-height: 0;
+  padding: clamp(1rem, 2vw, 2rem);
+}
+
+.modalImageFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modalImage {
+  object-fit: contain;
+  padding: clamp(0.5rem, 1vw, 1rem);
+}
+
+.modalCaption {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: clamp(1.25rem, 2vw, 2rem);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.12), rgba(15, 23, 42, 0.28));
+}
+
+.modalEyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(212, 175, 55, 0.95);
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.closeButton:hover {
+  transform: scale(1.06);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.closeButton span {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
+  transform: translateY(-50%);
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.navButton:hover {
+  transform: translateY(-50%) scale(1.06);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.navButton svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.navButtonLeft {
+  left: 1rem;
+}
+
+.navButtonRight {
+  right: 1rem;
+}
+
+@keyframes shellFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shellFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+  }
+
+  .card,
+  .thumbnail {
+    transition: none;
+  }
+
+  .modalShell,
+  .modalStage,
+  .modalBackdrop {
+    animation: none;
+    transition: none;
+  }
+}

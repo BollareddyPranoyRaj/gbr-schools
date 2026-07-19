@@ -18,7 +18,7 @@ const footerSections = [
       { href: "/ac-campus", label: "A.C. Campus" },
       { href: "/standard-campus", label: "E.M.S Campus" },
       { href: "/facilities", label: "Facilities" },
-      { href: "/gallery", label: "Gallery" },
+      { href: "/events", label: "Events" },
     ],
   },
   {

@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/facilities',
     '/student-life',
     '/leadership',
-    '/gallery',
+    '/events',
     '/news',
     '/notices',
     '/careers',

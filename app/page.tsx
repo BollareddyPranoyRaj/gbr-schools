@@ -10,7 +10,7 @@ const sectionLinks = [
   { href: "/leadership", title: "Leadership", description: "Meet the team guiding school growth." },
   { href: "/facilities", title: "Facilities", description: "Explore labs, transport, library, and sports spaces." },
   { href: "/student-life", title: "Student Life", description: "See co-curricular activities and house culture." },
-  { href: "/gallery", title: "Gallery", description: "Browse campus and activity highlights." },
+  { href: "/events", title: "Events", description: "Browse campus celebrations and event highlights." },
   { href: "/news", title: "Updates", description: "Read school news and announcements." },
   { href: "/notices", title: "Notices", description: "Check important circulars and dates." },
   { href: "/calendar", title: "Calendar", description: "View the academic calendar." },
