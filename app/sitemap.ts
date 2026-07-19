@@ -4,7 +4,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://gbrschools.edu.in'; // Replace with your actual domain
+  const baseUrl = "https://gbr-schools.vercel.app"; // Replace with your actual domain
 
   // Static routes
   const routes = [
