@@ -61,7 +61,7 @@ export default function CalendarPage() {
               
               <tbody className="divide-y divide-gray-100">
                 {festivals.map((festival, index) => {
-                  const isWeekend = festival.day === 'Sat' || festival.day === 'Sun';
+                  const isWeekend = festival.day === 'Sun';
                   
                   return (
                     <tr 
