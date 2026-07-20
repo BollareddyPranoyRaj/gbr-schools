@@ -44,9 +44,9 @@ export default function Navbar() {
               <Image 
                 src="/gbr-trans-logo.png" 
                 alt="GBR Group Logo" 
-                width={40} 
-                height={40} 
-                className="object-contain"
+                width={90} 
+                height={90} 
+                className="object-contain -m-8"
                 priority
               />
               <span className="text-primary font-bold text-xl tracking-wider">
