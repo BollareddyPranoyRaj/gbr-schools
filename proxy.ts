@@ -1,6 +1,7 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export function proxy() {
+export function proxy(request: NextRequest) {
+
   const response = NextResponse.next();
 
   response.headers.set('X-Frame-Options', 'DENY');
