@@ -3,6 +3,14 @@ import type { Metadata } from "next";
 import { v2 as cloudinary } from "cloudinary";
 import EventsClient, { type SchoolEvent } from "./EventsClient";
 
+type CloudinaryResource = {
+  public_id: string;
+  folder?: string;
+  asset_folder?: string;
+};
+
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Events | GBR Group of Schools",
   description: "Explore GBR Schools events through animated, interactive event carousels.",
@@ -23,6 +31,7 @@ const baseEvents = [
     description: "Engaging workshops and collaborative activities bringing our school community and parents together.",
     duration: 34,
     folder: "school-website/events/parentsactivity",
+    images: ["school-website/events/parentsactivity/parentsactivity-01", "school-website/events/parentsactivity/parentsactivity-02"],
   },
   {
     id: "40-years-celebration",
@@ -31,6 +40,7 @@ const baseEvents = [
     duration: 38,
     reverse: true,
     folder: "school-website/events/40yearcelb",
+    images: ["school-website/events/40yearcelb/40yearcelb-01", "school-website/events/40yearcelb/40yearcelb-02"],
   },
   {
     id: "christmas",
@@ -38,6 +48,7 @@ const baseEvents = [
     description: "Spreading holiday cheer with festive carols, decorations, and seasonal performances.",
     duration: 36,
     folder: "school-website/events/chirstmas",
+    images: ["school-website/events/chirstmas/chirstmas-01", "school-website/events/chirstmas/chirstmas-02"],
   },
   {
     id: "dussehra",
@@ -45,6 +56,7 @@ const baseEvents = [
     description: "Celebrating traditional cultural heritages and seasonal festive rituals.",
     duration: 32,
     folder: "school-website/events/dusheera",
+    images: ["school-website/events/dusheera/dusheera-01", "school-website/events/dusheera/dusheera-02"],
   },
   {
     id: "field-trip",
@@ -53,6 +65,7 @@ const baseEvents = [
     duration: 30,
     reverse: true,
     folder: "school-website/events/fieldtrip",
+    images: ["school-website/events/fieldtrip/fieldtrip-01"],
   },
   {
     id: "fruit-day",
@@ -60,6 +73,7 @@ const baseEvents = [
     description: "Promoting healthy habits and learning about nature's vibrant nutrition.",
     duration: 30,
     folder: "school-website/events/fruitday",
+    images: ["school-website/events/fruitday/fruitday-01"],
   },
   {
     id: "graduation-day",
@@ -67,6 +81,7 @@ const baseEvents = [
     description: "Celebrating the hard work, milestones, and bright futures of our graduating students.",
     duration: 32,
     folder: "school-website/events/graduationday",
+    images: ["school-website/events/graduationday/graduationday-01"],
   },
   {
     id: "pongal",
@@ -75,6 +90,7 @@ const baseEvents = [
     duration: 30,
     reverse: true,
     folder: "school-website/events/pongal",
+    images: ["school-website/events/pongal/pongal-01"],
   },
   {
     id: "rainbow-kids",
@@ -82,6 +98,7 @@ const baseEvents = [
     description: "Fun, colorful, and creative developmental activities for our early learners.",
     duration: 30,
     folder: "school-website/events/rainbowkids",
+    images: ["school-website/events/rainbowkids/rainbowkids-01"],
   },
   {
     id: "science-odyssey",
@@ -89,6 +106,7 @@ const baseEvents = [
     description: "Showcasing student curiosity, innovative projects, and scientific discoveries.",
     duration: 34,
     folder: "school-website/events/science odyssey",
+    images: ["school-website/events/science%20odyssey/science%20odyssey-01"],
   },
   {
     id: "sports-day",
@@ -97,43 +115,43 @@ const baseEvents = [
     duration: 38,
     reverse: true,
     folder: "school-website/events/sportsday",
+    images: ["school-website/events/sportsday/sportsday-01"],
   },
 ];
 
 // This must be an async function to fetch the data before rendering the page
 export default async function EventsPage() {
+  let resources: CloudinaryResource[] = [];
 
-  // Map through each event and fetch its specific folder from Cloudinary
-  const populatedEvents: SchoolEvent[] = await Promise.all(
-    baseEvents.map(async (event) => {
-      try {
-        const { resources } = await cloudinary.search
-          .expression(`folder:"${event.folder}"`)
-          .sort_by("public_id", "asc")
-          .max_results(100) // Fetches up to 100 photos per event folder
-          .execute();
+  try {
+    // One prefix search replaces the previous eleven Admin API calls, preventing
+    // the Events page from exhausting Cloudinary's rate-limited Admin API quota.
+    const result = await cloudinary.search
+      .expression("folder:school-website/events/*")
+      .sort_by("public_id", "asc")
+      .max_results(500)
+      .execute();
 
-        // Extract just the public_ids to send to the CldImage component
-        const images = resources.map((file: { public_id: string }) => file.public_id);
+    resources = result.resources as CloudinaryResource[];
+  } catch {
+    // Do not log the raw Cloudinary error: it includes request authentication details.
+    console.error("Unable to load event images from Cloudinary.");
+  }
 
-        return {
-          id: event.id,
-          title: event.title,
-          description: event.description,
-          duration: event.duration,
-          reverse: event.reverse,
-          images,
-        };
-      } catch (error) {
-        console.error(`Error fetching images for ${event.title}:`, error);
-        // Fallback so the page doesn't crash if a folder is empty or mistyped
-        return {
-          ...event,
-          images: [],
-        };
-      }
-    })
-  );
+  const populatedEvents: SchoolEvent[] = baseEvents.map((event) => {
+    const folderImages = resources
+      .filter((resource) => (resource.asset_folder ?? resource.folder) === event.folder)
+      .map((resource) => resource.public_id);
+
+    return {
+      id: event.id,
+      title: event.title,
+      description: event.description,
+      duration: event.duration,
+      reverse: event.reverse,
+      images: folderImages.length > 0 ? folderImages : event.images,
+    };
+  });
 
   // Pass the fully populated data directly into your beautiful client component
   return <EventsClient eventsData={populatedEvents} />;
