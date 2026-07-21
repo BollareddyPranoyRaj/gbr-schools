@@ -7,6 +7,7 @@ import Image from 'next/image';
 
 // We replaced the cluttered links with our newly merged, streamlined structure!
 const navLinks = [
+  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/ac-campus", label: "A.C. Campus" },
   { href: "/standard-campus", label: "E.M.S Campus" },
