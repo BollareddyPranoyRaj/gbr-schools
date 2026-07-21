@@ -1,5 +1,6 @@
-// app/parent-portal/page.tsx
+// app/parents/page.tsx
 import React from 'react';
+import Link from 'next/link'; // Added for the PDF download button
 
 export default function ParentPortalPage() {
   const features = [
@@ -194,6 +195,82 @@ export default function ParentPortalPage() {
             ))}
           </div>
         </div>
+
+        {/* --- MERGED GUIDELINES SECTION START --- */}
+        <div>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-gray-900">School Guidelines</h2>
+            <p className="text-gray-500 mt-3">Essential rules for transport, uniforms, and daily conduct.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            {/* Uniform Rules */}
+            <section className="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+                <span className="text-primary text-2xl">👔</span>
+              </div>
+              <h3 className="text-2xl font-bold text-primary mb-4">Uniform Guidelines</h3>
+              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                Students are expected to wear the prescribed school uniform with pride. Cleanliness and neat presentation are strictly observed.
+              </p>
+              <ul className="space-y-4 text-sm text-gray-600">
+                <li className="flex items-start gap-3">
+                  <span className="text-accent mt-1">✔</span>
+                  <span><strong>Regular Days (Mon, Tue, Thu, Fri):</strong> Standard school uniform with polished black shoes and school ID card.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-accent mt-1">✔</span>
+                  <span><strong>Sports Days (Wed & Sat):</strong> Assigned house color t-shirt, track pants, and white sports shoes.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-accent mt-1">✔</span>
+                  <span><strong>Winter Wear:</strong> Only the official school-issued sweater/blazer is permitted inside the campus.</span>
+                </li>
+              </ul>
+            </section>
+
+            {/* Transport Rules */}
+            <section className="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+                <span className="text-primary text-2xl">🚌</span>
+              </div>
+              <h3 className="text-2xl font-bold text-primary mb-4">Transport Policies</h3>
+              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                The school operates a fleet of buses strictly adhering to safety norms. Parents must coordinate with the transport desk for route allocations.
+              </p>
+              <ul className="space-y-4 text-sm text-gray-600">
+                <li className="flex items-start gap-3">
+                  <span className="text-accent mt-1">✔</span>
+                  <span><strong>Punctuality:</strong> Students must be at their designated pick-up points 5 minutes before the scheduled arrival time.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-accent mt-1">✔</span>
+                  <span><strong>Route Changes:</strong> Any request for a temporary or permanent change in the bus route must be submitted in writing to the transport office.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-accent mt-1">✔</span>
+                  <span><strong>Tracking:</strong> Real-time bus tracking is available directly through the GBR Parent App.</span>
+                </li>
+              </ul>
+            </section>
+          </div>
+
+          {/* General Rules Download */}
+          <section className="bg-white rounded-3xl p-8 shadow-sm border border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-6 hover:shadow-md transition-shadow">
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Comprehensive Rulebook</h3>
+              <p className="text-gray-600 text-sm">Download the full PDF covering the code of conduct, leave policies, and disciplinary protocols.</p>
+            </div>
+            <Link
+              href="/assets/gbr-rulebook.pdf"
+              target="_blank"
+              className="whitespace-nowrap px-6 py-3 bg-gray-100 text-gray-900 font-bold rounded-xl hover:bg-gray-200 transition-colors"
+            >
+              Download PDF
+            </Link>
+          </section>
+        </div>
+        {/* --- MERGED GUIDELINES SECTION END --- */}
 
       </div>
     </main>
