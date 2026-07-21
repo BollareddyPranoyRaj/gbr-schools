@@ -5,18 +5,17 @@ import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { schoolData } from './lib/schoolData';
 
-const sectionLinks = [
-  { href: "/about", title: "About GBR", description: "Learn about our school legacy and vision." },
-  { href: "/leadership", title: "Leadership", description: "Meet the team guiding school growth." },
-  { href: "/facilities", title: "Facilities", description: "Explore labs, transport, library, and sports spaces." },
-  { href: "/student-life", title: "Student Life", description: "See co-curricular activities and house culture." },
-  { href: "/events", title: "Events", description: "Browse campus celebrations and event highlights." },
-  { href: "/news", title: "Updates", description: "Read school news and announcements." },
-  { href: "/notices", title: "Notices", description: "Check important circulars and dates." },
-  { href: "/calendar", title: "Calendar", description: "View the academic calendar." },
-  { href: "/alumni", title: "Alumni", description: "Connect with the GBR alumni network." },
-  { href: "/careers", title: "Careers", description: "Find open roles at GBR Schools." },
-  { href: "/faq", title: "FAQ", description: "Get answers to common parent questions." },
+// The new, streamlined 10-item menu replacing the old 14+ redundant links
+const menuSections = [
+  { href: "/about", title: "About GBR", description: "Learn about our legacy, vision, and meet the leadership team." },
+  { href: "/campuses", title: "Our Campuses", description: "Explore the facilities and student life at our A.C. and E.M.S. campuses." },
+  { href: "/academics", title: "Academics", description: "Explore school timings, curriculum, and award systems." },
+  { href: "/admissions", title: "Admissions & FAQ", description: "View fee policy, admission procedures, and common parent questions." },
+  { href: "/notices", title: "Notice Board", description: "Check important circulars, latest news, and the academic calendar." },
+  { href: "/events", title: "Events", description: "Browse campus celebrations and animated event highlights." },
+  { href: "/parents", title: "Parent Portal", description: "Access the GBR Parent App, transport guidelines, and uniform rules." },
+  { href: "/alumni", title: "Alumni", description: "Connect with the global GBR alumni network." },
+  { href: "/careers", title: "Careers", description: "Find open teaching and administrative roles at GBR Schools." },
   { href: "/contact", title: "Contact", description: "Reach the school office and admissions team." },
 ];
 
@@ -34,13 +33,13 @@ function HeroVideo() {
   return (
     <div className="relative w-full h-full overflow-hidden">
       <video
-      ref={videoRef}
-      autoPlay
-      loop
-      muted
-      playsInline
-      className="absolute inset-0 h-full w-full object-cover object-[20%_center]"
-    >
+        ref={videoRef}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover object-[20%_center]"
+      >
         <source src="https://res.cloudinary.com/dkoxrayf2/video/upload/v1784303212/GBR_HomePage_umgwxo.mp4" type="video/mp4" />
       </video>
 
@@ -94,58 +93,41 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Gradient strip under hero — matches Aditya's colored indicator bar */}
+      {/* Gradient strip under hero */}
       <div className="w-full h-1.5 flex">
         <div className="flex-1 bg-primary"></div>
         <div className="flex-1 bg-accent"></div>
         <div className="flex-1 bg-primary/70"></div>
       </div>
 
-      {/* Cards Section */}
+      {/* Unified Navigation Grid */}
       <div className="w-full bg-white py-16 sm:py-24 border-t border-gray-100 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            <Link href="/admissions" className="group p-6 sm:p-8 bg-[var(--color-surface)] border border-gray-200 rounded-xl hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <h3 className="text-xl font-semibold text-primary mb-2 sm:mb-3 group-hover:text-accent transition-colors">Admissions</h3>
-              <p className="text-text-muted text-sm leading-relaxed">View our fee policy and admission procedures.</p>
-            </Link>
-
-            <Link href="/academics" className="group p-6 sm:p-8 bg-[var(--color-surface)] border border-gray-200 rounded-xl hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <h3 className="text-xl font-semibold text-primary mb-2 sm:mb-3 group-hover:text-accent transition-colors">Academics</h3>
-              <p className="text-text-muted text-sm leading-relaxed">Explore school timings, vision, and award systems.</p>
-            </Link>
-
-            <Link href="/parents" className="group p-6 sm:p-8 bg-[var(--color-surface)] border border-gray-200 rounded-xl hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <h3 className="text-xl font-semibold text-primary mb-2 sm:mb-3 group-hover:text-accent transition-colors">Parent Portal</h3>
-              <p className="text-text-muted text-sm leading-relaxed">Discover the features of the GBR Parent App.</p>
-            </Link>
-
-            <Link href="/rules" className="group p-6 sm:p-8 bg-[var(--color-surface)] border border-gray-200 rounded-xl hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <h3 className="text-xl font-semibold text-primary mb-2 sm:mb-3 group-hover:text-accent transition-colors">Guidelines</h3>
-              <p className="text-text-muted text-sm leading-relaxed">Read our transport, uniform, and general rules.</p>
-            </Link>
+          
+          <div className="mb-10 text-center sm:text-left">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary">Explore GBR Schools</h2>
+            <p className="mt-4 max-w-2xl text-text-muted text-base sm:text-lg mx-auto sm:mx-0">
+              Find everything you need, from admissions and academics to the latest campus updates, all in one place.
+            </p>
           </div>
 
-          <div className="mt-16 sm:mt-20">
-            <div className="mb-6 sm:mb-8 text-center sm:text-left">
-              <h2 className="text-2xl sm:text-3xl font-bold text-primary">Explore Every Section</h2>
-              <p className="mt-2 max-w-2xl text-text-muted text-sm sm:text-base mx-auto sm:mx-0">
-                Every public page in the app is linked here so families can reach the full GBR Schools experience from the homepage.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {sectionLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="group rounded-lg border border-gray-200 bg-white p-4 sm:p-5 shadow-sm transition hover:border-primary/30 hover:shadow-md"
-                >
-                  <h3 className="text-lg font-semibold text-primary group-hover:text-accent">{link.title}</h3>
-                  <p className="mt-1 sm:mt-2 text-sm leading-relaxed text-text-muted">{link.description}</p>
-                </Link>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+            {menuSections.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="group flex flex-col p-6 sm:p-8 bg-[var(--color-surface)] border border-gray-200 rounded-xl hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              >
+                <h3 className="text-xl font-semibold text-primary mb-2 sm:mb-3 group-hover:text-accent transition-colors">
+                  {link.title}
+                </h3>
+                <p className="text-text-muted text-sm leading-relaxed">
+                  {link.description}
+                </p>
+              </Link>
+            ))}
           </div>
+
         </div>
       </div>
     </main>
