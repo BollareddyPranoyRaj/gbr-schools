@@ -193,18 +193,18 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
 
       {modalState && activeModalEvent && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+          className="fixed inset-x-0 bottom-0 top-[7.5rem] z-50 flex items-center justify-center bg-black/90 px-4 py-6 sm:top-[8rem]"
           role="presentation"
           onClick={handleClose}
         >
           <div
-            className="w-full"
+            className="w-full max-w-6xl"
             role="dialog"
             aria-modal="true"
             aria-label={`${activeModalEvent.title} image viewer`}
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="relative w-full max-w-5xl h-[85vh] flex items-center justify-center mx-auto">
+            <div className="relative mx-auto flex h-[calc(100vh-11rem)] max-h-[760px] min-h-[320px] w-full items-center justify-center">
               <CldImage
                 src={activeModalEvent.images[activeCardIndex]}
                 config={cloudinaryConfig}
