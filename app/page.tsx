@@ -8,7 +8,8 @@ import { schoolData } from './lib/schoolData';
 // The new, streamlined 10-item menu replacing the old 14+ redundant links
 const menuSections = [
   { href: "/about", title: "About GBR", description: "Learn about our legacy, vision, and meet the leadership team." },
-  { href: "/campuses", title: "Our Campuses", description: "Explore the facilities and student life at our A.C. and E.M.S. campuses." },
+  { href: "/ac-campus", title: "A.C. Campus", description: "Explore the modern facilities and vibrant student life at our A.C. Campus." },
+  { href: "/standard-campus", title: "E.M.S. Campus", description: "Discover the rich heritage and academic excellence of our E.M.S. Campus." },
   { href: "/academics", title: "Academics", description: "Explore school timings, curriculum, and award systems." },
   { href: "/admissions", title: "Admissions & FAQ", description: "View fee policy, admission procedures, and common parent questions." },
   { href: "/notices", title: "Notice Board", description: "Check important circulars, latest news, and the academic calendar." },
