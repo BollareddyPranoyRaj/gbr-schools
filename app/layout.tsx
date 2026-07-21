@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import NoticeBanner from "./components/NoticeBanner";
+import BackButton from "./components/BackButton";
 
 export const metadata: Metadata = {
   title: {
@@ -35,19 +36,21 @@ export default function RootLayout({
       <body
         className="font-sans antialiased bg-background text-text-main flex flex-col min-h-screen"
       >
-        {/* 
-          Sticky header wrapper keeps everything at the top. 
-          flex-col ensures the banner naturally sits above the navbar. 
-        */}
+        {/* HEADER: Notice Banner and Navbar only */}
         <header className="sticky top-0 z-[60] flex flex-col w-full shadow-sm">
           <NoticeBanner />
           <Navbar />
         </header>
 
+        {/* FLOATING BUTTON: Placed here so it floats over the whole page */}
+        <BackButton />
+
+        {/* MAIN PAGE CONTENT */}
         <main className="flex-grow">
           {children}
         </main>
         
+        {/* FOOTER */}
         <Footer />
       </body>
     </html>
