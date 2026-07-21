@@ -215,7 +215,7 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
                 priority
               />
 
-              <button type="button" className="absolute top-4 right-4 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-black/35 text-3xl leading-none text-white backdrop-blur transition hover:bg-black/55" onClick={handleClose} aria-label="Close modal">
+              <button type="button" className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-black/35 text-3xl leading-none text-white backdrop-blur transition hover:bg-black/55" onClick={handleClose} aria-label="Close modal">
                 <span>×</span>
               </button>
 
