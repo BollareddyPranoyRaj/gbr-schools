@@ -16,7 +16,6 @@ const navLinks = [
   { href: "/notices", label: "Notice Board" }, // Now holds News, Circulars, & Calendar
   { href: "/events", label: "Events" },
   { href: "/parents", label: "Parent Portal" }, // Now holds App links & Guidelines
-  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
