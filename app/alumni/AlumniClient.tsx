@@ -174,7 +174,7 @@ export default function AlumniClient() {
       {isJoinFormOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm md:p-6" role="presentation" onClick={closeJoinForm}>
           <div className="relative flex max-h-[90vh] w-full max-w-lg flex-col overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl md:p-8" role="dialog" aria-modal="true" aria-label="Join the alumni network" onClick={(event) => event.stopPropagation()}>
-            <button type="button" onClick={closeJoinForm} aria-label="Close alumni registration form" className="absolute right-4 top-4 text-gray-400 transition hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary">×</button>
+            <button type="button" onClick={closeJoinForm} aria-label="Close alumni registration form" className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full text-4xl leading-none text-gray-400 transition hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary">×</button>
 
             {isSubmitted ? (
               <div className="py-10 text-center">
@@ -186,7 +186,6 @@ export default function AlumniClient() {
             ) : (
               <div>
                 <div className="pb-4 pr-8">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">GBR Alumni Community</p>
                 <h2 className="mt-2 text-2xl font-bold text-primary">Join the Alumni Network</h2>
                 <p className="mt-2 max-w-lg text-sm leading-6 text-text-muted">Share your latest details so we can celebrate your journey and keep you connected with the GBR community.</p>
                 </div>
@@ -218,7 +217,7 @@ export default function AlumniClient() {
                     <span className="mb-1.5 block text-sm font-semibold text-primary">Email address</span>
                     <input type="email" name="email" required placeholder="you@example.com" className="w-full rounded-md border border-gray-300 bg-background px-3 py-2.5 text-text-main outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20" />
                   </label>
-                  <div className="sticky bottom-0 border-t border-gray-100 bg-white pt-3">
+                  <div className="border-t border-gray-100 pt-3">
                     <button type="submit" className="w-full rounded-md bg-primary px-6 py-2.5 font-semibold text-white transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">Submit alumni details</button>
                   </div>
                 </form>
