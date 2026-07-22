@@ -40,7 +40,7 @@ function HeroVideo() {
         playsInline
         className="absolute inset-0 h-full w-full object-cover object-[20%_center]"
       >
-        <source src="https://res.cloudinary.com/dkoxrayf2/video/upload/v1784303212/GBR_HomePage_umgwxo.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dkoxrayf2/video/upload/f_auto,q_auto/v1784303212/GBR_HomePage_umgwxo.mp4" type="video/mp4" />
       </video>
 
       {/* Mute toggle */}

@@ -124,6 +124,8 @@ export default function AlumniClient() {
                 height={800}
                 sizes="(max-width: 768px) 20rem, 22.5rem"
                 className="block h-[150px] w-full object-cover md:h-[170px]"
+                quality="auto"
+                format="auto"
               />
               <span className="block bg-primary/90 p-3 text-left text-white">
                 <span className="block text-[10px] font-bold uppercase tracking-[0.18em] text-accent">Alumni voice</span>
@@ -150,6 +152,8 @@ export default function AlumniClient() {
               sizes="100vw"
               className="h-full w-full object-contain"
               priority
+              quality="auto"
+              format="auto"
             />
 
             <button type="button" className="absolute right-0 top-0 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-black/35 text-3xl leading-none text-white transition hover:bg-black/55 focus:outline-none focus:ring-2 focus:ring-white" onClick={closeViewer} aria-label="Close image viewer">
