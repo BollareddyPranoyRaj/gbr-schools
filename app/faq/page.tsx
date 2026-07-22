@@ -46,13 +46,6 @@ export default function FAQPage() {
         ))}
       </div>
       
-      <div className="mt-12 text-center bg-primary/5 p-8 rounded-xl border border-primary/10">
-        <h2 className="text-xl font-semibold text-primary mb-2">Still have questions?</h2>
-        <p className="text-text-muted mb-4 text-sm">Our admissions team is ready to help you with any further inquiries.</p>
-        <a href="/contact" className="inline-block px-6 py-2 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition-colors">
-          Contact Us
-        </a>
-      </div>
     </main>
   );
 }

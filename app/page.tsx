@@ -17,7 +17,6 @@ const menuSections = [
   { href: "/parents", title: "Parent Portal", description: "Access the GBR Parent App, transport guidelines, and uniform rules." },
   { href: "/alumni", title: "Alumni", description: "Connect with the global GBR alumni network." },
   { href: "/careers", title: "Careers", description: "Find open teaching and administrative roles at GBR Schools." },
-  { href: "/contact", title: "Contact", description: "Reach the school office and admissions team." },
 ];
 
 function HeroVideo() {

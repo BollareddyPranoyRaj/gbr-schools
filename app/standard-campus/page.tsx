@@ -175,12 +175,6 @@ export default function StandardCampusPage() {
             >
               Start the Admission Process
             </Link>
-            <Link
-              href="/contact"
-              className="bg-gray-100 text-primary font-bold text-lg px-8 py-4 rounded-xl hover:bg-gray-200 transition-colors"
-            >
-              Schedule a Campus Tour
-            </Link>
           </div>
         </div>
       </section>

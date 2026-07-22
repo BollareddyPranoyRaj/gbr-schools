@@ -59,11 +59,6 @@ const menuSections = [
     description: "Find open teaching and administrative roles at GBR Schools.",
     href: "/careers",
   },
-  {
-    title: "Contact",
-    description: "Reach the school office and admissions team.",
-    href: "/contact",
-  },
 ];
 
 export default function NavigationGrid() {

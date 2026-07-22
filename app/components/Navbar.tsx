@@ -13,10 +13,9 @@ const navLinks = [
   { href: "/standard-campus", label: "E.M.S Campus" },
   { href: "/academics", label: "Academics" },
   { href: "/admissions", label: "Admissions" },
-  { href: "/notices", label: "Notice Board" }, // Now holds News, Circulars, & Calendar
   { href: "/events", label: "Events" },
+  { href: "/alumni", label: "Alumni"},
   { href: "/parents", label: "Parent Portal" }, // Now holds App links & Guidelines
-  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {

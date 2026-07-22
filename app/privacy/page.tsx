@@ -44,12 +44,6 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <section>
-          <h2 className="text-xl font-semibold text-primary mb-3">5. Contact Us</h2>
-          <p>
-            If you have any questions or concerns regarding this Privacy Policy or how your data is handled, please contact our administrative office at <strong>info@gbrschools.edu.in</strong>.
-          </p>
-        </section>
       </div>
     </main>
   );

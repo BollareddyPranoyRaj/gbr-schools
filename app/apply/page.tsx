@@ -11,7 +11,7 @@ export default function ApplyPage() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="mx-auto grid max-w-xl gap-6">
           <Link
             href="/admissions"
             className="rounded-lg border border-gray-200 bg-[var(--color-surface)] p-6 shadow-sm transition hover:border-primary/30 hover:shadow-md"
@@ -19,16 +19,6 @@ export default function ApplyPage() {
             <h2 className="mb-2 text-xl font-semibold text-primary">Admission Details</h2>
             <p className="text-sm leading-relaxed text-text-muted">
               Review fee policy, eligibility, and admission procedures before submitting your application.
-            </p>
-          </Link>
-
-          <Link
-            href="/contact"
-            className="rounded-lg border border-gray-200 bg-[var(--color-surface)] p-6 shadow-sm transition hover:border-primary/30 hover:shadow-md"
-          >
-            <h2 className="mb-2 text-xl font-semibold text-primary">Contact Admissions</h2>
-            <p className="text-sm leading-relaxed text-text-muted">
-              Speak with the school office for availability, campus visits, and document requirements.
             </p>
           </Link>
         </div>

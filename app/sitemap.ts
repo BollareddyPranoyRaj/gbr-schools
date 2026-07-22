@@ -25,7 +25,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/notices',
     '/careers',
     '/alumni',
-    '/contact',
     '/apply',
     '/faq',
     '/privacy',
