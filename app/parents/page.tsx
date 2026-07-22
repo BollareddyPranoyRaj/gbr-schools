@@ -1,52 +1,16 @@
 // app/parents/page.tsx
-import React from 'react';
-import Link from 'next/link'; // Added for the PDF download button
+"use client";
+
+import React, { useState } from 'react';
+import Link from 'next/link'; 
 
 export default function ParentPortalPage() {
-  const features = [
-    {
-      title: "Academic Management",
-      icon: "📚",
-      desc: "Access timetables, exam schedules, report cards, and academic plans.",
-      color: "bg-blue-100 text-blue-700",
-      borderColor: "border-blue-200"
-    },
-    {
-      title: "Fee Collection",
-      icon: "💳",
-      desc: "View invoices and track payment history digitally.",
-      color: "bg-purple-100 text-purple-700",
-      borderColor: "border-purple-200"
-    },
-    {
-      title: "Communication Tools",
-      icon: "💬",
-      desc: "Receive circulars, notifications, and messages instantly via the app or SMS.",
-      color: "bg-green-100 text-green-700",
-      borderColor: "border-green-200"
-    },
-    {
-      title: "Transport Tracking",
-      icon: "🚌",
-      desc: "Monitor your child's commute with GPS-enabled school bus tracking.",
-      color: "bg-orange-100 text-orange-700",
-      borderColor: "border-orange-200"
-    },
-    {
-      title: "Attendance Monitoring",
-      icon: "✅",
-      desc: "View daily attendance records with biometric system integration.",
-      color: "bg-indigo-100 text-indigo-700",
-      borderColor: "border-indigo-200"
-    },
-    {
-      title: "Custom Reports",
-      icon: "📊",
-      desc: "Track progress and access school-generated academic and administrative reports.",
-      color: "bg-rose-100 text-rose-700",
-      borderColor: "border-rose-200"
-    }
-  ];
+  // State for the accordion dropdowns
+  const [openSection, setOpenSection] = useState<string | null>(null);
+
+  const toggleSection = (section: string) => {
+    setOpenSection(openSection === section ? null : section);
+  };
 
   const benefits = [
     {
@@ -89,9 +53,9 @@ export default function ParentPortalPage() {
 
   return (
     <main className="min-h-screen bg-[#f8fafc] pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto space-y-16">
+      <div className="max-w-7xl mx-auto space-y-12">
         
-        {/* Hero Section */}
+        {/* Hero Section (Left outside of dropdowns as requested) */}
         <div className="text-center bg-white rounded-3xl p-8 sm:p-16 border border-gray-200 shadow-sm relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-20 -mt-20"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -ml-20 -mb-20"></div>
@@ -143,136 +107,175 @@ export default function ParentPortalPage() {
                 </div>
               </a>
             </div>
-
           </div>
         </div>
 
-        {/* Key Features Grid */}
-        <div>
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900">Key Features</h2>
-            <p className="text-gray-500 mt-3">Everything you need to manage your child's school life.</p>
-          </div>
+        {/* Dropdown Sections Wrapper */}
+        <div className="max-w-4xl mx-auto space-y-6">
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <div 
-                key={index} 
-                className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-5 ${feature.color} border ${feature.borderColor}`}>
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Benefits Section */}
-        <div className="bg-primary rounded-3xl p-8 sm:p-12 shadow-lg text-white">
-          <div className="mb-10 sm:mb-12 text-center md:text-left">
-            <h2 className="text-3xl font-bold mb-4">Benefits for Parents & Schools</h2>
-            <p className="text-primary-foreground/80 max-w-2xl">
+          {/* --- ACCORDION 1: Benefits --- */}
+          <AccordionSection
+            title="Benefits for Parents & Schools"
+            icon="🌟"
+            iconBg="bg-yellow-100"
+            iconColor="text-yellow-600"
+            isOpen={openSection === 'benefits'}
+            onToggle={() => toggleSection('benefits')}
+          >
+            <p className="text-gray-600 mb-8 leading-relaxed">
               We encourage all parents to download the GBR App to stay connected, informed, and actively engaged throughout the academic year.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="flex gap-4 items-start">
-                <div className="shrink-0 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center font-bold text-sm border border-white/30 mt-1">
-                  {index + 1}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="flex gap-4 items-start">
+                  <div className="shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center font-bold text-sm text-primary">
+                    {index + 1}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 text-lg mb-1">{benefit.title}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {benefit.desc}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-2">{benefit.title}</h3>
-                  <p className="text-sm text-white/80 leading-relaxed">
-                    {benefit.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* --- MERGED GUIDELINES SECTION START --- */}
-        <div>
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900">School Guidelines</h2>
-            <p className="text-gray-500 mt-3">Essential rules for transport, uniforms, and daily conduct.</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            {/* Uniform Rules */}
-            <section className="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                <span className="text-primary text-2xl">👔</span>
-              </div>
-              <h3 className="text-2xl font-bold text-primary mb-4">Uniform Guidelines</h3>
-              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-                Students are expected to wear the prescribed school uniform with pride. Cleanliness and neat presentation are strictly observed.
-              </p>
-              <ul className="space-y-4 text-sm text-gray-600">
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1">✔</span>
-                  <span><strong>Regular Days (Mon, Tue, Thu, Fri):</strong> Standard school uniform with polished black shoes and school ID card.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1">✔</span>
-                  <span><strong>Sports Days (Wed & Sat):</strong> Assigned house color t-shirt, track pants, and white sports shoes.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1">✔</span>
-                  <span><strong>Winter Wear:</strong> Only the official school-issued sweater/blazer is permitted inside the campus.</span>
-                </li>
-              </ul>
-            </section>
-
-            {/* Transport Rules */}
-            <section className="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                <span className="text-primary text-2xl">🚌</span>
-              </div>
-              <h3 className="text-2xl font-bold text-primary mb-4">Transport Policies</h3>
-              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-                The school operates a fleet of buses strictly adhering to safety norms. Parents must coordinate with the transport desk for route allocations.
-              </p>
-              <ul className="space-y-4 text-sm text-gray-600">
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1">✔</span>
-                  <span><strong>Punctuality:</strong> Students must be at their designated pick-up points 5 minutes before the scheduled arrival time.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1">✔</span>
-                  <span><strong>Route Changes:</strong> Any request for a temporary or permanent change in the bus route must be submitted in writing to the transport office.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1">✔</span>
-                  <span><strong>Tracking:</strong> Real-time bus tracking is available directly through the GBR Parent App.</span>
-                </li>
-              </ul>
-            </section>
-          </div>
-
-          {/* General Rules Download */}
-          <section className="bg-white rounded-3xl p-8 shadow-sm border border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-6 hover:shadow-md transition-shadow">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Comprehensive Rulebook</h3>
-              <p className="text-gray-600 text-sm">Download the full PDF covering the code of conduct, leave policies, and disciplinary protocols.</p>
+              ))}
             </div>
-            <Link
-              href="/assets/gbr-rulebook.pdf"
-              target="_blank"
-              className="whitespace-nowrap px-6 py-3 bg-gray-100 text-gray-900 font-bold rounded-xl hover:bg-gray-200 transition-colors"
-            >
-              Download PDF
-            </Link>
-          </section>
-        </div>
-        {/* --- MERGED GUIDELINES SECTION END --- */}
+          </AccordionSection>
 
+          {/* --- ACCORDION 2: Uniform Guidelines --- */}
+          <AccordionSection
+            title="Uniform Guidelines"
+            icon="👔"
+            iconBg="bg-blue-100"
+            iconColor="text-blue-600"
+            isOpen={openSection === 'uniform'}
+            onToggle={() => toggleSection('uniform')}
+          >
+            <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+              Students are expected to wear the prescribed school uniform with pride. Cleanliness and neat presentation are strictly observed.
+            </p>
+            <ul className="space-y-4 text-sm text-gray-600">
+              <li className="flex items-start gap-3">
+                <span className="text-accent mt-1 text-lg">✔</span>
+                <span><strong>Regular Days (Mon, Tue, Thu, Fri):</strong> Standard school uniform with polished black shoes and school ID card.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-accent mt-1 text-lg">✔</span>
+                <span><strong>Sports Days (Wed & Sat):</strong> Assigned house color t-shirt, track pants, and white sports shoes.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-accent mt-1 text-lg">✔</span>
+                <span><strong>Winter Wear:</strong> Only the official school-issued sweater/blazer is permitted inside the campus.</span>
+              </li>
+            </ul>
+          </AccordionSection>
+
+          {/* --- ACCORDION 3: Transport Policies --- */}
+          <AccordionSection
+            title="Transport Policies"
+            icon="🚌"
+            iconBg="bg-orange-100"
+            iconColor="text-orange-600"
+            isOpen={openSection === 'transport'}
+            onToggle={() => toggleSection('transport')}
+          >
+            <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+              The school operates a fleet of buses strictly adhering to safety norms. Parents must coordinate with the transport desk for route allocations.
+            </p>
+            <ul className="space-y-4 text-sm text-gray-600">
+              <li className="flex items-start gap-3">
+                <span className="text-accent mt-1 text-lg">✔</span>
+                <span><strong>Punctuality:</strong> Students must be at their designated pick-up points 5 minutes before the scheduled arrival time.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-accent mt-1 text-lg">✔</span>
+                <span><strong>Route Changes:</strong> Any request for a temporary or permanent change in the bus route must be submitted in writing to the transport office.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-accent mt-1 text-lg">✔</span>
+                <span><strong>Tracking:</strong> Real-time bus tracking is available directly through the GBR Parent App.</span>
+              </li>
+            </ul>
+          </AccordionSection>
+
+          {/* --- ACCORDION 4: Comprehensive Rulebook --- */}
+          <AccordionSection
+            title="Comprehensive Rulebook"
+            icon="📖"
+            iconBg="bg-gray-100"
+            iconColor="text-gray-700"
+            isOpen={openSection === 'rulebook'}
+            onToggle={() => toggleSection('rulebook')}
+          >
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-gray-50 p-6 rounded-xl border border-gray-200">
+              <div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Download the Full Rulebook</h3>
+                <p className="text-gray-600 text-sm">Access the complete PDF covering our code of conduct, leave policies, and disciplinary protocols.</p>
+              </div>
+              <Link
+                href="/assets/gbr-rulebook.pdf"
+                target="_blank"
+                className="whitespace-nowrap px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-colors shadow-sm"
+              >
+                Download PDF
+              </Link>
+            </div>
+          </AccordionSection>
+
+        </div>
       </div>
     </main>
+  );
+}
+
+/* --- Reusable Accordion Component --- */
+function AccordionSection({ 
+  title, 
+  icon, 
+  iconBg, 
+  iconColor, 
+  children, 
+  isOpen, 
+  onToggle 
+}: { 
+  title: string; 
+  icon: string; 
+  iconBg: string; 
+  iconColor: string; 
+  children: React.ReactNode; 
+  isOpen: boolean; 
+  onToggle: () => void;
+}) {
+  return (
+    <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden transition-all duration-300 hover:border-gray-300">
+      <button
+        onClick={onToggle}
+        className="w-full px-6 py-5 sm:px-8 sm:py-6 flex items-center justify-between bg-white hover:bg-gray-50 transition-colors focus:outline-none"
+        aria-expanded={isOpen}
+      >
+        <div className="flex items-center gap-4">
+          <span className={`shrink-0 w-12 h-12 rounded-full ${iconBg} flex items-center justify-center ${iconColor} text-xl shadow-inner`}>
+            {icon}
+          </span>
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 text-left">
+            {title}
+          </h2>
+        </div>
+        <span className={`shrink-0 ml-4 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+          <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+          </svg>
+        </span>
+      </button>
+      
+      {/* Animated Dropdown Body using CSS Grid */}
+      <div className={`grid transition-all duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+        <div className="overflow-hidden">
+          <div className="px-6 pb-6 pt-2 sm:px-8 sm:pb-8 sm:pt-4 border-t border-gray-100">
+            {children}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
