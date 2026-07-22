@@ -178,6 +178,8 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
                               sizes="(max-width: 640px) 20rem, (max-width: 1024px) 24rem, 20rem"
                               className="object-cover"
                               loading="lazy"
+                              quality="auto"
+                              format="auto"
                             />
                           </div>
                         </article>
@@ -213,6 +215,8 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
                 sizes="100vw"
                 className="object-contain"
                 priority
+                quality="auto"
+                format="auto"
               />
 
               <button type="button" className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-black/35 text-3xl leading-none text-white backdrop-blur transition hover:bg-black/55" onClick={handleClose} aria-label="Close modal">
