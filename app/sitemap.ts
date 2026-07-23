@@ -6,7 +6,7 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://gbr-schools.vercel.app"; // Replace with your actual domain
 
-  // Static routes
+  // Cleaned up array: removed merged/dead routes to prevent SEO penalties
   const routes = [
     '',
     '/about',
@@ -14,19 +14,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/standard-campus',
     '/admissions',
     '/academics',
-    '/parents',
-    '/rules',
-    '/calendar',
-    '/facilities',
-    '/student-life',
-    '/leadership',
-    '/events',
-    '/news',
     '/notices',
+    '/parents',
+    '/events',
+    '/contact',
+    '/leadership',
+    '/facilities',
     '/careers',
     '/alumni',
-    '/apply',
-    '/faq',
     '/privacy',
     '/terms',
   ].map((route) => ({
