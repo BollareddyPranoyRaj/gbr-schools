@@ -195,7 +195,7 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
 
       {modalState && activeModalEvent && (
         <div
-          className="fixed inset-x-0 bottom-0 top-[7.5rem] z-50 flex items-center justify-center bg-black/90 px-4 py-6 sm:top-[8rem]"
+          className="fixed inset-0 z-[9999] w-screen h-screen flex items-center justify-center bg-black/95 backdrop-blur-sm"
           role="presentation"
           onClick={handleClose}
         >
