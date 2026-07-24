@@ -140,9 +140,9 @@ export default function AlumniClient() {
         </div>
       </section>
 
+      {/* FIXED: Removed duplicate wrapping div here */}
       {selectedImageIndex !== null && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4" role="presentation" onClick={closeViewer}>
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4" role="presentation" onClick={closeViewer}>
           <div
             className="relative flex h-[85vh] w-full max-w-5xl items-center justify-center mx-auto"
             role="dialog"
@@ -180,23 +180,20 @@ export default function AlumniClient() {
         </div>
       )}
 
+      {/* FIXED: Removed duplicate wrapping divs here too */}
       {isJoinFormOpen && (
         <div 
-          /* CHANGED: Switched to items-start, lowered z-index to 40, and added pt-24/pt-28 so it perfectly clears the sticky header! */
           className="fixed inset-0 z-40 flex items-start justify-center bg-black/50 p-4 pt-24 backdrop-blur-sm md:p-6 md:pt-28" 
           role="presentation" 
           onClick={closeJoinForm}
         >
           <div 
-            /* CHANGED: Added max-h-[80vh] so the form is completely scrollable in the safe area below the header */
             className="relative flex max-h-[80vh] w-full max-w-lg flex-col overflow-y-auto rounded-lg bg-white p-6 shadow-2xl border border-border md:p-8" 
             role="dialog" 
             aria-modal="true" 
             aria-label="Join the alumni network" 
             onClick={(event) => event.stopPropagation()}
           >
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm md:p-6" role="presentation" onClick={closeJoinForm}>
-          <div className="relative flex max-h-[90vh] w-full max-w-lg flex-col overflow-y-auto rounded-lg bg-white p-6 border border-border md:p-8" role="dialog" aria-modal="true" aria-label="Join the alumni network" onClick={(event) => event.stopPropagation()}>
             <button type="button" onClick={closeJoinForm} aria-label="Close alumni registration form" className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-md text-2xl leading-none text-text-muted transition hover:text-text-main focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">×</button>
 
             {isSubmitted ? (
