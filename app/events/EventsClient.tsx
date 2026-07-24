@@ -185,6 +185,8 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
                               sizes="(max-width: 640px) 20rem, (max-width: 1024px) 24rem, 20rem"
                               className="object-cover"
                               loading="lazy"
+                              quality="auto"
+                              format="auto"
                             />
                           </div>
                         </article>
@@ -200,7 +202,7 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
 
       {modalState && activeModalEvent && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 py-6"
+          className="fixed inset-0 z-[9999] w-screen h-screen flex items-center justify-center bg-black/95 backdrop-blur-sm"
           role="presentation"
           onClick={handleClose}
         >
@@ -220,6 +222,8 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
                 sizes="100vw"
                 className="object-contain"
                 priority
+                quality="auto"
+                format="auto"
               />
 
               <button type="button" className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-black/40 text-2xl leading-none text-white transition hover:bg-black/70 focus-visible:ring-2 focus-visible:ring-white" onClick={handleClose} aria-label="Close modal">
