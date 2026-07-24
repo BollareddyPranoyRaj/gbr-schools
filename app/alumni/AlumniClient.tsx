@@ -93,28 +93,32 @@ export default function AlumniClient() {
   }, [closeJoinForm, closeViewer, isJoinFormOpen, selectedImageIndex, showNextImage, showPreviousImage]);
 
   return (
-    <main className="min-h-screen w-full bg-background">
-      <div className="w-full bg-gradient-to-r from-blue-900 to-blue-800 px-6 py-20 text-white md:px-12 lg:px-24">
+    <div className="min-h-screen w-full bg-background">
+      <div className="w-full bg-primary px-6 py-16 text-white md:px-12 lg:px-24">
         <div className="mx-auto flex max-w-7xl flex-col items-start">
-          <p className="mb-4 text-sm font-bold uppercase tracking-widest text-amber-400">GBR Alumni Community</p>
-          <h1 className="mb-6 text-5xl font-bold md:text-6xl">Celebrating Our Alumni</h1>
-          <p className="mb-8 max-w-2xl text-lg leading-relaxed text-blue-100 md:text-xl">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent">GBR Alumni Community</p>
+          <h1 className="mb-5 text-4xl font-bold tracking-tight md:text-5xl">Celebrating Our Alumni</h1>
+          <p className="mb-8 max-w-2xl text-base leading-relaxed text-gray-200 md:text-lg">
             From our classrooms to communities across the world, GBR alumni carry forward a shared spirit of learning, leadership, and service.
           </p>
-          <button type="button" onClick={() => setIsJoinFormOpen(true)} className="inline-flex items-center gap-2 rounded-full bg-amber-400 px-8 py-3 font-bold text-blue-950 transition-colors duration-300 hover:bg-amber-500">
+          <button
+            type="button"
+            onClick={() => setIsJoinFormOpen(true)}
+            className="inline-flex items-center gap-2 rounded-[var(--radius-sm)] bg-accent px-6 py-3 font-semibold text-primary transition-colors hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[44px]"
+          >
             Join the Alumni Network <span aria-hidden="true">→</span>
           </button>
         </div>
       </div>
 
-      <section className="pt-6 pb-12" aria-label="GBR alumni gallery">
-        <div className="relative flex w-full flex-row gap-6 overflow-x-auto scroll-smooth pb-6 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" aria-label="GBR alumni gallery">
+        <div className="relative flex w-full flex-row gap-6 overflow-x-auto scroll-smooth pb-6 snap-x snap-mandatory scrollbar-hide">
           {alumniProfiles.map((profile, index) => (
             <button
               key={profile.imageId}
               type="button"
               onClick={() => setSelectedImageIndex(index)}
-              className="w-[220px] shrink-0 snap-start overflow-hidden rounded-2xl bg-white shadow-md transition-transform duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-4 md:w-[250px]"
+              className="w-[220px] shrink-0 snap-start overflow-hidden rounded-lg bg-white border border-border transition-colors hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:w-[250px]"
               aria-label={`Open alumni graphic ${index + 1}`}
             >
               <CldImage
@@ -124,10 +128,12 @@ export default function AlumniClient() {
                 height={800}
                 sizes="(max-width: 768px) 20rem, 22.5rem"
                 className="block h-[150px] w-full object-cover md:h-[170px]"
+                quality="auto"
+                format="auto"
               />
-              <span className="block bg-primary/90 p-3 text-left text-white">
+              <span className="block bg-surface p-4 text-left border-t border-border">
                 <span className="block text-[10px] font-bold uppercase tracking-[0.18em] text-accent">Alumni voice</span>
-                <span className="mt-1 block text-xs leading-5">“{profile.voice}”</span>
+                <span className="mt-1 block text-xs leading-relaxed text-text-muted">“{profile.voice}”</span>
               </span>
             </button>
           ))}
@@ -135,7 +141,7 @@ export default function AlumniClient() {
       </section>
 
       {selectedImageIndex !== null && (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/90 p-4" role="presentation" onClick={closeViewer}>
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4" role="presentation" onClick={closeViewer}>
           <div
             className="relative flex h-[85vh] w-full max-w-5xl items-center justify-center mx-auto"
             role="dialog"
@@ -150,20 +156,22 @@ export default function AlumniClient() {
               sizes="100vw"
               className="h-full w-full object-contain"
               priority
+              quality="auto"
+              format="auto"
             />
 
-            <button type="button" className="absolute right-0 top-0 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-black/35 text-3xl leading-none text-white transition hover:bg-black/55 focus:outline-none focus:ring-2 focus:ring-white" onClick={closeViewer} aria-label="Close image viewer">
+            <button type="button" className="absolute right-0 top-0 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-black/40 text-2xl leading-none text-white transition hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" onClick={closeViewer} aria-label="Close image viewer">
               <span>×</span>
             </button>
 
-            <button type="button" className="absolute left-0 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/35 text-white transition hover:bg-black/55 focus:outline-none focus:ring-2 focus:ring-white" onClick={showPreviousImage} aria-label="Previous image">
+            <button type="button" className="absolute left-0 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/40 text-white transition hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" onClick={showPreviousImage} aria-label="Previous image">
               <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M15 18l-6-6 6-6" />
               </svg>
             </button>
 
-            <button type="button" className="absolute right-0 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/35 text-white transition hover:bg-black/55 focus:outline-none focus:ring-2 focus:ring-white" onClick={showNextImage} aria-label="Next image">
-              <svg className="h-5 w-5" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <button type="button" className="absolute right-0 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/40 text-white transition hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" onClick={showNextImage} aria-label="Next image">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M9 6l6 6-6 6" />
               </svg>
             </button>
@@ -172,53 +180,65 @@ export default function AlumniClient() {
       )}
 
       {isJoinFormOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm md:p-6" role="presentation" onClick={closeJoinForm}>
-          <div className="relative flex max-h-[90vh] w-full max-w-lg flex-col overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl md:p-8" role="dialog" aria-modal="true" aria-label="Join the alumni network" onClick={(event) => event.stopPropagation()}>
-            <button type="button" onClick={closeJoinForm} aria-label="Close alumni registration form" className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full text-4xl leading-none text-gray-400 transition hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary">×</button>
+        <div 
+          /* CHANGED: Switched to items-start, lowered z-index to 40, and added pt-24/pt-28 so it perfectly clears the sticky header! */
+          className="fixed inset-0 z-40 flex items-start justify-center bg-black/50 p-4 pt-24 backdrop-blur-sm md:p-6 md:pt-28" 
+          role="presentation" 
+          onClick={closeJoinForm}
+        >
+          <div 
+            /* CHANGED: Added max-h-[80vh] so the form is completely scrollable in the safe area below the header */
+            className="relative flex max-h-[80vh] w-full max-w-lg flex-col overflow-y-auto rounded-lg bg-white p-6 shadow-2xl border border-border md:p-8" 
+            role="dialog" 
+            aria-modal="true" 
+            aria-label="Join the alumni network" 
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button type="button" onClick={closeJoinForm} aria-label="Close alumni registration form" className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-md text-2xl leading-none text-text-muted transition hover:text-text-main focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">×</button>
 
             {isSubmitted ? (
               <div className="py-10 text-center">
-                <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-primary/10 text-2xl text-primary">✓</div>
-                <h2 className="mt-5 text-2xl font-bold text-primary">Thank you for joining us</h2>
-                <p className="mt-3 text-text-muted">Your alumni details have been recorded. Our team will be in touch soon.</p>
-                <button type="button" onClick={closeJoinForm} className="mt-7 rounded-md bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary/90">Done</button>
+                <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-primary/10 text-xl font-bold text-primary">✓</div>
+                <h2 className="mt-5 text-xl font-bold text-primary">Thank you for joining us</h2>
+                <p className="mt-3 text-sm text-text-muted">Your alumni details have been recorded. Our team will be in touch soon.</p>
+                <button type="button" onClick={closeJoinForm} className="mt-6 rounded-[var(--radius-sm)] bg-primary px-6 py-2.5 font-semibold text-white transition-colors hover:bg-primary/90 min-h-[44px]">Done</button>
               </div>
             ) : (
               <div>
                 <div className="pb-4 pr-8">
-                <h2 className="mt-2 text-2xl font-bold text-primary">Join the Alumni Network</h2>
-                <p className="mt-2 max-w-lg text-sm leading-6 text-text-muted">Share your latest details so we can celebrate your journey and keep you connected with the GBR community.</p>
+                  <h2 className="text-xl font-bold text-primary">Join the Alumni Network</h2>
+                  <p className="mt-2 text-xs leading-relaxed text-text-muted">Share your details so we can celebrate your journey and keep you connected with the GBR community.</p>
                 </div>
 
                 <form className="flex flex-col gap-4" onSubmit={handleJoinSubmit}>
                   <label>
-                    <span className="mb-1.5 block text-sm font-semibold text-primary">Profile photo</span>
-                    <input type="file" accept="image/*" required onChange={(event) => setPhotoName(event.target.files?.[0]?.name ?? "")} className="block w-full rounded-md border border-gray-300 bg-background px-3 py-1.5 text-sm text-text-muted file:mr-3 file:rounded-md file:border-0 file:bg-primary file:px-3 file:py-1.5 file:font-semibold file:text-white hover:file:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/20" />
+                    <span className="mb-1 block text-xs font-semibold text-primary">Profile photo</span>
+                    <input type="file" accept="image/*" required onChange={(event) => setPhotoName(event.target.files?.[0]?.name ?? "")} className="block w-full rounded-[var(--radius-sm)] border border-border bg-background px-3 py-1.5 text-xs text-text-muted file:mr-3 file:rounded-[var(--radius-sm)] file:border-0 file:bg-primary file:px-3 file:py-1.5 file:font-semibold file:text-white hover:file:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20" />
                     {photoName && <span className="mt-1 block text-xs text-text-muted">Selected: {photoName}</span>}
                   </label>
 
                   <label>
-                    <span className="mb-1.5 block text-sm font-semibold text-primary">Full name</span>
-                    <input type="text" name="name" required placeholder="Your full name" className="w-full rounded-md border border-gray-300 bg-background px-3 py-2.5 text-text-main outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20" />
+                    <span className="mb-1 block text-xs font-semibold text-primary">Full name</span>
+                    <input type="text" name="name" required placeholder="Your full name" className="w-full rounded-[var(--radius-sm)] border border-border bg-background px-3 py-2 text-sm text-text-main outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20" />
                   </label>
                   <label>
-                    <span className="mb-1.5 block text-sm font-semibold text-primary">Graduating year</span>
-                    <input type="number" name="graduatingYear" required min="1950" max="2100" placeholder="e.g. 2015" className="w-full rounded-md border border-gray-300 bg-background px-3 py-2.5 text-text-main outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20" />
+                    <span className="mb-1 block text-xs font-semibold text-primary">Graduating year</span>
+                    <input type="number" name="graduatingYear" required min="1950" max="2100" placeholder="e.g. 2015" className="w-full rounded-[var(--radius-sm)] border border-border bg-background px-3 py-2 text-sm text-text-main outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 tabular-nums" />
                   </label>
                   <label>
-                    <span className="mb-1.5 block text-sm font-semibold text-primary">Current position</span>
-                    <input type="text" name="position" required placeholder="e.g. Software Engineer" className="w-full rounded-md border border-gray-300 bg-background px-3 py-2.5 text-text-main outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20" />
+                    <span className="mb-1 block text-xs font-semibold text-primary">Current position</span>
+                    <input type="text" name="position" required placeholder="e.g. Software Engineer" className="w-full rounded-[var(--radius-sm)] border border-border bg-background px-3 py-2 text-sm text-text-main outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20" />
                   </label>
                   <label>
-                    <span className="mb-1.5 block text-sm font-semibold text-primary">Place</span>
-                    <input type="text" name="place" required placeholder="City, country" className="w-full rounded-md border border-gray-300 bg-background px-3 py-2.5 text-text-main outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20" />
+                    <span className="mb-1 block text-xs font-semibold text-primary">Place</span>
+                    <input type="text" name="place" required placeholder="City, country" className="w-full rounded-[var(--radius-sm)] border border-border bg-background px-3 py-2 text-sm text-text-main outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20" />
                   </label>
                   <label>
-                    <span className="mb-1.5 block text-sm font-semibold text-primary">Email address</span>
-                    <input type="email" name="email" required placeholder="you@example.com" className="w-full rounded-md border border-gray-300 bg-background px-3 py-2.5 text-text-main outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20" />
+                    <span className="mb-1 block text-xs font-semibold text-primary">Email address</span>
+                    <input type="email" name="email" required placeholder="you@example.com" className="w-full rounded-[var(--radius-sm)] border border-border bg-background px-3 py-2 text-sm text-text-main outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20" />
                   </label>
-                  <div className="border-t border-gray-100 pt-3">
-                    <button type="submit" className="w-full rounded-md bg-primary px-6 py-2.5 font-semibold text-white transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">Submit alumni details</button>
+                  <div className="border-t border-border pt-4">
+                    <button type="submit" className="w-full rounded-[var(--radius-sm)] bg-primary px-6 py-2.5 font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary min-h-[44px]">Submit alumni details</button>
                   </div>
                 </form>
               </div>
@@ -226,6 +246,6 @@ export default function AlumniClient() {
           </div>
         </div>
       )}
-    </main>
+    </div>
   );
 }
