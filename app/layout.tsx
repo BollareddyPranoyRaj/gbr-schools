@@ -33,16 +33,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className="font-sans antialiased bg-background text-text-main flex flex-col min-h-screen"
-      >
-        {/* HEADER: Notice Banner and Navbar only */}
-        <header className="sticky top-0 z-[60] flex flex-col w-full shadow-sm">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased flex flex-col min-h-dvh">
+        {/* HEADER: Notice Banner and Navbar */}
+        <header className="sticky top-0 z-[60] flex flex-col w-full">
           <NoticeBanner />
           <Navbar />
         </header>
 
-        {/* FLOATING BUTTON: Placed here so it floats over the whole page */}
+        {/* FLOATING BACK BUTTON */}
         <BackButton />
 
         {/* MAIN PAGE CONTENT */}
