@@ -6,62 +6,53 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const navLinks = [
+  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/ac-campus", label: "A.C. Campus" },
   { href: "/standard-campus", label: "E.M.S Campus" },
   { href: "/academics", label: "Academics" },
   { href: "/admissions", label: "Admissions" },
-  { href: "/news", label: "Updates" },
-  { href: "/notices", label: "Notices" },
-  { href: "/contact", label: "Contact" },
-];
-
-const mobileLinks = [
-  ...navLinks,
-  { href: "/facilities", label: "Facilities" },
-  { href: "/student-life", label: "Student Life" },
   { href: "/events", label: "Events" },
-  { href: "/leadership", label: "Leadership" },
   { href: "/alumni", label: "Alumni" },
   { href: "/parents", label: "Parent Portal" },
-  { href: "/calendar", label: "Calendar" },
-  { href: "/rules", label: "Rules" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/careers", label: "Careers" },
 ];
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
+    <nav
+      className="w-full z-50 bg-white/95 backdrop-blur-sm border-b border-border"
+      aria-label="Main navigation"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
-          {/* BRANDING SECTION WITH LOGO */}
-          <div className="flex-shrink-0">
+          {/* BRANDING */}
+          <div className="shrink-0">
             <Link href="/" className="flex items-center gap-3">
               <Image 
                 src="/gbr-trans-logo.png" 
-                alt="GBR Group Logo" 
-                width={90} 
-                height={90} 
-                className="object-contain -m-8"
+                alt="GBR Group of Schools logo" 
+                width={40} 
+                height={40} 
+                className="object-contain"
                 priority
               />
-              <span className="text-primary font-bold text-xl tracking-wider">
+              <span className="text-primary font-bold text-lg tracking-wider">
                 GBR <span className="text-accent">SCHOOLS</span>
               </span>
             </Link>
           </div>
           
+          {/* DESKTOP MENU */}
           <div className="hidden xl:block">
             <div className="ml-6 flex items-center gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-text-muted hover:text-primary hover:bg-primary/5 transition-colors px-2.5 py-2 rounded-md text-sm font-medium"
+                  className="text-text-muted hover:text-primary transition-colors px-3 py-2 text-[13px] font-medium uppercase tracking-[0.04em] whitespace-nowrap"
                 >
                   {link.label}
                 </Link>
@@ -69,13 +60,15 @@ export default function Navbar() {
             </div>
           </div>
 
+          {/* MOBILE HAMBURGER */}
           <div className="xl:hidden flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-text-muted hover:text-primary focus:outline-none p-2"
-              aria-label="Toggle menu"
+              className="text-text-muted hover:text-primary p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 {isMobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
@@ -87,15 +80,16 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* MOBILE MENU DROPDOWN */}
       {isMobileMenuOpen && (
-        <div className="xl:hidden bg-white border-b border-gray-200">
-          <div className="grid grid-cols-1 gap-1 px-2 pt-2 pb-3 sm:grid-cols-2 sm:px-3">
-            {mobileLinks.map((link) => (
+        <div className="xl:hidden border-b border-border bg-white">
+          <div className="grid grid-cols-1 gap-0 px-2 pt-2 pb-3 sm:grid-cols-2 sm:px-3">
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-text-muted hover:text-primary hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium"
+                className="text-text-muted hover:text-primary hover:bg-surface block px-4 py-3 text-base font-medium min-h-[44px] flex items-center transition-colors"
               >
                 {link.label}
               </Link>

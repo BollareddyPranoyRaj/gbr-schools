@@ -24,35 +24,27 @@ export default function FAQPage() {
     },
     {
       question: "When can parents meet the teachers or the Dean?",
-      answer: "Parents can meet the Dean from Monday to Saturday between 10.30 FN and 12.00 AN by prior appointment only. Teacher meetings for Nursery to Class X are held on the 2nd Saturday of every month from 9.00 am to 12.00 pm."
+      answer: "Parents can meet the Dean from Monday to Saturday between 10.30 AM and 12.00 PM by prior appointment only. Teacher meetings for Nursery to Class X are held on the 2nd Saturday of every month from 9.00 am to 12.00 pm."
     }
   ];
 
   return (
-    <main className="min-h-screen bg-background pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div className="min-h-screen bg-background pt-16 sm:pt-20 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-primary mb-4">Frequently Asked Questions</h1>
-        <p className="text-text-muted">
+        <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4">Frequently Asked Questions</h1>
+        <p className="text-text-muted max-w-2xl mx-auto">
           Find quick answers to common questions about admissions, academics, and school policies.
         </p>
       </div>
 
-      <div className="space-y-6">
+      <div className="divide-y divide-border">
         {faqs.map((faq, index) => (
-          <div key={index} className="bg-[var(--color-surface)] border border-gray-200 rounded-xl p-6 shadow-sm">
-            <h3 className="text-lg font-semibold text-primary mb-3">{faq.question}</h3>
+          <div key={index} className="py-6">
+            <h3 className="text-base font-semibold text-text-main mb-2">{faq.question}</h3>
             <p className="text-text-muted leading-relaxed text-sm">{faq.answer}</p>
           </div>
         ))}
       </div>
-      
-      <div className="mt-12 text-center bg-primary/5 p-8 rounded-xl border border-primary/10">
-        <h2 className="text-xl font-semibold text-primary mb-2">Still have questions?</h2>
-        <p className="text-text-muted mb-4 text-sm">Our admissions team is ready to help you with any further inquiries.</p>
-        <a href="/contact" className="inline-block px-6 py-2 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition-colors">
-          Contact Us
-        </a>
-      </div>
-    </main>
+    </div>
   );
 }

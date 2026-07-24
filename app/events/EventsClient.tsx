@@ -102,17 +102,17 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
   }
 
   return (
-    <main id="events" className={`${styles.section} min-h-screen bg-background pt-28 pb-16`}>
+    <div id="events" className={`${styles.section} min-h-screen bg-background pt-16 sm:pt-20 pb-16`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl border-b border-gray-200 pb-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent">Events</p>
-          <h1 className="mt-3 text-4xl font-bold tracking-tight text-primary sm:text-5xl">School Events in Motion</h1>
-          <p className="mt-4 text-base leading-7 text-text-muted sm:text-lg">
-            Distinct school events are presented one after another, each with its own animated image carousel and an emphasis on the moment that mattered most.
+        <div className="max-w-3xl border-b border-border pb-8">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">Events</p>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl">School Events in Motion</h1>
+          <p className="mt-3 text-base text-text-muted">
+            Distinct school events are presented with their dedicated image carousels highlighting our campus milestones.
           </p>
         </div>
 
-        <div className="mt-12 space-y-16">
+        <div className="mt-10 space-y-12">
           {sortedEvents.map((event, eventIndex) => {
             return (
               <section
@@ -125,17 +125,17 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
                   setHoveredCardIndex(null);
                 }}
               >
-                <div className="mb-6 flex flex-col gap-3 rounded-3xl border border-gray-200 bg-[var(--color-surface)]/80 p-6 shadow-[0_10px_30px_rgba(17,24,39,0.04)] backdrop-blur-sm sm:p-8">
+                <div className="mb-6 flex flex-col gap-3 rounded-lg border border-border bg-surface p-6 sm:p-8">
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                     <div>
-                      <h2 className="text-2xl font-semibold text-primary sm:text-3xl">{event.title}</h2>
+                      <h2 className="text-xl font-bold text-primary sm:text-2xl">{event.title}</h2>
                     </div>
-                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-text-muted">
-                      <span className="h-2 w-2 rounded-full bg-accent" />
-                      GBR Schools event story
+                    <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-text-muted">
+                      <span className="h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
+                      GBR Event
                     </div>
                   </div>
-                  <p className="max-w-3xl text-sm leading-7 text-text-muted sm:text-base">{event.description}</p>
+                  <p className="max-w-3xl text-sm leading-relaxed text-text-muted">{event.description}</p>
                 </div>
 
                 <div className="w-full relative">
@@ -150,8 +150,9 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
                         <article
                           key={`${event.id}-${src}-${index}`}
                           className={
-                            "w-[320px] md:w-[360px] h-[240px] flex-shrink-0 snap-start rounded-2xl overflow-hidden cursor-pointer transition-transform hover:scale-[1.02]"
+                            "w-[320px] md:w-[360px] h-[240px] flex-shrink-0 snap-start rounded-lg overflow-hidden cursor-pointer border border-border transition-colors hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                           }
+                          tabIndex={0}
                           data-active={isActiveHover ? "true" : "false"}
                           onPointerEnter={(pointerEvent) => {
                             if (pointerEvent.pointerType !== "mouse") {
@@ -168,6 +169,12 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
                             }
                           }}
                           onClick={() => openModal(eventIndex, realIndex)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              openModal(eventIndex, realIndex);
+                            }
+                          }}
                         >
                           <div className="w-full h-full relative">
                             <CldImage
@@ -178,6 +185,8 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
                               sizes="(max-width: 640px) 20rem, (max-width: 1024px) 24rem, 20rem"
                               className="object-cover"
                               loading="lazy"
+                              quality="auto"
+                              format="auto"
                             />
                           </div>
                         </article>
@@ -193,18 +202,18 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
 
       {modalState && activeModalEvent && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+          className="fixed inset-0 z-[9999] w-screen h-screen flex items-center justify-center bg-black/95 backdrop-blur-sm"
           role="presentation"
           onClick={handleClose}
         >
           <div
-            className="w-full"
+            className="w-full max-w-5xl"
             role="dialog"
             aria-modal="true"
             aria-label={`${activeModalEvent.title} image viewer`}
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="relative w-full max-w-5xl h-[85vh] flex items-center justify-center mx-auto">
+            <div className="relative mx-auto flex h-[calc(100vh-10rem)] max-h-[720px] min-h-[300px] w-full items-center justify-center">
               <CldImage
                 src={activeModalEvent.images[activeCardIndex]}
                 config={cloudinaryConfig}
@@ -213,20 +222,22 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
                 sizes="100vw"
                 className="object-contain"
                 priority
+                quality="auto"
+                format="auto"
               />
 
-              <button type="button" className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-black/35 text-3xl leading-none text-white backdrop-blur transition hover:bg-black/55" onClick={handleClose} aria-label="Close modal">
+              <button type="button" className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-black/40 text-2xl leading-none text-white transition hover:bg-black/70 focus-visible:ring-2 focus-visible:ring-white" onClick={handleClose} aria-label="Close modal">
                 <span>×</span>
               </button>
 
-              <button type="button" className="absolute left-4 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/35 text-white backdrop-blur transition hover:bg-black/55" onClick={goToPreviousCard} aria-label="Previous image">
-                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <button type="button" className="absolute left-4 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/40 text-white transition hover:bg-black/70 focus-visible:ring-2 focus-visible:ring-white" onClick={goToPreviousCard} aria-label="Previous image">
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M15 18l-6-6 6-6" />
                 </svg>
               </button>
 
-              <button type="button" className="absolute right-4 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/35 text-white backdrop-blur transition hover:bg-black/55" onClick={goToNextCard} aria-label="Next image">
-                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <button type="button" className="absolute right-4 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/40 text-white transition hover:bg-black/70 focus-visible:ring-2 focus-visible:ring-white" onClick={goToNextCard} aria-label="Next image">
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M9 6l6 6-6 6" />
                 </svg>
               </button>
@@ -234,6 +245,6 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
           </div>
         </div>
       )}
-    </main>
+    </div>
   );
 }

@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import NoticeBanner from "./components/NoticeBanner";
+import BackButton from "./components/BackButton";
 
 export const metadata: Metadata = {
   title: {
@@ -32,22 +33,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className="font-sans antialiased bg-background text-text-main flex flex-col min-h-screen"
-      >
-        {/* 
-          Sticky header wrapper keeps everything at the top. 
-          flex-col ensures the banner naturally sits above the navbar. 
-        */}
-        <header className="sticky top-0 z-[60] flex flex-col w-full shadow-sm">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased flex flex-col min-h-dvh">
+        {/* HEADER: Notice Banner and Navbar */}
+        <header className="sticky top-0 z-[60] flex flex-col w-full">
           <NoticeBanner />
           <Navbar />
         </header>
 
+        {/* FLOATING BACK BUTTON */}
+        <BackButton />
+
+        {/* MAIN PAGE CONTENT */}
         <main className="flex-grow">
           {children}
         </main>
         
+        {/* FOOTER */}
         <Footer />
       </body>
     </html>
