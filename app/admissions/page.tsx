@@ -1,11 +1,10 @@
-// app/admissions/page.tsx
 "use client";
 
 import React, { useState } from 'react';
 
 export default function AdmissionsPage() {
   // State to track which accordion section is currently open
-  const [openSection, setOpenSection] = useState<string | null>('admission');
+  const [openSection, setOpenSection] = useState<string | null>('why-gbr');
 
   const toggleSection = (section: string) => {
     setOpenSection(openSection === section ? null : section);
@@ -25,7 +24,26 @@ export default function AdmissionsPage() {
           </p>
         </div>
 
-        {/* --- ACCORDION 1: Admission Guidelines --- */}
+        {/* --- ACCORDION 1: Why GBR Group of Schools? --- */}
+        <AccordionSection
+          id="why-gbr"
+          title="Why GBR Group of Schools?"
+          isOpen={openSection === 'why-gbr'}
+          onToggle={() => toggleSection('why-gbr')}
+        >
+          <ul className="space-y-4 text-text-muted list-disc pl-5">
+            <li className="leading-relaxed">Trusted by parents for four generations.</li>
+            <li className="leading-relaxed">Excellent and enriching learning experiences for students.</li>
+            <li className="leading-relaxed">Holistic personality development by the completion of their school education.</li>
+            <li className="leading-relaxed">GBR is synonymous with strict discipline.</li>
+            <li className="leading-relaxed">Dedicated supervision with a separate Headmaster (HM) for every department.</li>
+            <li className="leading-relaxed">Spacious playgrounds and diverse clubs to foster social development.</li>
+            <li className="leading-relaxed">Mental and educational growth preparing students to compete in the future world.</li>
+            <li className="leading-relaxed">Stress-free and value-based education.</li>
+          </ul>
+        </AccordionSection>
+
+        {/* --- ACCORDION 2: Admission Guidelines --- */}
         <AccordionSection
           id="admission"
           title="Admission Guidelines"
@@ -43,7 +61,7 @@ export default function AdmissionsPage() {
           </ul>
         </AccordionSection>
 
-        {/* --- ACCORDION 2: School Fees & Fee Policy --- */}
+        {/* --- ACCORDION 3: School Fees & Fee Policy --- */}
         <AccordionSection
           id="fees"
           title="School Fees & Fee Policy"
@@ -139,7 +157,7 @@ export default function AdmissionsPage() {
           </div>
         </AccordionSection>
 
-        {/* --- ACCORDION 3: Withdrawal --- */}
+        {/* --- ACCORDION 4: Withdrawal --- */}
         <AccordionSection
           id="withdrawal"
           title="Withdrawal Policies"
@@ -152,7 +170,7 @@ export default function AdmissionsPage() {
           </ul>
         </AccordionSection>
 
-        {/* --- ACCORDION 4: Leaving Certificate (T.C.) --- */}
+        {/* --- ACCORDION 5: Leaving Certificate (T.C.) --- */}
         <AccordionSection
           id="tc"
           title="Leaving Certificate (T.C.) Rules"
