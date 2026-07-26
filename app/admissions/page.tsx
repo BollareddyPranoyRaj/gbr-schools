@@ -170,10 +170,10 @@ export default function AdmissionsPage() {
           </ul>
         </AccordionSection>
 
-        {/* --- ACCORDION 5: Leaving Certificate (T.C.) --- */}
+        {/* --- ACCORDION 5: Leaving Certificate (T.C) --- */}
         <AccordionSection
           id="tc"
-          title="Leaving Certificate (T.C.) Rules"
+          title="Leaving Certificate (T.C) Rules"
           isOpen={openSection === 'tc'}
           onToggle={() => toggleSection('tc')}
         >
@@ -182,8 +182,8 @@ export default function AdmissionsPage() {
               Parents are requested to note the following:
             </p>
             <ul className="space-y-4 text-text-muted list-disc pl-5">
-              <li className="leading-relaxed">Parent / Guardian should approach the office and should fill out the T.C. form in person.</li>
-              <li className="leading-relaxed">After applying for a T.C., it takes a minimum of <strong className="tabular-nums">7 working days</strong> to process.</li>
+              <li className="leading-relaxed">Parent / Guardian should approach the office and should fill out the T.C form in person.</li>
+              <li className="leading-relaxed">After applying for a T.C, it takes a minimum of <strong className="tabular-nums">7 working days</strong> to process.</li>
             </ul>
           </div>
         </AccordionSection>
