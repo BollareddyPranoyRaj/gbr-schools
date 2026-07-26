@@ -29,6 +29,9 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
   const [hoveredEventIndex, setHoveredEventIndex] = useState<number | null>(null);
   const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
   const [modalState, setModalState] = useState<ModalState | null>(null);
+  
+  // NEW: State to track if the current modal image is still downloading
+  const [isImageLoading, setIsImageLoading] = useState(true);
 
   const sortedEvents = useMemo(
     () =>
@@ -40,6 +43,11 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
 
   const activeModalEvent = modalState ? sortedEvents[modalState.eventIndex] : null;
 
+  // Pre-calculate the total images and adjacent indices for the preloader
+  const imagesCount = activeModalEvent?.images.length || 0;
+  const preloadNextIndex = imagesCount > 0 ? (activeCardIndex + 1) % imagesCount : 0;
+  const preloadPrevIndex = imagesCount > 0 ? (activeCardIndex - 1 + imagesCount) % imagesCount : 0;
+
   const handleClose = useCallback(() => {
     setHoveredEventIndex(null);
     setHoveredCardIndex(null);
@@ -47,6 +55,7 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
   }, []);
 
   const openModal = useCallback((eventIndex: number, cardIndex: number) => {
+    setIsImageLoading(true); // Trigger loading state when modal opens
     setActiveCardIndex(cardIndex);
     setModalState({ eventIndex });
   }, []);
@@ -65,12 +74,14 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
 
       if (event.key === "ArrowLeft") {
         if (cardCount > 0) {
+          setIsImageLoading(true); // Trigger loading state on keyboard nav
           setActiveCardIndex((current) => (current - 1 + cardCount) % cardCount);
         }
       }
 
       if (event.key === "ArrowRight") {
         if (cardCount > 0) {
+          setIsImageLoading(true); // Trigger loading state on keyboard nav
           setActiveCardIndex((current) => (current + 1) % cardCount);
         }
       }
@@ -89,7 +100,7 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
     if (!activeModalEvent) {
       return;
     }
-
+    setIsImageLoading(true); // Tell the UI a new image is loading
     setActiveCardIndex((current) => (current + 1) % activeModalEvent.images.length);
   }
 
@@ -97,7 +108,7 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
     if (!activeModalEvent) {
       return;
     }
-
+    setIsImageLoading(true); // Tell the UI a new image is loading
     setActiveCardIndex((current) => (current - 1 + activeModalEvent.images.length) % activeModalEvent.images.length);
   }
 
@@ -214,17 +225,51 @@ export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[]
             onClick={(event) => event.stopPropagation()}
           >
             <div className="relative mx-auto flex h-[calc(100vh-10rem)] max-h-[720px] min-h-[300px] w-full items-center justify-center">
+              
+              {/* THE LOADING SPINNER */}
+              {isImageLoading && (
+                <div className="absolute inset-0 z-0 flex items-center justify-center">
+                  <div className="h-12 w-12 animate-spin rounded-full border-4 border-white/20 border-t-white"></div>
+                </div>
+              )}
+
+              {/* THE MAIN IMAGE */}
               <CldImage
                 src={activeModalEvent.images[activeCardIndex]}
                 config={cloudinaryConfig}
                 alt={activeModalEvent.title}
                 fill
                 sizes="100vw"
-                className="object-contain"
+                className={`object-contain transition-opacity duration-300 ${isImageLoading ? 'opacity-0' : 'opacity-100 z-10'}`}
                 priority
                 quality="auto"
                 format="auto"
+                onLoad={() => setIsImageLoading(false)} // Hides the spinner when the image is fully downloaded!
               />
+
+              {/* INVISIBLE PRELOADER for next and previous images */}
+              {imagesCount > 1 && (
+                <div className="pointer-events-none absolute -z-10 opacity-0 overflow-hidden w-0 h-0">
+                  <CldImage
+                    src={activeModalEvent.images[preloadNextIndex]}
+                    config={cloudinaryConfig}
+                    alt="Preload Next"
+                    fill
+                    sizes="100vw"
+                    quality="auto"
+                    format="auto"
+                  />
+                  <CldImage
+                    src={activeModalEvent.images[preloadPrevIndex]}
+                    config={cloudinaryConfig}
+                    alt="Preload Previous"
+                    fill
+                    sizes="100vw"
+                    quality="auto"
+                    format="auto"
+                  />
+                </div>
+              )}
 
               <button type="button" className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-black/40 text-2xl leading-none text-white transition hover:bg-black/70 focus-visible:ring-2 focus-visible:ring-white" onClick={handleClose} aria-label="Close modal">
                 <span>×</span>
