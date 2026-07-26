@@ -32,6 +32,14 @@ export default function AlumniClient() {
   const [isJoinFormOpen, setIsJoinFormOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [photoName, setPhotoName] = useState("");
+  
+  // NEW: State to track if the current modal image is still downloading
+  const [isImageLoading, setIsImageLoading] = useState(true);
+
+  // Pre-calculate adjacent indices for the preloader
+  const totalProfiles = alumniProfiles.length;
+  const preloadNextIndex = selectedImageIndex !== null ? (selectedImageIndex + 1) % totalProfiles : 0;
+  const preloadPrevIndex = selectedImageIndex !== null ? (selectedImageIndex - 1 + totalProfiles) % totalProfiles : 0;
 
   const closeViewer = useCallback(() => {
     setSelectedImageIndex(null);
@@ -49,12 +57,14 @@ export default function AlumniClient() {
   };
 
   const showPreviousImage = useCallback(() => {
+    setIsImageLoading(true); // Trigger loading state
     setSelectedImageIndex((currentIndex) =>
       currentIndex === null ? null : (currentIndex - 1 + alumniProfiles.length) % alumniProfiles.length,
     );
   }, []);
 
   const showNextImage = useCallback(() => {
+    setIsImageLoading(true); // Trigger loading state
     setSelectedImageIndex((currentIndex) =>
       currentIndex === null ? null : (currentIndex + 1) % alumniProfiles.length,
     );
@@ -75,10 +85,12 @@ export default function AlumniClient() {
       }
 
       if (selectedImageIndex !== null && event.key === "ArrowLeft") {
+        setIsImageLoading(true); // Trigger loading state on keyboard nav
         showPreviousImage();
       }
 
       if (selectedImageIndex !== null && event.key === "ArrowRight") {
+        setIsImageLoading(true); // Trigger loading state on keyboard nav
         showNextImage();
       }
     };
@@ -117,7 +129,10 @@ export default function AlumniClient() {
             <button
               key={profile.imageId}
               type="button"
-              onClick={() => setSelectedImageIndex(index)}
+              onClick={() => {
+                setIsImageLoading(true); // Trigger loading state when modal opens
+                setSelectedImageIndex(index);
+              }}
               className="w-[220px] shrink-0 snap-start overflow-hidden rounded-lg bg-white border border-border transition-colors hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:w-[250px]"
               aria-label={`Open alumni graphic ${index + 1}`}
             >
@@ -140,7 +155,6 @@ export default function AlumniClient() {
         </div>
       </section>
 
-      {/* FIXED: Removed duplicate wrapping div here */}
       {selectedImageIndex !== null && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4" role="presentation" onClick={closeViewer}>
           <div
@@ -150,16 +164,47 @@ export default function AlumniClient() {
             aria-label={`Alumni graphic ${selectedImageIndex + 1} viewer`}
             onClick={(event) => event.stopPropagation()}
           >
+            {/* THE LOADING SPINNER */}
+            {isImageLoading && (
+              <div className="absolute inset-0 z-0 flex items-center justify-center">
+                <div className="h-12 w-12 animate-spin rounded-full border-4 border-white/20 border-t-white"></div>
+              </div>
+            )}
+
+            {/* THE MAIN IMAGE */}
             <CldImage
               src={alumniProfiles[selectedImageIndex].imageId}
               alt={`GBR alumni graphic ${selectedImageIndex + 1}`}
               fill
               sizes="100vw"
-              className="h-full w-full object-contain"
+              className={`object-contain transition-opacity duration-300 ${isImageLoading ? 'opacity-0' : 'opacity-100 z-10'}`}
               priority
               quality="auto"
               format="auto"
+              onLoad={() => setIsImageLoading(false)} // Hides the spinner when the image is fully downloaded
             />
+
+            {/* INVISIBLE PRELOADER for next and previous images */}
+            {totalProfiles > 1 && (
+              <div className="pointer-events-none absolute -z-10 opacity-0 overflow-hidden w-0 h-0">
+                <CldImage
+                  src={alumniProfiles[preloadNextIndex].imageId}
+                  alt="Preload Next"
+                  fill
+                  sizes="100vw"
+                  quality="auto"
+                  format="auto"
+                />
+                <CldImage
+                  src={alumniProfiles[preloadPrevIndex].imageId}
+                  alt="Preload Previous"
+                  fill
+                  sizes="100vw"
+                  quality="auto"
+                  format="auto"
+                />
+              </div>
+            )}
 
             <button type="button" className="absolute right-0 top-0 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-black/40 text-2xl leading-none text-white transition hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" onClick={closeViewer} aria-label="Close image viewer">
               <span>×</span>
@@ -180,7 +225,6 @@ export default function AlumniClient() {
         </div>
       )}
 
-      {/* FIXED: Removed duplicate wrapping divs here too */}
       {isJoinFormOpen && (
         <div 
           className="fixed inset-0 z-40 flex items-start justify-center bg-black/50 p-4 pt-24 backdrop-blur-sm md:p-6 md:pt-28" 
