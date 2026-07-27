@@ -117,6 +117,14 @@ const baseEvents = [
     folder: "school-website/events/sportsday",
     images: ["school-website/events/sportsday/sportsday-01"],
   },
+  {
+    id: "republic-day",
+    title: "Republic Day Celebration",
+    description: "Honoring our nation's heritage with patriotic performances, flag hoisting, and a spirit of unity.",
+    duration: 35,
+    folder: "school-website/events/Republicday",
+    images: ["school-website/events/Republicday/Republicday1", "school-website/events/Republicday/Republicday2"],
+  },
 ];
 
 // This must be an async function to fetch the data before rendering the page
