@@ -1,32 +1,32 @@
 // app/components/NoticeBanner.tsx
-"use client";
-
-import { useState } from 'react';
 import Link from 'next/link';
 
 export default function NoticeBanner() {
-  const [isVisible, setIsVisible] = useState(true);
-
-  if (!isVisible) return null;
-
   return (
-    <div className="bg-primary text-white px-4 py-2 flex items-center justify-between z-50 relative">
-      <div className="flex-1 text-center text-sm font-medium">
-        <span className="bg-accent text-primary text-xs font-bold px-2 py-0.5 rounded mr-2 uppercase tracking-wide">Update</span>
-        Admissions for the Academic Year 2026-2027 are now open!{' '}
-        <Link href="/apply" className="underline hover:text-accent transition-colors ml-1">
-          Apply Now
-        </Link>
-      </div>
-      <button 
-        onClick={() => setIsVisible(false)}
-        className="text-white hover:text-accent focus:outline-none ml-4"
-        aria-label="Dismiss banner"
+    <div
+      className="flex items-center justify-between h-9 bg-primary text-white px-4 sm:px-6 lg:px-8 text-sm"
+      role="banner"
+      aria-label="Admissions announcement"
+    >
+      <p className="text-xs sm:text-sm font-medium tracking-wide truncate mr-4">
+        Admissions for 2026–2027 are now open.
+      </p>
+
+      <Link
+        href="/apply"
+        className="shrink-0 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-accent hover:text-white transition-colors"
       >
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        Apply Now
+        <svg
+          className="w-3.5 h-3.5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
         </svg>
-      </button>
+      </Link>
     </div>
   );
 }

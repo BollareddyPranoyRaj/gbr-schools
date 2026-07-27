@@ -16,27 +16,27 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="min-h-[80vh] bg-background flex flex-col items-center justify-center px-4">
-      <div className="text-center bg-[var(--color-surface)] border border-gray-200 p-8 rounded-xl shadow-sm max-w-lg w-full">
-        <h2 className="text-2xl font-bold text-primary mb-4">Something went wrong!</h2>
+    <div className="min-h-[80vh] bg-background flex flex-col items-center justify-center px-4">
+      <div className="text-center max-w-lg w-full">
+        <h2 className="text-2xl font-bold text-primary mb-4">Something went wrong</h2>
         <p className="text-text-muted mb-8 text-sm">
-          An unexpected error has occurred. We apologize for the inconvenience.
+          An unexpected error occurred. Please try again, or return to the homepage.
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={() => reset()}
-            className="w-full sm:w-auto px-6 py-2 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition-colors"
+            className="w-full sm:w-auto px-6 py-3 bg-primary text-white rounded-[var(--radius-sm)] font-medium hover:bg-primary/90 transition-colors min-h-[44px]"
           >
             Try again
           </button>
           <Link
             href="/"
-            className="w-full sm:w-auto px-6 py-2 bg-white border border-gray-300 text-text-main rounded-md font-medium hover:bg-gray-50 transition-colors"
+            className="w-full sm:w-auto px-6 py-3 border border-border text-text-main rounded-[var(--radius-sm)] font-medium hover:bg-surface transition-colors min-h-[44px] inline-flex items-center justify-center"
           >
             Go back home
           </Link>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

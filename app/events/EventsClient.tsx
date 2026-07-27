@@ -1,10 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { CldImage } from "next-cloudinary";
 import styles from "./events.module.css";
 
-type SchoolEvent = {
+// Export the type so the Parent page.tsx can import and use it
+export type SchoolEvent = {
   id: string;
   title: string;
   description: string;
@@ -15,94 +16,7 @@ type SchoolEvent = {
 
 type ModalState = {
   eventIndex: number;
-  cardIndex: number;
-  rect: DOMRect;
-  status: "opening" | "open" | "closing";
 };
-
-const eventsData: SchoolEvent[] = [
-  {
-    id: "parents-activity",
-    title: "Parents Activity Day",
-    description: "Engaging workshops and collaborative activities bringing our school community and parents together.",
-    images: ["school-website/events/parentsactivity/parentsactivity-01", "school-website/events/parentsactivity/parentsactivity-02"],
-    duration: 34,
-  },
-  {
-    id: "40-years-celebration",
-    title: "40 Years Celebration",
-    description: "Honoring four decades of educational excellence and historic milestones.",
-    images: ["school-website/events/40yearcelb/40yearcelb-01", "school-website/events/40yearcelb/40yearcelb-02"],
-    duration: 38,
-    reverse: true,
-  },
-  {
-    id: "christmas",
-    title: "Christmas Celebration",
-    description: "Spreading holiday cheer with festive carols, decorations, and seasonal performances.",
-    images: ["school-website/events/chirstmas/chirstmas-01", "school-website/events/chirstmas/chirstmas-02"],
-    duration: 36,
-  },
-  {
-    id: "dussehra",
-    title: "Dussehra Festival",
-    description: "Celebrating traditional cultural heritages and seasonal festive rituals.",
-    images: ["school-website/events/dusheera/dusheera-01", "school-website/events/dusheera/dusheera-02"],
-    duration: 32,
-  },
-  {
-    id: "field-trip",
-    title: "Educational Field Trip",
-    description: "Experiential learning journeys outside the classroom boundaries.",
-    images: ["school-website/events/fieldtrip/fieldtrip-01"],
-    duration: 30,
-    reverse: true,
-  },
-  {
-    id: "fruit-day",
-    title: "Fruit Day Celebration",
-    description: "Promoting healthy habits and learning about nature's vibrant nutrition.",
-    images: ["school-website/events/fruitday/fruitday-01"],
-    duration: 30,
-  },
-  {
-    id: "graduation-day",
-    title: "Graduation Day",
-    description: "Celebrating the hard work, milestones, and bright futures of our graduating students.",
-    images: ["school-website/events/graduationday/graduationday-01"],
-    duration: 32,
-  },
-  {
-    id: "pongal",
-    title: "Pongal Festival",
-    description: "Embracing seasonal harvest traditions with joy, community, and gratitude.",
-    images: ["school-website/events/pongal/pongal-01"],
-    duration: 30,
-    reverse: true,
-  },
-  {
-    id: "rainbow-kids",
-    title: "Rainbow Kids Activities",
-    description: "Fun, colorful, and creative developmental activities for our early learners.",
-    images: ["school-website/events/rainbowkids/rainbowkids-01"],
-    duration: 30,
-  },
-  {
-    id: "science-odyssey",
-    title: "Science Odyssey Exhibit",
-    description: "Showcasing student curiosity, innovative projects, and scientific discoveries.",
-    images: ["school-website/events/science%20odyssey/science%20odyssey-01"],
-    duration: 34,
-  },
-  {
-    id: "sports-day",
-    title: "Annual Sports Meet",
-    description: "Celebrating teamwork, athletic dedication, and competitive school spirit.",
-    images: ["school-website/events/sportsday/sportsday-01"],
-    duration: 38,
-    reverse: true,
-  },
-];
 
 const cloudinaryConfig = {
   cloud: {
@@ -110,51 +24,48 @@ const cloudinaryConfig = {
   },
 };
 
-export default function EventsClient() {
+export default function EventsClient({ eventsData }: { eventsData: SchoolEvent[] }) {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [hoveredEventIndex, setHoveredEventIndex] = useState<number | null>(null);
   const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
   const [modalState, setModalState] = useState<ModalState | null>(null);
+  
+  // NEW: State to track if the current modal image is still downloading
+  const [isImageLoading, setIsImageLoading] = useState(true);
 
-  const activeModalEvent = modalState ? eventsData[modalState.eventIndex] : null;
+  const sortedEvents = useMemo(
+    () =>
+      eventsData
+        .map((event) => ({ ...event, images: Array.from(new Set(event.images)) }))
+        .sort((a, b) => b.images.length - a.images.length),
+    [eventsData],
+  );
+
+  const activeModalEvent = modalState ? sortedEvents[modalState.eventIndex] : null;
+
+  // Pre-calculate the total images and adjacent indices for the preloader
+  const imagesCount = activeModalEvent?.images.length || 0;
+  const preloadNextIndex = imagesCount > 0 ? (activeCardIndex + 1) % imagesCount : 0;
+  const preloadPrevIndex = imagesCount > 0 ? (activeCardIndex - 1 + imagesCount) % imagesCount : 0;
 
   const handleClose = useCallback(() => {
-    if (!modalState || modalState.status === "closing") {
-      return;
-    }
-
     setHoveredEventIndex(null);
     setHoveredCardIndex(null);
-    setModalState((current) => (current ? { ...current, status: "closing" } : current));
-    window.setTimeout(() => {
-      setModalState(null);
-    }, 400);
-  }, [modalState]);
+    setModalState(null);
+  }, []);
 
-  const openModal = useCallback(
-    (eventIndex: number, cardIndex: number, cardElement: HTMLElement) => {
-      const rect = cardElement.getBoundingClientRect();
-      setActiveCardIndex(cardIndex);
-      setModalState({
-        eventIndex,
-        cardIndex,
-        rect,
-        status: "opening",
-      });
-
-      window.requestAnimationFrame(() => {
-        setModalState((current) => (current ? { ...current, status: "open" } : current));
-      });
-    },
-    [],
-  );
+  const openModal = useCallback((eventIndex: number, cardIndex: number) => {
+    setIsImageLoading(true); // Trigger loading state when modal opens
+    setActiveCardIndex(cardIndex);
+    setModalState({ eventIndex });
+  }, []);
 
   useEffect(() => {
     if (!modalState) {
       return;
     }
 
-    const cardCount = eventsData[modalState.eventIndex].images.length;
+    const cardCount = sortedEvents[modalState.eventIndex]?.images.length ?? 0;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -163,12 +74,14 @@ export default function EventsClient() {
 
       if (event.key === "ArrowLeft") {
         if (cardCount > 0) {
+          setIsImageLoading(true); // Trigger loading state on keyboard nav
           setActiveCardIndex((current) => (current - 1 + cardCount) % cardCount);
         }
       }
 
       if (event.key === "ArrowRight") {
         if (cardCount > 0) {
+          setIsImageLoading(true); // Trigger loading state on keyboard nav
           setActiveCardIndex((current) => (current + 1) % cardCount);
         }
       }
@@ -181,13 +94,13 @@ export default function EventsClient() {
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [handleClose, modalState]);
+  }, [handleClose, modalState, sortedEvents]);
 
   function goToNextCard() {
     if (!activeModalEvent) {
       return;
     }
-
+    setIsImageLoading(true); // Tell the UI a new image is loading
     setActiveCardIndex((current) => (current + 1) % activeModalEvent.images.length);
   }
 
@@ -195,25 +108,23 @@ export default function EventsClient() {
     if (!activeModalEvent) {
       return;
     }
-
+    setIsImageLoading(true); // Tell the UI a new image is loading
     setActiveCardIndex((current) => (current - 1 + activeModalEvent.images.length) % activeModalEvent.images.length);
   }
 
   return (
-    <main id="events" className={`${styles.section} min-h-screen bg-background pt-28 pb-16`}>
+    <div id="events" className={`${styles.section} min-h-screen bg-background pt-16 sm:pt-20 pb-16`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl border-b border-gray-200 pb-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent">Events</p>
-          <h1 className="mt-3 text-4xl font-bold tracking-tight text-primary sm:text-5xl">School Events in Motion</h1>
-          <p className="mt-4 text-base leading-7 text-text-muted sm:text-lg">
-            Distinct school events are presented one after another, each with its own animated image carousel and an emphasis on the moment that mattered most.
+        <div className="max-w-3xl border-b border-border pb-8">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">Events</p>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl">School Events in Motion</h1>
+          <p className="mt-3 text-base text-text-muted">
+            Distinct school events are presented with their dedicated image carousels highlighting our campus milestones.
           </p>
         </div>
 
-        <div className="mt-12 space-y-16">
-          {eventsData.map((event, eventIndex) => {
-            const loopCards = [...event.images, ...event.images];
-
+        <div className="mt-10 space-y-12">
+          {sortedEvents.map((event, eventIndex) => {
             return (
               <section
                 key={event.id}
@@ -225,35 +136,34 @@ export default function EventsClient() {
                   setHoveredCardIndex(null);
                 }}
               >
-                <div className="mb-6 flex flex-col gap-3 rounded-3xl border border-gray-200 bg-[var(--color-surface)]/80 p-6 shadow-[0_10px_30px_rgba(17,24,39,0.04)] backdrop-blur-sm sm:p-8">
+                <div className="mb-6 flex flex-col gap-3 rounded-lg border border-border bg-surface p-6 sm:p-8">
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                     <div>
-                      <h2 className="text-2xl font-semibold text-primary sm:text-3xl">{event.title}</h2>
+                      <h2 className="text-xl font-bold text-primary sm:text-2xl">{event.title}</h2>
                     </div>
-                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-text-muted">
-                      <span className="h-2 w-2 rounded-full bg-accent" />
-                      GBR Schools event story
+                    <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-text-muted">
+                      <span className="h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
+                      GBR Event
                     </div>
                   </div>
-                  <p className="max-w-3xl text-sm leading-7 text-text-muted sm:text-base">{event.description}</p>
+                  <p className="max-w-3xl text-sm leading-relaxed text-text-muted">{event.description}</p>
                 </div>
 
-                <div className={styles.trackWindow}>
+                <div className="w-full relative">
                   <div
-                    className={styles.marquee}
-                    style={{
-                      ["--scroll-duration" as string]: `${event.duration}s`,
-                      animationDirection: event.reverse ? "reverse" : "normal",
-                    }}
+                    className="flex flex-row overflow-x-auto snap-x snap-mandatory gap-6 scroll-smooth pb-4 scrollbar-hide"
                     aria-label={`${event.title} image carousel`}
                   >
-                    {loopCards.map((src, index) => {
-                      const realIndex = index % event.images.length;
+                    {event.images.map((src, index) => {
+                      const realIndex = index;
                       const isActiveHover = hoveredEventIndex === eventIndex && hoveredCardIndex === realIndex;
                       return (
                         <article
                           key={`${event.id}-${src}-${index}`}
-                          className={styles.card}
+                          className={
+                            "w-[320px] md:w-[360px] h-[240px] flex-shrink-0 snap-start rounded-lg overflow-hidden cursor-pointer border border-border transition-colors hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                          }
+                          tabIndex={0}
                           data-active={isActiveHover ? "true" : "false"}
                           onPointerEnter={(pointerEvent) => {
                             if (pointerEvent.pointerType !== "mouse") {
@@ -269,17 +179,25 @@ export default function EventsClient() {
                               setHoveredCardIndex(null);
                             }
                           }}
-                          onClick={(clickEvent) => openModal(eventIndex, realIndex, clickEvent.currentTarget)}
+                          onClick={() => openModal(eventIndex, realIndex)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              openModal(eventIndex, realIndex);
+                            }
+                          }}
                         >
-                          <div className={styles.imageFrame}>
+                          <div className="w-full h-full relative">
                             <CldImage
                               src={src}
                               config={cloudinaryConfig}
                               alt={event.title}
                               fill
                               sizes="(max-width: 640px) 20rem, (max-width: 1024px) 24rem, 20rem"
-                              className={styles.thumbnail}
+                              className="object-cover"
                               loading="lazy"
+                              quality="auto"
+                              format="auto"
                             />
                           </div>
                         </article>
@@ -295,74 +213,83 @@ export default function EventsClient() {
 
       {modalState && activeModalEvent && (
         <div
-          className={`${styles.modalShell} ${modalState.status === "closing" ? styles.modalShellClosing : ""}`}
+          className="fixed inset-0 z-[9999] w-screen h-screen flex items-center justify-center bg-black/95 backdrop-blur-sm"
           role="presentation"
           onClick={handleClose}
         >
-          <div className={`${styles.modalBackdrop} ${modalState.status === "opening" || modalState.status === "open" ? styles.modalBackdropOpen : ""}`} />
-
           <div
-            className={`${styles.modalStage} ${modalState.status === "opening" ? styles.modalStageOpening : ""} ${modalState.status === "open" ? styles.modalStageOpen : ""} ${modalState.status === "closing" ? styles.modalStageClosing : ""}`}
+            className="w-full max-w-5xl"
             role="dialog"
             aria-modal="true"
             aria-label={`${activeModalEvent.title} image viewer`}
             onClick={(event) => event.stopPropagation()}
-            style={{
-              top: modalState.rect.top,
-              left: modalState.rect.left,
-              width: modalState.rect.width,
-              height: modalState.rect.height,
-            }}
           >
-            <button type="button" className={styles.closeButton} onClick={handleClose} aria-label="Close modal">
-              <span>×</span>
-            </button>
+            <div className="relative mx-auto flex h-[calc(100vh-10rem)] max-h-[720px] min-h-[300px] w-full items-center justify-center">
+              
+              {/* THE LOADING SPINNER */}
+              {isImageLoading && (
+                <div className="absolute inset-0 z-0 flex items-center justify-center">
+                  <div className="h-12 w-12 animate-spin rounded-full border-4 border-white/20 border-t-white"></div>
+                </div>
+              )}
 
-            <button type="button" className={`${styles.navButton} ${styles.navButtonLeft}`} onClick={goToPreviousCard} aria-label="Previous image">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
+              {/* THE MAIN IMAGE */}
+              <CldImage
+                src={activeModalEvent.images[activeCardIndex]}
+                config={cloudinaryConfig}
+                alt={activeModalEvent.title}
+                fill
+                sizes="100vw"
+                className={`object-contain transition-opacity duration-300 ${isImageLoading ? 'opacity-0' : 'opacity-100 z-10'}`}
+                priority
+                quality="auto"
+                format="auto"
+                onLoad={() => setIsImageLoading(false)} // Hides the spinner when the image is fully downloaded!
+              />
 
-            <button type="button" className={`${styles.navButton} ${styles.navButtonRight}`} onClick={goToNextCard} aria-label="Next image">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 6l6 6-6 6" />
-              </svg>
-            </button>
+              {/* INVISIBLE PRELOADER for next and previous images */}
+              {imagesCount > 1 && (
+                <div className="pointer-events-none absolute -z-10 opacity-0 overflow-hidden w-0 h-0">
+                  <CldImage
+                    src={activeModalEvent.images[preloadNextIndex]}
+                    config={cloudinaryConfig}
+                    alt="Preload Next"
+                    fill
+                    sizes="100vw"
+                    quality="auto"
+                    format="auto"
+                  />
+                  <CldImage
+                    src={activeModalEvent.images[preloadPrevIndex]}
+                    config={cloudinaryConfig}
+                    alt="Preload Previous"
+                    fill
+                    sizes="100vw"
+                    quality="auto"
+                    format="auto"
+                  />
+                </div>
+              )}
 
-            <div
-              className={styles.modalContent}
-            >
-                <div className={styles.modalImageWrap}>
-                  {activeModalEvent.images.map((src, index) => {
-                    if (index !== activeCardIndex) {
-                      return null;
-                    }
+              <button type="button" className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-black/40 text-2xl leading-none text-white transition hover:bg-black/70 focus-visible:ring-2 focus-visible:ring-white" onClick={handleClose} aria-label="Close modal">
+                <span>×</span>
+              </button>
 
-                    return (
-                      <div key={`${activeModalEvent.id}-${src}`} className={styles.modalImageFrame}>
-                      <CldImage
-                          src={src}
-                          config={cloudinaryConfig}
-                          alt={activeModalEvent.title}
-                          fill
-                          sizes="100vw"
-                          className={styles.modalImage}
-                          priority
-                      />
-                    </div>
-                    );
-                  })}
-              </div>
+              <button type="button" className="absolute left-4 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/40 text-white transition hover:bg-black/70 focus-visible:ring-2 focus-visible:ring-white" onClick={goToPreviousCard} aria-label="Previous image">
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
 
-              <div className={styles.modalCaption}>
-                <p className={styles.modalEyebrow}>{activeModalEvent.title}</p>
-                <p className="mt-3 text-sm leading-7 text-text-muted sm:text-base">{activeModalEvent.description}</p>
-              </div>
+              <button type="button" className="absolute right-4 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/40 text-white transition hover:bg-black/70 focus-visible:ring-2 focus-visible:ring-white" onClick={goToNextCard} aria-label="Next image">
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
       )}
-    </main>
+    </div>
   );
 }

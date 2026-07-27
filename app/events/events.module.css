@@ -6,17 +6,7 @@
   position: relative;
 }
 
-.marquee {
-  display: flex;
-  width: max-content;
-  gap: 1rem;
-  will-change: transform;
-  animation: marquee var(--scroll-duration, 34s) linear infinite;
-}
-
-.eventRow[data-hovering="true"] .marquee {
-  animation-play-state: paused;
-}
+/* marquee removed in favor of native scroll snapping */
 
 .trackWindow {
   position: relative;
@@ -40,25 +30,9 @@
   transform: translateY(0) scale(1);
   transition:
     transform 260ms ease,
-    filter 260ms ease,
     opacity 260ms ease,
     box-shadow 260ms ease;
-  filter: none;
   opacity: 1;
-}
-
-.eventRow[data-hovering="true"] .card {
-  filter: blur(2.5px) saturate(0.72);
-  opacity: 0.48;
-  transform: scale(0.985);
-}
-
-.eventRow[data-hovering="true"] .card[data-active="true"] {
-  filter: none;
-  opacity: 1;
-  transform: scale(1.05) translateY(-6px);
-  box-shadow: 0 24px 48px rgba(17, 24, 39, 0.16);
-  z-index: 2;
 }
 
 .imageFrame {

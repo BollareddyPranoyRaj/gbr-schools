@@ -49,39 +49,39 @@ export default async function NewsArticlePage({ params }: { params: { id: string
   }
 
   return (
-    <main className="min-h-screen bg-background pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-      <Link href="/news" className="inline-flex items-center text-sm font-medium text-text-muted hover:text-primary transition-colors mb-8">
-        <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-        Back to News
+    <div className="min-h-screen bg-background pt-16 sm:pt-20 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+      <Link href="/news" className="inline-flex items-center text-sm font-medium text-text-muted hover:text-primary transition-colors mb-8 min-h-[44px]">
+        <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+        Back to Updates
       </Link>
 
-      <article className="bg-[var(--color-surface)] border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-        <div className="h-64 sm:h-96 bg-gray-100 flex items-center justify-center border-b border-gray-200">
-          <span className="text-gray-400 font-medium">Article Image Placeholder</span>
+      <article>
+        <div className="h-48 sm:h-72 bg-surface-alt flex items-center justify-center border border-border rounded-[var(--radius-lg)]" aria-hidden="true">
+          <span className="text-text-muted text-sm font-medium">Article Image Placeholder</span>
         </div>
         
-        <div className="p-8 md:p-12">
+        <div className="pt-8">
           <div className="flex flex-wrap items-center gap-4 mb-6">
-            <span className="text-xs font-semibold bg-primary/10 text-primary px-3 py-1 rounded-md">
+            <span className="text-xs font-semibold bg-primary/10 text-primary px-3 py-1 rounded-[var(--radius-sm)]">
               {article.category}
             </span>
-            <span className="text-sm text-text-muted font-medium">{article.date}</span>
-            <span className="text-sm text-text-muted font-medium border-l border-gray-300 pl-4">By {article.author}</span>
+            <span className="text-sm text-text-muted">{article.date}</span>
+            <span className="text-sm text-text-muted border-l border-border pl-4">By {article.author}</span>
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-bold text-primary mb-8 leading-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-primary mb-8 leading-tight">
             {article.title}
           </h1>
 
-          <div className="prose prose-blue max-w-none text-text-muted">
+          <div className="prose-width text-text-muted">
             {article.content.split('\n\n').map((paragraph, index) => (
-              <p key={index} className="mb-6 leading-relaxed">
+              <p key={index} className="mb-5 text-sm leading-relaxed">
                 {paragraph}
               </p>
             ))}
           </div>
         </div>
       </article>
-    </main>
+    </div>
   );
 }

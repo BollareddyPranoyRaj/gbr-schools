@@ -4,9 +4,9 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://gbrschools.edu.in'; // Replace with your actual domain
+  const baseUrl = "https://gbr-schools.vercel.app"; // Replace with your actual domain
 
-  // Static routes
+  // Cleaned up array: removed merged/dead routes to prevent SEO penalties
   const routes = [
     '',
     '/about',
@@ -14,25 +14,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/standard-campus',
     '/admissions',
     '/academics',
-    '/parents',
-    '/rules',
-    '/calendar',
-    '/facilities',
-    '/student-life',
-    '/leadership',
-    '/events',
-    '/news',
     '/notices',
+    '/parents',
+    '/events',
+    '/contact',
+    '/leadership',
+    '/facilities',
     '/careers',
     '/alumni',
-    '/contact',
-    '/apply',
-    '/faq',
     '/privacy',
     '/terms',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date(),
+    lastModified: new Date("2026-07-26"),
     changeFrequency: 'monthly' as const,
     priority: route === '' ? 1 : 0.8,
   }));

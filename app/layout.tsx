@@ -1,25 +1,29 @@
 // app/layout.tsx
 
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import NoticeBanner from "./components/NoticeBanner";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import BackButton from "./components/BackButton";
 
 export const metadata: Metadata = {
-  title: "GBR Group of Schools",
-  description: "Nurturing Minds from Nursery to 10th Grade",
+  title: {
+    default: "GBR Group of Schools | Top Ranked School in Anaparthi",
+    template: "%s | GBR Schools"
+  },
+  description: "Recognized as the number one educational institution in Anaparthi. GBR Group of Schools has a 40-year legacy of excellence, nurturing minds from Nursery to 10th Grade.",
+  keywords: [
+    "GBR Schools", 
+    "GBR Group of Schools", 
+    "Top school in Anaparthi", 
+    "Number one school in AP", 
+    "Best English medium school near me",
+    "GBR educational institution"
+  ],
+  verification: {
+    google: "3uvJs0kAEcjt_h0-m7TAWvIlHKbkFC1zldwLTDXSiic",
+  },
 };
 
 export default function RootLayout({
@@ -29,20 +33,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-text-main flex flex-col min-h-screen`}
-      >
-        {/* Placed NoticeBanner above Navbar */}
-        <div className="fixed top-0 w-full z-[60]">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased flex flex-col min-h-dvh">
+        {/* HEADER: Notice Banner and Navbar */}
+        <header className="sticky top-0 z-[60] flex flex-col w-full">
           <NoticeBanner />
-        </div>
-        {/* Adjusted Navbar to sit below the banner spacing if needed, but since banner can be closed, Next.js handles this best with a sticky header wrapper if you want dynamic spacing. For now, we wrap them safely. */}
-        <div className="mt-8"> 
           <Navbar />
-        </div>
-        <div className="flex-grow">
+        </header>
+
+        {/* FLOATING BACK BUTTON */}
+        <BackButton />
+
+        {/* MAIN PAGE CONTENT */}
+        <main className="flex-grow">
           {children}
-        </div>
+        </main>
+        
+        {/* FOOTER */}
         <Footer />
       </body>
     </html>

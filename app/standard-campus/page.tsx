@@ -1,66 +1,245 @@
-export default function StandardCampusPage() {
-  const strengths = [
-    {
-      title: "Open, Ventilated Campus",
-      description: "Spacious classrooms and open corridors support a bright, energetic school day.",
-      icon: "▦",
-    },
-    {
-      title: "Large Playgrounds",
-      description: "Outdoor spaces for cricket, volleyball, football, athletics, and daily fitness.",
-      icon: "◎",
-    },
-    {
-      title: "Strong Academic Routine",
-      description: "A disciplined environment focused on steady learning, punctuality, and results.",
-      icon: "✓",
-    },
-  ];
+import Image from "next/image";
+import Link from "next/link";
+import type { Metadata } from "next";
 
-  const highlights = [
-    "Nursery to 10th grade learning pathway",
-    "Balanced academics, activities, and sports",
-    "Well-structured student supervision",
-    "Shared GBR values, curriculum, and parent communication",
+export const metadata: Metadata = {
+  title: "E.M.S. Campus | GBR Group of Schools",
+  description: "Rooted in a 40-year legacy, the GBR E.M.S. Campus offers expansive grounds, natural ventilation, and a vibrant, culturally rich student life.",
+};
+
+export default function StandardCampusPage() {
+  const specialFeatures = [
+    "1:30 teacher-student ratio",
+    "Exclusive campus for Nursery to U.K.G. Kids",
+    "Abacus training for primary",
+    "Regular Parent-Teacher Meetings",
+    "VI-IX IIT Foundation Programme along with SSC",
+    "CCTV Monitoring",
+    "Hand writing classes",
+    "Every day Games period",
+    "Weekend activities",
+    "Special focus on law of English and many more...",
+    "Student App Management",
+    "Special focus on academically low Performers by adopting Students.",
   ];
 
   return (
-    <main className="min-h-screen bg-background pt-24 pb-12 px-4 sm:px-6 lg:px-8">
-      <section className="mx-auto max-w-7xl">
-        <div className="mb-14 text-center">
-          <h1 className="mb-4 text-4xl font-bold text-primary">E.M.S Campus</h1>
-          <p className="mx-auto max-w-2xl text-text-muted">
-            A spacious, naturally ventilated campus built for academic discipline, outdoor activity, and everyday student confidence.
+    <div className="min-h-screen bg-background">
+      
+      {/* 1. HERITAGE & SCALE HERO SECTION */}
+      <section className="relative w-full h-[70vh] min-h-[500px] flex items-center justify-center text-center">
+        {/* Background Image */}
+        <Image
+          src="/ems-campus-hero.jpg" 
+          alt="GBR E.M.S. Campus Grounds"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        {/* Clean gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 flex flex-col items-center">
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent bg-black/40 border border-accent/20 px-4 py-1.5 rounded-full backdrop-blur-sm">
+              The Heart of GBR Schools
+            </span>
+            <span className="text-xs font-bold uppercase tracking-[0.1em] text-white bg-primary/80 border border-primary/20 px-4 py-1.5 rounded-full backdrop-blur-sm">
+              Class: NUR to X (NON AC)
+            </span>
+          </div>
+          
+          <h1 className="text-4xl sm:text-6xl font-bold text-white leading-tight mb-6 [text-wrap:balance]">
+            Rooted in Tradition. <br /> Focused on the Future.
+          </h1>
+          <p className="text-lg text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Spacious, vibrant, and rich in history. The E.M.S. Campus provides a holistic, active environment where academic excellence meets traditional values.
           </p>
         </div>
+      </section>
 
-        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="rounded-lg border border-gray-200 bg-[var(--color-surface)] p-8 shadow-sm">
-            <h2 className="mb-6 text-2xl font-semibold text-primary">Campus Strengths</h2>
-            <div className="grid gap-6 md:grid-cols-3">
-              {strengths.map((item) => (
-                <div key={item.title} className="rounded-lg border border-gray-200 bg-white p-5">
-                  <div className="mb-4 text-3xl font-bold text-accent">{item.icon}</div>
-                  <h3 className="mb-2 font-semibold text-primary">{item.title}</h3>
-                  <p className="text-sm leading-relaxed text-text-muted">{item.description}</p>
-                </div>
-              ))}
+      {/* 2. 40-YEAR LEGACY BANNER */}
+      <section className="bg-white py-16 border-b border-border relative z-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-gray-200">
+            <div className="py-4 md:py-0">
+              <h3 className="text-5xl font-bold text-primary mb-2 tabular-nums">40+</h3>
+              <p className="text-sm font-semibold text-text-muted uppercase tracking-widest">Years of Excellence</p>
+            </div>
+            <div className="py-4 md:py-0">
+              <h3 className="text-5xl font-bold text-primary mb-2 tabular-nums">10k+</h3>
+              <p className="text-sm font-semibold text-text-muted uppercase tracking-widest">Alumni Worldwide</p>
+            </div>
+            <div className="py-4 md:py-0">
+              <h3 className="text-5xl font-bold text-primary mb-2 tabular-nums">100%</h3>
+              <p className="text-sm font-semibold text-text-muted uppercase tracking-widest">Dedication to Growth</p>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="rounded-lg border border-primary/20 bg-primary p-8 text-white shadow-sm">
-            <h2 className="mb-6 text-2xl font-semibold">Why Families Choose E.M.S</h2>
-            <ul className="space-y-4">
-              {highlights.map((highlight) => (
-                <li key={highlight} className="flex gap-3 text-sm leading-relaxed">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-accent" />
-                  <span>{highlight}</span>
-                </li>
-              ))}
+      {/* 3. CURRICULUM SECTION (NEW) */}
+      <section className="py-24 bg-surface-alt border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-accent mb-3">Curriculum Focus</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-6 [text-wrap:balance]">
+            Igniting Unique Talents & Skills
+          </h2>
+          <p className="text-lg text-text-muted leading-relaxed max-w-4xl mx-auto mb-16">
+            Specially designed to focus on igniting the unique talents and skills of the students at very early stages & instill in them a habit of enhancement in "LSRW" Skills which develop from a young stage.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Pre-KG */}
+            <div className="bg-white rounded-xl p-8 border border-border shadow-sm flex flex-col items-center">
+              <div className="h-16 w-16 rounded-full bg-accent/20 text-accent flex items-center justify-center font-bold text-xl mb-6">
+                Pre-KG
+              </div>
+              <h3 className="text-xl font-bold text-primary mb-3">Early Years</h3>
+              <p className="text-text-muted font-medium text-center">
+                Fun Based Integrated Curriculum
+              </p>
+            </div>
+
+            {/* I to V */}
+            <div className="bg-white rounded-xl p-8 border border-border shadow-sm flex flex-col items-center">
+              <div className="h-16 w-16 rounded-full bg-accent/20 text-accent flex items-center justify-center font-bold text-xl mb-6">
+                I - V
+              </div>
+              <h3 className="text-xl font-bold text-primary mb-3">Primary</h3>
+              <p className="text-text-muted font-medium text-center">
+                Comprehensive Evaluation Based Integrated Curriculum
+              </p>
+            </div>
+
+            {/* VI to X */}
+            <div className="bg-white rounded-xl p-8 border border-border shadow-sm flex flex-col items-center relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold uppercase px-3 py-1 rounded-bl-lg">
+                SSC Based
+              </div>
+              <div className="h-16 w-16 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xl mb-6">
+                VI - X
+              </div>
+              <h3 className="text-xl font-bold text-primary mb-3">High School</h3>
+              <p className="text-text-muted font-medium text-center mb-3">
+                SSC Based Integrated Curriculum
+              </p>
+              <p className="text-sm text-text-main font-semibold bg-surface px-4 py-2 rounded-full w-full">
+                IIT Foundation Programme
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. THE NATURAL ENVIRONMENT */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-24 border-b border-border">
+        
+        {/* Block 1: Text Left, Image Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="order-2 lg:order-1 lg:pr-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-6 [text-wrap:balance]">
+              Naturally Bright & Spacious
+            </h2>
+            <p className="text-lg text-text-muted leading-relaxed mb-6">
+              Our standard campus classrooms are architecturally designed to maximize cross-ventilation and natural sunlight. This open, airy environment connects students to the natural world and promotes an energetic, alert atmosphere for learning.
+            </p>
+            <ul className="space-y-3 text-text-muted">
+              <li className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-accent" /> CCTV Monitoring for safety
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-accent" /> Exclusive campus for Nursery to U.K.G. Kids
+              </li>
+            </ul>
+          </div>
+          <div className="order-1 lg:order-2 relative aspect-[4/3] rounded-lg overflow-hidden border border-border">
+            <Image
+              src="/ems-classroom.jpg"
+              alt="Airy naturally ventilated classroom"
+              fill
+              className="object-cover transition-opacity duration-700"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
+        </div>
+
+        {/* Block 2: Image Left, Text Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="relative aspect-[4/3] rounded-lg overflow-hidden border border-border">
+            <Image
+              src="/ems-playground.jpg"
+              alt="Massive outdoor sports playground"
+              fill
+              className="object-cover transition-opacity duration-700"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
+          <div className="lg:pl-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-6 [text-wrap:balance]">
+              Room to Run, Play, and Grow
+            </h2>
+            <p className="text-lg text-text-muted leading-relaxed mb-6">
+              Physical education and active play are foundational to the E.M.S. experience. We boast some of the largest outdoor facilities in the region, providing students with the sheer space needed for massive sports meets, daily athletics, and large-scale morning assemblies.
+            </p>
+            <ul className="space-y-3 text-text-muted">
+              <li className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-accent" /> Every day Games period
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-accent" /> Weekend activities & skill-building
+              </li>
             </ul>
           </div>
         </div>
       </section>
-    </main>
+
+      {/* 5. SPECIAL FEATURES LIST (NEW) */}
+      <section className="py-24 bg-surface">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">Special Features</h2>
+            <p className="text-lg text-text-muted">
+              Discover the dedicated programs and facilities that make the E.M. School experience unique.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
+            {specialFeatures.map((feature, idx) => (
+              <div key={idx} className="flex items-start gap-4 p-4 bg-white rounded-lg border border-border shadow-sm">
+                <div className="shrink-0 mt-1">
+                  <svg className="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <p className="text-text-main font-medium text-sm leading-relaxed">{feature}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. CALL TO ACTION */}
+      <section className="py-24 bg-white border-t border-border">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl sm:text-5xl font-bold text-primary mb-6 [text-wrap:balance]">
+            Become Part of the Legacy
+          </h2>
+          <p className="text-xl text-text-muted mb-10">
+            Admissions for the upcoming academic year at the GBR E.M. School are currently open for Classes NUR to X.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/admissions"
+              className="bg-accent text-white font-bold text-lg px-8 py-4 rounded-[var(--radius-sm)] hover:bg-accent/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              Start the Admission Process
+            </Link>
+          </div>
+        </div>
+      </section>
+
+    </div>
   );
 }

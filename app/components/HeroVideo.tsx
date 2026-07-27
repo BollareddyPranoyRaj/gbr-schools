@@ -20,15 +20,28 @@ export default function HeroVideo() {
   }, []);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-lg border border-primary/10 bg-primary px-6 py-10 shadow-sm">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:28px_28px]" />
-      <div className="absolute -right-24 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-accent/25 blur-3xl" />
+    <div className="relative w-full h-full overflow-hidden bg-primary">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 h-full w-full object-cover opacity-60 pointer-events-none"
+      >
+        <source src="https://res.cloudinary.com/demo/video/upload/v1689798418/samples/sea-turtle.mp4" type="video/mp4" />
+      </video>
 
-      <div className="relative z-10 max-w-3xl">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-accent">
+      {/* Gradient overlay to ensure text readability while matching brand color */}
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-primary/10 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-primary/20" />
+
+      {/* Content overlay */}
+      <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-12 z-10">
+        <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent drop-shadow-sm">
           GBR Learning Focus
         </p>
-        <h2 className="text-3xl font-bold text-white transition-all duration-500 ease-in-out md:text-5xl">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white transition-opacity duration-500 ease-in-out leading-tight max-w-xl text-balance">
           {HERO_TEXTS[index]}
         </h2>
       </div>

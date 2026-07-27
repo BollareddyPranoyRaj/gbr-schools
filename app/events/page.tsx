@@ -1,16 +1,21 @@
+// app/events/page.tsx
 import type { Metadata } from "next";
-import EventsClient from "./EventsClient";
+import { v2 as cloudinary } from "cloudinary";
+import EventsClient, { type SchoolEvent } from "./EventsClient";
+
+type CloudinaryResource = {
+  public_id: string;
+  folder?: string;
+  asset_folder?: string;
+};
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Events | GBR Group of Schools",
   description: "Explore GBR Schools events through animated, interactive event carousels.",
 };
 
-<<<<<<< Updated upstream
-export default function EventsPage() {
-  return <EventsClient />;
-}
-=======
 // Securely configure Cloudinary on the server side
 cloudinary.config({
   cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
@@ -118,10 +123,7 @@ const baseEvents = [
     description: "Honoring our nation's heritage with patriotic performances, flag hoisting, and a spirit of unity.",
     duration: 35,
     folder: "school-website/events/Republicday",
-    images: [
-      "school-website/events/Republicday/Republicday1",
-      "school-website/events/Republicday/Republicday2"
-    ],
+    images: ["school-website/events/Republicday/Republicday1", "school-website/events/Republicday/Republicday2"],
   },
 ];
 
@@ -162,4 +164,3 @@ export default async function EventsPage() {
   // Pass the fully populated data directly into your beautiful client component
   return <EventsClient eventsData={populatedEvents} />;
 }
->>>>>>> Stashed changes
