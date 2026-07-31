@@ -1,7 +1,7 @@
 // app/components/Navbar.tsx
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -77,6 +77,35 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
     setOpenMobileDropdown(null);
   }
+
+  // Handle scrolling to hash links on page load or pathname changes
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const hash = window.location.hash.substring(1);
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    }
+  }, [pathname]);
+
+  const handleHashClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.includes('#')) {
+      const [path, hash] = href.split('#');
+      // If already on the same page, intercept the click and scroll smoothly
+      if (pathname === path) {
+        e.preventDefault();
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+        setActiveDropdown(null);
+        setIsMobileMenuOpen(false);
+      }
+    }
+  };
 
   const toggleMobileDropdown = (label: string) => {
     setOpenMobileDropdown(openMobileDropdown === label ? null : label);
@@ -162,7 +191,10 @@ export default function Navbar() {
                           key={link.href}
                           href={link.href}
                           className="block px-4 py-2.5 text-[13px] font-medium text-text-muted hover:text-primary hover:bg-surface transition-colors"
-                          onClick={() => setActiveDropdown(null)}
+                          onClick={(e) => {
+                            setActiveDropdown(null);
+                            handleHashClick(e, link.href);
+                          }}
                         >
                           {link.label}
                         </Link>
@@ -250,7 +282,10 @@ export default function Navbar() {
                       <Link 
                         key={link.href} 
                         href={link.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
+                        onClick={(e) => {
+                          setIsMobileMenuOpen(false);
+                          handleHashClick(e, link.href);
+                        }}
                         className="block text-text-muted hover:text-primary py-2.5 text-sm font-semibold transition-colors"
                       >
                         {link.label}
