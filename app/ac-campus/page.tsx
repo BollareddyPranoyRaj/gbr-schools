@@ -75,7 +75,7 @@ export default function ACCampusPage() {
             CBSE Based Integrated Pattern
           </h2>
           <p className="text-lg text-text-muted leading-relaxed max-w-4xl mx-auto mb-16">
-            Uniquely designed to foster students' enquiry skills, intra-disciplinary connections, communicative abilities, and self-learning skills—everything required for the 21st-century globalized world of work and life.
+            Uniquely designed to foster students&apos; enquiry skills, intra-disciplinary connections, communicative abilities, and self-learning skills—everything required for the 21st-century globalized world of work and life.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
