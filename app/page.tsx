@@ -74,7 +74,7 @@ function HeroVideo() {
         <img
           src={VIDEO_POSTER_URL}
           alt="GBR Schools hero preview"
-          className="absolute inset-0 h-full w-full object-cover object-[20%_center]"
+          className="absolute inset-0 h-full w-full object-cover"
         />
         <button
           onClick={handleStartPlay}
@@ -99,7 +99,7 @@ function HeroVideo() {
         playsInline
         onEnded={handleEnded}
         onClick={handleTogglePlay}
-        className="absolute inset-0 h-full w-full object-cover object-[20%_center] cursor-pointer"
+        className="absolute inset-0 h-full w-full object-cover cursor-pointer"
       >
         <source src={VIDEO_SRC_URL} type="video/mp4" />
       </video>
@@ -129,7 +129,7 @@ export default function HomePage() {
       <section className="w-full flex flex-col lg:grid lg:grid-cols-12 min-h-0">
         
         {/* TEXT SIDE */}
-        <div className="w-full lg:col-span-5 flex flex-col justify-center items-start text-left px-6 sm:px-12 lg:px-20 py-16 lg:py-24 xl:py-32 order-2 lg:order-1 border-b lg:border-b-0 border-border">
+        <div className="w-full lg:col-span-5 flex flex-col justify-center items-start text-left px-6 sm:px-12 lg:px-16 py-12 lg:py-16 xl:py-20 order-2 lg:order-1 border-b lg:border-b-0 border-border">
           
           <h1 className="font-serif-heading text-4xl sm:text-5xl lg:text-[3.6rem] font-bold text-primary mb-4">
             Welcome to <span className="text-accent">GBR Schools</span>
@@ -166,10 +166,8 @@ export default function HomePage() {
         </div>
 
         {/* VIDEO SIDE */}
-        <div className="order-1 lg:order-2 w-full lg:col-span-7 flex items-center justify-center p-6 sm:p-12 lg:p-16 xl:p-20 border-l-0 lg:border-l border-border bg-surface-alt/25 lg:bg-transparent">
-          <div className="w-full max-w-4xl aspect-video rounded-2xl border border-border shadow-lg overflow-hidden relative bg-surface">
-            <HeroVideo />
-          </div>
+        <div className="order-1 lg:order-2 w-full lg:col-span-7 h-[40vh] sm:h-[50vh] lg:h-auto border-l-0 lg:border-l border-border relative overflow-hidden">
+          <HeroVideo />
         </div>
       </section>
 
