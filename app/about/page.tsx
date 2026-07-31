@@ -32,7 +32,7 @@ export default function AboutPage() {
 
           {/* About Text */}
           <div className="w-full lg:w-1/2 space-y-6">
-            <h2 className="text-3xl font-bold text-primary [text-wrap:balance]">Our Legacy</h2>
+            <h2 id="legacy" className="text-3xl font-bold text-primary [text-wrap:balance]">Our Legacy</h2>
             <div className="space-y-4 text-text-muted leading-relaxed">
               <p>
                 GBR Educational Institutions spread out over 17 acres, most far away from the town yet within the town limits, provides fresh air and ample opportunities for the holistic development of the children who will be accomplished individuals in many ways; happy and confident of leading their lot to a bright future.
