@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import styles from "./history.module.css";
 
 const foundersData = [
@@ -73,12 +74,14 @@ function ImageSlideshow({ images, altText }: { images: string[]; altText: string
         const fastLoadingSrc = src.replace('/upload/', '/upload/q_auto,f_auto,w_800/');
         
         return (
-          <img
+          <Image
             key={`${src}-${index}`}
             src={fastLoadingSrc}
             alt={`${altText} photo ${index + 1}`}
-            loading={index === 0 ? "eager" : "lazy"} 
+            fill
+            priority={index === 0}
             className={`${styles.slideImage} ${index === currentIndex ? styles.slideActive : ""}`}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         );
       })}
