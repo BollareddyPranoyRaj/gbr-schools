@@ -8,6 +8,7 @@ import Image from 'next/image';
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/history", label: "History" }, // <-- Added right here!
   { href: "/ac-campus", label: "A.C Campus" },
   { href: "/standard-campus", label: "E.M.S Campus" },
   { href: "/academics", label: "Academics" },
