@@ -1,26 +1,48 @@
+// app/transport/page.tsx
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function TransportPage() {
   return (
     <div className="flex flex-col bg-background min-h-screen">
       
       {/* Hero Section */}
-      <section className="w-full bg-surface border-b border-border pt-16 pb-12 sm:pt-24 sm:pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 border border-primary/10 text-primary font-semibold rounded-full text-sm sm:text-base mb-6 shadow-sm">
-            <svg className="w-5 h-5 text-accent shrink-0" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-            </svg>
-            Serving Anaparthy & Surrounding Regions
+      <section className="w-full bg-surface border-b border-border pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+          
+          {/* Text Content */}
+          <div className="w-full lg:w-1/2 space-y-6 text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 border border-primary/10 text-primary font-semibold rounded-full text-sm sm:text-base shadow-sm">
+              <svg className="w-5 h-5 text-accent shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              Serving Anaparthy & Surrounding Regions
+            </div>
+            <h1 className="font-serif-heading text-4xl sm:text-5xl font-bold text-primary leading-tight">
+              Safe & Reliable <span className="text-accent">Transport</span>
+            </h1>
+            <p className="text-base sm:text-lg text-text-muted leading-relaxed">
+              With a massive 17-acre district-leading campus, GBR Group of Schools operates a comprehensive and secure fleet of buses to ensure your child’s daily commute is comfortable, safe, and strictly monitored.
+            </p>
           </div>
-          <h1 className="font-serif-heading text-4xl sm:text-5xl font-bold text-primary mb-6">
-            Safe & Reliable <span className="text-accent">Transport</span>
-          </h1>
-          <p className="text-base sm:text-lg text-text-muted max-w-2xl mx-auto leading-relaxed">
-            With a massive 17-acre district-leading campus, GBR Group of Schools operates a comprehensive and secure fleet of buses to ensure your child’s daily commute is comfortable, safe, and strictly monitored.
-          </p>
+
+          {/* Transport Image */}
+          <div className="w-full lg:w-1/2">
+            <div className="w-full aspect-[16/10] rounded-xl border border-border shadow-md overflow-hidden relative bg-surface-alt">
+              {/* High-quality school bus image. Swap the src with your actual photo URL when ready */}
+              <Image 
+                src="https://images.unsplash.com/photo-1557223562-6c77ef16210f?auto=format&fit=crop&w=1200&q=80" 
+                alt="GBR School Transport Bus"
+                fill
+                priority
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+          </div>
+
         </div>
       </section>
 
