@@ -15,6 +15,7 @@ const navLinks = [
   { href: "/events", label: "Events" },
   { href: "/alumni", label: "Alumni" },
   { href: "/parents", label: "Parent Portal" },
+  { href: "/contact", label: "Contact Us" },
 ];
 
 export default function Navbar() {
