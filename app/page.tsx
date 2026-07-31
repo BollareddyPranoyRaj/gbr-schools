@@ -166,8 +166,10 @@ export default function HomePage() {
         </div>
 
         {/* VIDEO SIDE */}
-        <div className="order-1 lg:order-2 w-full lg:col-span-7 h-[45vh] lg:h-auto border-l-0 lg:border-l border-border relative">
-          <HeroVideo />
+        <div className="order-1 lg:order-2 w-full lg:col-span-7 flex items-center justify-center p-6 sm:p-12 lg:p-16 xl:p-20 border-l-0 lg:border-l border-border bg-surface-alt/25 lg:bg-transparent">
+          <div className="w-full max-w-4xl aspect-video rounded-2xl border border-border shadow-lg overflow-hidden relative bg-surface">
+            <HeroVideo />
+          </div>
         </div>
       </section>
 
