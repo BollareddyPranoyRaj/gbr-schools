@@ -32,7 +32,7 @@ const navItems: NavItem[] = [
     label: 'About Us',
     links: [
       { href: '/about', label: 'About GBR' },
-      { href: '/about#legacy', label: 'Our History' }
+      { href: '/history', label: 'Our History' }
     ]
   },
   {
