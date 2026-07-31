@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 export default function AdmissionsPage() {
   // State to track which accordion section is currently open
@@ -187,6 +188,22 @@ export default function AdmissionsPage() {
             </ul>
           </div>
         </AccordionSection>
+
+        {/* Contact Us redirect CTA section */}
+        <div className="pt-12 text-center">
+          <div className="bg-surface border border-border p-8 rounded-lg max-w-2xl mx-auto shadow-sm">
+            <h3 className="text-xl font-bold text-primary mb-3">Have More Questions?</h3>
+            <p className="text-text-muted text-sm mb-6 leading-relaxed">
+              If you need detailed class availability, wish to schedule a campus tour, or want to speak with our counselors, feel free to contact us.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-[var(--radius-sm)] hover:bg-primary/95 transition-all text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              Contact Us & Request Callback
+            </Link>
+          </div>
+        </div>
 
       </div>
     </div>
