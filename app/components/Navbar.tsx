@@ -49,6 +49,7 @@ const navItems: NavItem[] = [
     label: 'Admissions',
     links: [
       { href: '/admissions', label: 'Admissions & Fees' },
+      { href: '/transport', label: 'School Transport' },
       { href: '/parents', label: 'Parent Portal' }
     ]
   },
