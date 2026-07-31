@@ -9,7 +9,12 @@ const menuSections = [
     description: "Learn about our legacy and vision.",
     href: "/about",
   },
-{ 
+  {
+    title: "History & Founders",
+    description: "Meet the founders and discover the heritage of GBR Group of Schools.",
+    href: "/history", // <-- Added right here!
+  },
+  { 
     title: "A.C. Campus", 
     description: "Explore the modern facilities and vibrant student life at our A.C. Campus.",
     href: "/ac-campus", 
@@ -34,7 +39,6 @@ const menuSections = [
     description: "View fee policy, admission procedures, and common parent questions.",
     href: "/admissions",
   },
-
   {
     title: "Events",
     description: "Browse campus celebrations and animated event highlights.",
