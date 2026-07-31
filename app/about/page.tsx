@@ -58,8 +58,8 @@ export default function AboutPage() {
           </div>
           <div className="hidden sm:block w-px h-16 bg-border"></div>
           <div className="text-center">
-            <p className="text-4xl md:text-5xl font-bold text-accent mb-2 tabular-nums">2000+</p>
-            <p className="text-primary font-semibold text-sm uppercase tracking-wider">Students Enrolled</p>
+            <p className="text-4xl md:text-5xl font-bold text-accent mb-2 tabular-nums">17,000+</p>
+            <p className="text-primary font-semibold text-sm uppercase tracking-wider">Students Studied Since 1991</p>
           </div>
           <div className="hidden sm:block w-px h-16 bg-border"></div>
           <div className="text-center">
