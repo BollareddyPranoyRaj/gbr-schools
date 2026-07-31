@@ -1,8 +1,44 @@
 // app/transport/page.tsx
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+
+const transportImages = [
+  "https://images.unsplash.com/photo-1557223562-6c77ef16210f?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1494516192674-b82b5f1e61db?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80"
+];
+
+function TransportSlideshow() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % transportImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="w-full aspect-[16/10] rounded-xl border border-border shadow-md overflow-hidden relative bg-surface-alt">
+      {transportImages.map((src, index) => (
+        <Image 
+          key={src}
+          src={src} 
+          alt={`GBR School Transport Bus ${index + 1}`}
+          fill
+          priority={index === 0}
+          className={`object-cover absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+          }`}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+        />
+      ))}
+    </div>
+  );
+}
 
 export default function TransportPage() {
   return (
@@ -28,19 +64,9 @@ export default function TransportPage() {
             </p>
           </div>
 
-          {/* Transport Image */}
+          {/* Transport Slideshow */}
           <div className="w-full lg:w-1/2">
-            <div className="w-full aspect-[16/10] rounded-xl border border-border shadow-md overflow-hidden relative bg-surface-alt">
-              {/* High-quality school bus image. Swap the src with your actual photo URL when ready */}
-              <Image 
-                src="https://images.unsplash.com/photo-1557223562-6c77ef16210f?auto=format&fit=crop&w=1200&q=80" 
-                alt="GBR School Transport Bus"
-                fill
-                priority
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
+            <TransportSlideshow />
           </div>
 
         </div>
