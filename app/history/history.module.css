@@ -1,0 +1,47 @@
+/* app/history/history.module.css */
+
+.section {
+  overflow: hidden;
+}
+
+/* Scroll Reveal Animation */
+.revealHidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.revealVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slideshow Container */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Slideshow Image Fading Logic */
+.slideImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 3s ease-in-out;
+  transform: scale(1.05); /* Slight zoom out effect as it fades */
+}
+
+.slideActive {
+  opacity: 1;
+  z-index: 10;
+  transform: scale(1);
+}
