@@ -203,6 +203,22 @@ export default function ParentPortalPage() {
             </div>
           </AccordionSection>
 
+          {/* Contact Us Support CTA section */}
+          <div className="pt-12 text-center">
+            <div className="bg-background border border-border p-8 rounded-lg shadow-sm">
+              <h3 className="text-xl font-bold text-primary mb-3">Need Assistance with Portal or App?</h3>
+              <p className="text-text-muted text-sm mb-6 leading-relaxed">
+                If you are facing issues logging in to the GBR Parent App, tracking transport, or have questions about uniform and transport policies, reach out directly.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-[var(--radius-sm)] hover:bg-primary/95 transition-all text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              >
+                Contact Support Desk
+              </Link>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
