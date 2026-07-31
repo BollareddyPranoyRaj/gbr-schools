@@ -1,5 +1,6 @@
 // app/about/page.tsx
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AboutPage() {
   return (
@@ -90,6 +91,23 @@ export default function AboutPage() {
           </div>
 
         </div>
+
+        {/* Contact Us redirect CTA section */}
+        <div className="pt-12 text-center">
+          <div className="bg-surface border border-border p-8 rounded-lg max-w-2xl mx-auto shadow-sm">
+            <h3 className="text-xl font-bold text-primary mb-3">Want to Visit Us in Person?</h3>
+            <p className="text-text-muted text-sm mb-6 leading-relaxed">
+              We would love to show you around our 17-acre campus. Get in touch with our team to arrange a tour or ask any questions about our history and values.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-[var(--radius-sm)] hover:bg-primary/95 transition-all text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              Contact Us & Schedule Tour
+            </Link>
+          </div>
+        </div>
+
       </div>
     </div>
   );
