@@ -6,7 +6,7 @@ import Link from "next/link";
 const menuSections = [
   {
     title: "About GBR",
-    description: "Learn about our legacy, vision, and meet the leadership team.",
+    description: "Learn about our legacy and vision.",
     href: "/about",
   },
 { 
@@ -30,15 +30,11 @@ const menuSections = [
     href: "/academics",
   },
   {
-    title: "Admissions & FAQ",
+    title: "Admissions & Fee Policy",
     description: "View fee policy, admission procedures, and common parent questions.",
     href: "/admissions",
   },
-  {
-    title: "Notice Board",
-    description: "Check important circulars, latest news, and the academic calendar.",
-    href: "/notices",
-  },
+
   {
     title: "Events",
     description: "Browse campus celebrations and animated event highlights.",
@@ -58,6 +54,11 @@ const menuSections = [
     title: "Careers",
     description: "Find open teaching and administrative roles at GBR Schools.",
     href: "/careers",
+  },
+  {
+    title: "Contact Us",
+    description: "Get in touch with GBR Group of Schools. Find our locations and contact numbers.",
+    href: "/contact",
   },
 ];
 

@@ -5,16 +5,16 @@ import Link from 'next/link';
 import { schoolData } from './lib/schoolData';
 
 const menuSections = [
-  { href: "/about", title: "About GBR", description: "Learn about our legacy, vision, and meet the leadership team." },
+  { href: "/about", title: "About GBR", description: "Learn about our legacy and vision." },
   { href: "/ac-campus", title: "A.C. Campus", description: "Explore the modern facilities and vibrant student life at our A.C. Campus." },
   { href: "/standard-campus", title: "E.M.S. Campus", description: "Discover the rich heritage and academic excellence of our E.M.S. Campus." },
   { href: "/academics", title: "Academics", description: "Explore school timings, curriculum, and award systems." },
-  { href: "/admissions", title: "Admissions & FAQ", description: "View fee policy, admission procedures, and common parent questions." },
-  { href: "/notices", title: "Notice Board", description: "Check important circulars, latest news, and the academic calendar." },
+  { href: "/admissions", title: "Admissions & Fee Policy", description: "View fee policy, admission procedures, and common parent questions." },
   { href: "/events", title: "Events", description: "Browse campus celebrations and animated event highlights." },
   { href: "/parents", title: "Parent Portal", description: "Access the GBR Parent App, transport guidelines, and uniform rules." },
   { href: "/alumni", title: "Alumni", description: "Connect with the global GBR alumni network." },
   { href: "/careers", title: "Careers", description: "Find open teaching and administrative roles at GBR Schools." },
+  { href: "/contact", title: "Contact Us", description: "Get in touch with GBR Group of Schools. Find our locations and contact numbers." },
 ];
 
 const VIDEO_POSTER_URL = "https://res.cloudinary.com/dkoxrayf2/video/upload/so_2,f_auto,q_auto/v1784303212/GBR_HomePage_umgwxo.jpg";
@@ -130,12 +130,24 @@ export default function HomePage() {
         
         {/* TEXT SIDE */}
         <div className="w-full lg:col-span-5 flex flex-col justify-center items-start text-left px-6 sm:px-12 lg:px-20 py-16 lg:py-24 xl:py-32 order-2 lg:order-1 border-b lg:border-b-0 border-border">
-          <h1 className="font-serif-heading text-4xl sm:text-5xl lg:text-[3.6rem] font-bold text-primary mb-6">
+          
+          <h1 className="font-serif-heading text-4xl sm:text-5xl lg:text-[3.6rem] font-bold text-primary mb-4">
             Welcome to <span className="text-accent">GBR Schools</span>
           </h1>
+
+          {/* --- NEW 17-ACRE HIGHLIGHT BADGE --- */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 border border-primary/10 text-primary font-semibold rounded-full text-sm sm:text-base mb-6 shadow-sm">
+            <svg className="w-5 h-5 text-accent shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+            </svg>
+            The District's Largest Campus — 17 Acres
+          </div>
+          {/* ----------------------------------- */}
+
           <p className="text-base lg:text-lg text-text-muted font-normal mb-10 leading-relaxed max-w-md">
             {schoolData.about.vision}
           </p>
+          
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full xl:w-auto">
             <Link 
               href="/ac-campus" 
@@ -150,6 +162,7 @@ export default function HomePage() {
               Explore E.M.S Campus
             </Link>
           </div>
+
         </div>
 
         {/* VIDEO SIDE */}

@@ -7,9 +7,9 @@ const footerSections = [
     title: "School",
     links: [
       { href: "/about", label: "About" },
-      { href: "/leadership", label: "Leadership" },
       { href: "/academics", label: "Academics" },
       { href: "/admissions", label: "Admissions" },
+      { href: "/contact", label: "Contact Us" },
     ],
   },
   {
@@ -32,8 +32,6 @@ const footerSections = [
   {
     title: "Resources",
     links: [
-      { href: "/news", label: "Updates" },
-      { href: "/notices", label: "Notices" },
       { href: "/rules", label: "School Rules" },
       { href: "/faq", label: "FAQ" },
     ],
