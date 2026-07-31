@@ -19,16 +19,15 @@ export default function AboutPage() {
 
         {/* About & Image Section */}
         <div className="flex flex-col lg:flex-row gap-12 items-center">
-          {/* Image Placeholder */}
-          <div 
-            className="w-full lg:w-1/2 h-[450px] bg-surface-alt rounded-lg border border-border flex items-center justify-center relative overflow-hidden" 
-            aria-hidden="true"
-          >
-            {/* 
-              Replace this block with your actual next/image component when you have the Cloudinary link 
-              <Image src="YOUR_LINK" alt="GBR School Building" fill className="object-cover" />
-            */}
-            <span className="text-text-muted font-medium">School Building Image Placeholder</span>
+          <div className="w-full lg:w-1/2">
+            <Image 
+              src="https://res.cloudinary.com/dkoxrayf2/image/upload/v1785475730/about-page_ayd1om.png" 
+              alt="GBR School Building" 
+              width={800}
+              height={500}
+              priority
+              className="w-full h-auto rounded-lg border border-border object-contain" 
+            />
           </div>
 
           {/* About Text */}

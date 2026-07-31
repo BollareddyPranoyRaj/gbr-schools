@@ -216,7 +216,7 @@ export default function AcademicsAndLifePage() {
                 The calendar serves as a vital bridge between teachers, students, and parents. Please review it regularly.
               </p>
               <p className="text-sm text-white/90 leading-relaxed">
-                We encourage you to foster English conversation at home to support your child's growth.
+                We encourage you to foster English conversation at home to support your child&apos;s growth.
               </p>
             </div>
           </div>

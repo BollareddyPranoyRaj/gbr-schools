@@ -87,7 +87,7 @@ export default function StandardCampusPage() {
             Igniting Unique Talents & Skills
           </h2>
           <p className="text-lg text-text-muted leading-relaxed max-w-4xl mx-auto mb-16">
-            Specially designed to focus on igniting the unique talents and skills of the students at very early stages & instill in them a habit of enhancement in "LSRW" Skills which develop from a young stage.
+            Specially designed to focus on igniting the unique talents and skills of the students at very early stages &amp; instill in them a habit of enhancement in &quot;LSRW&quot; Skills which develop from a young stage.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

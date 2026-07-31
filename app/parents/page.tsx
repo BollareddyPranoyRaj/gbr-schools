@@ -62,11 +62,11 @@ export default function ParentPortalPage() {
               GBR GROUP OF SCHOOLS APP
             </span>
             <h1 className="text-4xl md:text-5xl font-bold text-text-main tracking-tight mb-6 [text-wrap:balance]">
-              Your Child's Education, <br className="hidden sm:block" />
+              Your Child&apos;s Education, <br className="hidden sm:block" />
               <span className="text-primary">At Your Fingertips</span>
             </h1>
             <p className="text-lg text-text-muted max-w-2xl mx-auto mb-10 leading-relaxed">
-              Our dedicated app ensures smooth, real-time communication with the school, offering a single platform to stay updated on your child's academic progress and daily activities.
+              Our dedicated app ensures smooth, real-time communication with the school, offering a single platform to stay updated on your child&apos;s academic progress and daily activities.
             </p>
             
             {/* App Store Download Buttons */}

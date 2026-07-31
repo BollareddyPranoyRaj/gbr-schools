@@ -58,7 +58,7 @@ export default function AdmissionsPage() {
             <li className="leading-relaxed">For Standard I, students must be at least 5.5 years old by August 31st of the admission year.</li>
             <li className="leading-relaxed">New students must submit an official Municipal Birth Certificate to verify their age.</li>
             <li className="leading-relaxed">Please submit the original previous report card along with one clear photocopy.</li>
-            <li className="leading-relaxed">Out-of-state Transfer Certificates must be countersigned by that state's Education Inspector.</li>
+            <li className="leading-relaxed">Out-of-state Transfer Certificates must be countersigned by that state&apos;s Education Inspector.</li>
           </ul>
         </AccordionSection>
 
@@ -72,7 +72,7 @@ export default function AdmissionsPage() {
           <div className="space-y-8">
             <ol className="list-decimal list-inside space-y-2 text-text-main font-medium">
               <li>Parents are Instructed to pay the school fee without Late.</li>
-              <li>After due date, school fees will be collected at school office along with fine amount in favour of <strong className="text-primary">"GBR EDUCATIONAL INSTITUTIONS"</strong></li>
+              <li>After due date, school fees will be collected at school office along with fine amount in favour of <strong className="text-primary">&quot;GBR EDUCATIONAL INSTITUTIONS&quot;</strong></li>
             </ol>
 
             <div className="overflow-hidden rounded-lg border border-border">
@@ -166,7 +166,7 @@ export default function AdmissionsPage() {
           onToggle={() => toggleSection('withdrawal')}
         >
           <ul className="space-y-4 text-text-muted list-disc pl-5">
-            <li className="leading-relaxed">One calendar week's notice is required to be given for the withdrawal of the student before the payment schedule, else fees for the month will be charged.</li>
+            <li className="leading-relaxed">One calendar week&apos;s notice is required to be given for the withdrawal of the student before the payment schedule, else fees for the month will be charged.</li>
             <li className="leading-relaxed">School leaving certificate will not be issued until the school dues have been paid in full.</li>
           </ul>
         </AccordionSection>
