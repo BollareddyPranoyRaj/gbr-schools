@@ -21,7 +21,7 @@ const VIDEO_POSTER_URL = "https://res.cloudinary.com/dkoxrayf2/video/upload/so_2
 const VIDEO_SRC_URL = "https://res.cloudinary.com/dkoxrayf2/video/upload/f_auto,q_auto/v1784303212/GBR_HomePage_umgwxo.mp4";
 
 function HeroVideo() {
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
   const [paused, setPaused] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -95,6 +95,8 @@ function HeroVideo() {
     <div className="relative w-full h-full min-h-[40vh] overflow-hidden bg-surface">
       <video
         ref={videoRef}
+        autoPlay
+        loop
         muted // We keep this attribute so auto-play works in browsers, but no UI is shown
         playsInline
         onEnded={handleEnded}
