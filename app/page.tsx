@@ -126,10 +126,10 @@ export default function HomePage() {
   return (
     <div className="flex flex-col bg-background">
       {/* Hero Section */}
-      <section className="w-full flex flex-col lg:grid lg:grid-cols-12 min-h-0">
+      <section className="w-full flex flex-col lg:grid lg:grid-cols-12 lg:h-[520px] min-h-0">
         
         {/* TEXT SIDE */}
-        <div className="w-full lg:col-span-5 flex flex-col justify-center items-start text-left px-6 sm:px-12 lg:px-16 py-12 lg:py-16 xl:py-20 order-2 lg:order-1 border-b lg:border-b-0 border-border">
+        <div className="w-full lg:col-span-5 flex flex-col justify-center items-start text-left px-6 sm:px-12 lg:px-16 py-12 lg:py-0 order-2 lg:order-1 border-b lg:border-b-0 border-border h-full">
           
           <h1 className="font-serif-heading text-4xl sm:text-5xl lg:text-[3.6rem] font-bold text-primary mb-4">
             Welcome to <span className="text-accent">GBR Schools</span>
@@ -166,7 +166,7 @@ export default function HomePage() {
         </div>
 
         {/* VIDEO SIDE */}
-        <div className="order-1 lg:order-2 w-full lg:col-span-7 h-[40vh] sm:h-[50vh] lg:h-auto border-l-0 lg:border-l border-border relative overflow-hidden">
+        <div className="order-1 lg:order-2 w-full lg:col-span-7 h-[40vh] sm:h-[50vh] lg:h-full border-l-0 lg:border-l border-border relative overflow-hidden">
           <HeroVideo />
         </div>
       </section>
