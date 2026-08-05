@@ -50,6 +50,21 @@ const foundersData = [
       "https://res.cloudinary.com/dkoxrayf2/image/upload/v1785169498/SCANNED_OLD_PHOTOS-15_gscpai.jpg",
       "https://res.cloudinary.com/dkoxrayf2/image/upload/v1785169479/SCANNED_OLD_PHOTOS-11_xl2doe.jpg"
     ]
+  },
+  {
+    id: "founder-4",
+    name: "Name of 4th Founder",
+    role: "Their Role / Title",
+    insights: [
+      "First key insight or achievement about this founder.",
+      "Second key insight or achievement about this founder.",
+      "Third key insight or achievement about this founder."
+    ],
+    // ADD YOUR CLOUDINARY LINKS FOR PERSON 4 HERE
+    images: [
+      "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop", 
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop"
+    ]
   }
 ];
 
@@ -70,8 +85,9 @@ function ImageSlideshow({ images, altText }: { images: string[]; altText: string
   return (
     <div className={styles.imageContainer}>
       {images.map((src, index) => {
-        // Fast-loading optimized image URL
-        const fastLoadingSrc = src.replace('/upload/', '/upload/q_auto,f_auto,w_800/');
+        // Fast-loading optimized image URL trick (only applies if it's a Cloudinary URL)
+        const isCloudinary = src.includes('cloudinary.com');
+        const fastLoadingSrc = isCloudinary ? src.replace('/upload/', '/upload/q_auto,f_auto,w_800/') : src;
         
         return (
           <Image
@@ -129,26 +145,19 @@ export default function HistoryPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent">Our Heritage</p>
             <h1 className="mt-3 text-4xl font-bold tracking-tight text-primary sm:text-5xl">The Founders of GBR</h1>
             <p className="mt-4 text-base leading-7 text-text-muted sm:text-lg">
-              Meet the three visionaries whose dedication, passion, and foresight laid the foundation for the educational excellence we stand upon today.
+              Meet the visionaries whose dedication, passion, and foresight laid the foundation for the educational excellence we stand upon today.
             </p>
           </div>
         </RevealOnScroll>
 
-        {/* REDUCED VERTICAL SPACING: Changed space-y-40 to space-y-20 */}
         <div className="space-y-20 lg:space-y-24">
           {foundersData.map((founder, index) => {
             const isImageLeft = index % 2 !== 0;
 
             return (
               <RevealOnScroll key={founder.id}>
-                {/* 
-                  REDUCED HORIZONTAL SPACING: 
-                  Removed lg:justify-between, changed gap to lg:gap-12 
-                  to pull the text and image closer together 
-                */}
                 <section className={`flex flex-col gap-10 lg:items-center lg:justify-center lg:gap-12 ${isImageLeft ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
                   
-                  {/* TEXT CONTAINER: Kept concise so lines don't stretch too long */}
                   <div className="w-full lg:w-1/2 space-y-6 max-w-xl">
                     <div>
                       <h2 className="text-3xl font-bold text-primary sm:text-4xl">{founder.name}</h2>
@@ -167,10 +176,6 @@ export default function HistoryPage() {
                     </div>
                   </div>
 
-                  {/* 
-                    IMAGE CONTAINER: Increased max-w to lg, adjusted height 
-                    to balance with the text section beautifully 
-                  */}
                   <div className="w-full lg:w-1/2 relative h-[350px] sm:h-[450px] max-w-lg mx-auto rounded-3xl overflow-hidden border border-gray-100 bg-gray-50 shadow-[0_10px_40px_rgba(17,24,39,0.06)]">
                     <ImageSlideshow images={founder.images} altText={founder.name} />
                   </div>
