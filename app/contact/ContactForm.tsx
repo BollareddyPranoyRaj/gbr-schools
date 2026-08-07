@@ -58,9 +58,26 @@ export default function ContactForm() {
 
     setIsSubmitting(true);
     
-    // Simulate API call for form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const subject = `Callback Request - ${formData.name}`;
+      const body = `Dear GBR Administration,
+
+I would like to request a callback or ask an inquiry. Here are my details:
+
+Name: ${formData.name}
+Phone Number: ${formData.phone}
+School Program of Interest: ${formData.course}
+Inquiry Message:
+${formData.message || 'No specific inquiry message provided.'}
+
+Best regards,
+${formData.name}`;
+
+      const mailtoUrl = `mailto:emschool@gbrcolleges.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Open the user's mail client
+      window.location.href = mailtoUrl;
+
       setIsSuccess(true);
     } catch (err) {
       setError('Something went wrong. Please try again.');

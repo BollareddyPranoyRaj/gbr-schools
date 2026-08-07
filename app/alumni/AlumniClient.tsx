@@ -53,6 +53,34 @@ export default function AlumniClient() {
 
   const handleJoinSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    
+    const data = new FormData(event.currentTarget);
+    const name = data.get('name') as string;
+    const graduatingYear = data.get('graduatingYear') as string;
+    const position = data.get('position') as string;
+    const place = data.get('place') as string;
+    const email = data.get('email') as string;
+
+    const subject = `Alumni Network Registration - ${name}`;
+    const body = `Dear GBR Administration,
+
+I would like to join the GBR Alumni Network. Here are my details:
+
+Full Name: ${name}
+Graduating Year: ${graduatingYear}
+Current Position: ${position}
+Place: ${place}
+Email Address: ${email}
+Selected Photo File: ${photoName || 'None'} (Please make sure it is attached to this email)
+
+Best regards,
+${name}`;
+
+    const mailtoUrl = `mailto:emschool@gbrcolleges.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open the default email client
+    window.location.href = mailtoUrl;
+
     setIsSubmitted(true);
   };
 
