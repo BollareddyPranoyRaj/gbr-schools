@@ -73,7 +73,7 @@ ${formData.message || 'No specific inquiry message provided.'}
 Best regards,
 ${formData.name}`;
 
-      const mailtoUrl = `mailto:emschool@gbrcolleges.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const mailtoUrl = `mailto:pranoy2005@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
       // Open the user's mail client
       window.location.href = mailtoUrl;

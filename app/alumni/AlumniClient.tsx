@@ -76,7 +76,7 @@ Selected Photo File: ${photoName || 'None'} (Please make sure it is attached to 
 Best regards,
 ${name}`;
 
-    const mailtoUrl = `mailto:emschool@gbrcolleges.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoUrl = `mailto:pranoy2005@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     
     // Open the default email client
     window.location.href = mailtoUrl;
