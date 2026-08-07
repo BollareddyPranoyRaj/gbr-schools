@@ -4,11 +4,16 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 
 export default function AdmissionsPage() {
-  // State to track which accordion section is currently open
-  const [openSection, setOpenSection] = useState<string | null>('why-gbr');
+  // State to track which accordion sections are currently open
+  const [openSections, setOpenSections] = useState<string[]>(['why-gbr']);
 
   const toggleSection = (section: string) => {
-    setOpenSection(openSection === section ? null : section);
+    console.log("Toggling section:", section);
+    setOpenSections(prev => {
+      const next = prev.includes(section) ? prev.filter(s => s !== section) : [...prev, section];
+      console.log("New open sections:", next);
+      return next;
+    });
   };
 
   return (
@@ -29,7 +34,7 @@ export default function AdmissionsPage() {
         <AccordionSection
           id="why-gbr"
           title="Why GBR Group of Schools?"
-          isOpen={openSection === 'why-gbr'}
+          isOpen={openSections.includes('why-gbr')}
           onToggle={() => toggleSection('why-gbr')}
         >
           <ul className="space-y-4 text-text-muted list-disc pl-5">
@@ -48,7 +53,7 @@ export default function AdmissionsPage() {
         <AccordionSection
           id="admission"
           title="Admission Guidelines"
-          isOpen={openSection === 'admission'}
+          isOpen={openSections.includes('admission')}
           onToggle={() => toggleSection('admission')}
         >
           <ul className="space-y-4 text-text-muted list-disc pl-5">
@@ -66,7 +71,7 @@ export default function AdmissionsPage() {
         <AccordionSection
           id="fees"
           title="School Fees & Fee Policy"
-          isOpen={openSection === 'fees'}
+          isOpen={openSections.includes('fees')}
           onToggle={() => toggleSection('fees')}
         >
           <div className="space-y-8">
@@ -162,7 +167,7 @@ export default function AdmissionsPage() {
         <AccordionSection
           id="withdrawal"
           title="Withdrawal Policies"
-          isOpen={openSection === 'withdrawal'}
+          isOpen={openSections.includes('withdrawal')}
           onToggle={() => toggleSection('withdrawal')}
         >
           <ul className="space-y-4 text-text-muted list-disc pl-5">
@@ -175,7 +180,7 @@ export default function AdmissionsPage() {
         <AccordionSection
           id="tc"
           title="Leaving Certificate (T.C) Rules"
-          isOpen={openSection === 'tc'}
+          isOpen={openSections.includes('tc')}
           onToggle={() => toggleSection('tc')}
         >
           <div className="space-y-5">
