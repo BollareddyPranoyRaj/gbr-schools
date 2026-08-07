@@ -17,8 +17,8 @@ const menuSections = [
   { href: "/contact", title: "Contact Us", description: "Get in touch with GBR Group of Schools. Find our locations and contact numbers." },
 ];
 
-const VIDEO_POSTER_URL = "https://res.cloudinary.com/dkoxrayf2/video/upload/so_2,f_auto,q_auto/v1784303212/GBR_HomePage_umgwxo.jpg";
-const VIDEO_SRC_URL = "https://res.cloudinary.com/dkoxrayf2/video/upload/f_auto,q_auto/v1784303212/GBR_HomePage_umgwxo.mp4";
+const VIDEO_POSTER_URL = "https://res.cloudinary.com/dkoxrayf2/video/upload/so_2,f_auto,q_auto:eco,w_1280,h_720,c_scale/v1786101323/GBR_HomePage-compressed_1_s8ump0.jpg";
+const VIDEO_SRC_URL = "https://res.cloudinary.com/dkoxrayf2/video/upload/f_auto,q_auto:eco,w_1280,h_720,c_scale/v1786101323/GBR_HomePage-compressed_1_s8ump0.mp4";
 
 function HeroVideo() {
   const [playing, setPlaying] = useState(true);
@@ -168,7 +168,7 @@ export default function HomePage() {
         </div>
 
         {/* VIDEO SIDE */}
-        <div className="order-1 lg:order-2 w-full lg:col-span-7 h-[40vh] sm:h-[50vh] lg:h-full border-l-0 lg:border-l border-border relative overflow-hidden">
+        <div className="order-1 lg:order-2 w-full aspect-video lg:aspect-auto lg:col-span-7 lg:h-full border-l-0 lg:border-l border-border relative overflow-hidden">
           <HeroVideo />
         </div>
       </section>

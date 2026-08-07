@@ -2,6 +2,42 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+const leadersData = [
+  {
+    name: "Sri. Bollareddy Pranoy Raj",
+    role: "Dean",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600&h=600",
+    description: "Leading the strategic vision and academic growth of GBR Group of Schools, ensuring world-class infrastructure and pedagogical innovations to nurture future leaders.",
+    highlights: [
+      "Oversees campus development and global affiliations",
+      "Drives the integration of digital learning systems",
+      "Pioneered the 17-acre holistic campus design"
+    ]
+  },
+  {
+    name: "Dr. K. Srinivasa Rao",
+    role: "Principal",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=600&h=600",
+    description: "Directing the academic administration, fostering school discipline, and guiding teachers and students towards achieving 100% academic excellence.",
+    highlights: [
+      "20+ years of educational leadership experience",
+      "Ensures strict discipline and value-based standards",
+      "Mentors senior students for competitive board exams"
+    ]
+  },
+  {
+    name: "Smt. M. Padmavathi",
+    role: "Headmistress (HM)",
+    image: "https://images.unsplash.com/photo-1580894732444-8febeb78fb3e?auto=format&fit=crop&q=80&w=600&h=600",
+    description: "Directing primary and department level operations, supervising curriculum delivery, and ensuring daily discipline and student welfare.",
+    highlights: [
+      "Oversees department-specific teaching methodologies",
+      "Direct coordinator for student activities and campus clubs",
+      "Ensures individual student care and parental communication"
+    ]
+  }
+];
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background pb-16 px-4 sm:px-6 lg:px-8">
@@ -21,7 +57,7 @@ export default function AboutPage() {
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           <div className="w-full lg:w-1/2">
             <Image 
-              src="https://res.cloudinary.com/dkoxrayf2/image/upload/v1785475730/about-page_ayd1om.png" 
+              src="https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto/v1785475730/about-page_ayd1om.png" 
               alt="GBR School Building" 
               width={800}
               height={500}
@@ -89,6 +125,66 @@ export default function AboutPage() {
             </p>
           </div>
 
+        </div>
+
+        {/* Leadership Section (Zigzag Layout) */}
+        <div className="space-y-16 lg:space-y-24 pt-8">
+          <div className="border-b border-border pb-6">
+            <h2 className="text-3xl font-bold text-primary tracking-wide">Our Leadership</h2>
+            <p className="text-base text-text-muted mt-2">
+              Meet the educational visionaries dedicated to maintaining GBR&apos;s legacy of academic rigor, holistic values, and discipline.
+            </p>
+          </div>
+
+          <div className="space-y-16 lg:space-y-20">
+            {leadersData.map((leader, index) => {
+              const isImageLeft = index % 2 === 0;
+              return (
+                <div 
+                  key={leader.role} 
+                  className={`flex flex-col lg:flex-row gap-10 lg:gap-16 items-center ${
+                    isImageLeft ? '' : 'lg:flex-row-reverse'
+                  }`}
+                >
+                  {/* Leader Image */}
+                  <div className="w-full lg:w-2/5 flex justify-center">
+                    <div className="relative aspect-square w-full max-w-[280px] sm:max-w-[320px] overflow-hidden rounded-xl border border-border bg-surface shadow-sm">
+                      <Image
+                        src={leader.image}
+                        alt={`${leader.name} - ${leader.role}`}
+                        fill
+                        className="object-cover transition-transform duration-300 hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 320px"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Leader Details */}
+                  <div className="w-full lg:w-3/5 space-y-4 text-left">
+                    <div>
+                      <span className="inline-block px-3 py-1 bg-primary/10 border border-primary/20 text-primary rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+                        {leader.role}
+                      </span>
+                      <h3 className="text-2xl font-bold text-text-main">{leader.name}</h3>
+                    </div>
+                    <p className="text-base text-text-muted leading-relaxed">
+                      {leader.description}
+                    </p>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
+                      {leader.highlights.map((highlight, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm text-text-muted">
+                          <svg className="w-4 h-4 text-accent shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Contact Us redirect CTA section */}

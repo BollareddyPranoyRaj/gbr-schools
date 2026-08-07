@@ -31,6 +31,7 @@ export default function AlumniClient() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [isJoinFormOpen, setIsJoinFormOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [photoName, setPhotoName] = useState("");
   
   // NEW: State to track if the current modal image is still downloading
@@ -48,40 +49,36 @@ export default function AlumniClient() {
   const closeJoinForm = useCallback(() => {
     setIsJoinFormOpen(false);
     setIsSubmitted(false);
+    setIsSubmitting(false);
     setPhotoName("");
   }, []);
 
-  const handleJoinSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleJoinSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
-    const data = new FormData(event.currentTarget);
-    const name = data.get('name') as string;
-    const graduatingYear = data.get('graduatingYear') as string;
-    const position = data.get('position') as string;
-    const place = data.get('place') as string;
-    const email = data.get('email') as string;
+    setIsSubmitting(true);
 
-    const subject = `Alumni Network Registration - ${name}`;
-    const body = `Dear GBR Administration,
+    const formData = new FormData(event.currentTarget);
+    formData.append("access_key", "2915ca6b-7152-436c-979a-e8a5a13baada");
+    formData.append("subject", `New Alumni Registration: ${formData.get("name")}`);
 
-I would like to join the GBR Alumni Network. Here are my details:
-
-Full Name: ${name}
-Graduating Year: ${graduatingYear}
-Current Position: ${position}
-Place: ${place}
-Email Address: ${email}
-Selected Photo File: ${photoName || 'None'} (Please make sure it is attached to this email)
-
-Best regards,
-${name}`;
-
-    const mailtoUrl = `mailto:pranoy2005@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    // Open the default email client
-    window.location.href = mailtoUrl;
-
-    setIsSubmitted(true);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        setIsSubmitted(true);
+      } else {
+        alert("Submission failed: " + (data.message || "Please try again."));
+      }
+    } catch (error) {
+      alert("Submission error. Please check your internet connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const showPreviousImage = useCallback(() => {
@@ -285,7 +282,7 @@ ${name}`;
                 <form className="flex flex-col gap-4" onSubmit={handleJoinSubmit}>
                   <label>
                     <span className="mb-1 block text-xs font-semibold text-primary">Profile photo</span>
-                    <input type="file" accept="image/*" required onChange={(event) => setPhotoName(event.target.files?.[0]?.name ?? "")} className="block w-full rounded-[var(--radius-sm)] border border-border bg-background px-3 py-1.5 text-xs text-text-muted file:mr-3 file:rounded-[var(--radius-sm)] file:border-0 file:bg-primary file:px-3 file:py-1.5 file:font-semibold file:text-white hover:file:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20" />
+                    <input name="photo" type="file" accept="image/*" required onChange={(event) => setPhotoName(event.target.files?.[0]?.name ?? "")} className="block w-full rounded-[var(--radius-sm)] border border-border bg-background px-3 py-1.5 text-xs text-text-muted file:mr-3 file:rounded-[var(--radius-sm)] file:border-0 file:bg-primary file:px-3 file:py-1.5 file:font-semibold file:text-white hover:file:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20" />
                     {photoName && <span className="mt-1 block text-xs text-text-muted">Selected: {photoName}</span>}
                   </label>
 
@@ -310,7 +307,9 @@ ${name}`;
                     <input type="email" name="email" required placeholder="you@example.com" className="w-full rounded-[var(--radius-sm)] border border-border bg-background px-3 py-2 text-sm text-text-main outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20" />
                   </label>
                   <div className="border-t border-border pt-4">
-                    <button type="submit" className="w-full rounded-[var(--radius-sm)] bg-primary px-6 py-2.5 font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary min-h-[44px]">Submit alumni details</button>
+                    <button type="submit" disabled={isSubmitting} className="w-full rounded-[var(--radius-sm)] bg-primary px-6 py-2.5 font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary min-h-[44px] disabled:opacity-50">
+                      {isSubmitting ? "Submitting alumni details..." : "Submit alumni details"}
+                    </button>
                   </div>
                 </form>
               </div>
