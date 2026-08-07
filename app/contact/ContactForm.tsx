@@ -57,30 +57,34 @@ export default function ContactForm() {
     }
 
     setIsSubmitting(true);
+    setError('');
     
     try {
-      const subject = `Callback Request - ${formData.name}`;
-      const body = `Dear GBR Administration,
+      const formDataObj = new FormData();
+      formDataObj.append("access_key", "2915ca6b-7152-436c-979a-e8a5a13baada");
+      formDataObj.append("subject", `New Callback Request: ${formData.name}`);
+      formDataObj.append("name", formData.name);
+      formDataObj.append("phone", formData.phone);
+      formDataObj.append("course", formData.course);
+      formDataObj.append("message", formData.message || "No specific message provided");
 
-I would like to request a callback or ask an inquiry. Here are my details:
+      console.log("Submitting form data to Web3Forms...", Object.fromEntries(formDataObj.entries()));
 
-Name: ${formData.name}
-Phone Number: ${formData.phone}
-School Program of Interest: ${formData.course}
-Inquiry Message:
-${formData.message || 'No specific inquiry message provided.'}
-
-Best regards,
-${formData.name}`;
-
-      const mailtoUrl = `mailto:pranoy2005@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataObj
+      });
       
-      // Open the user's mail client
-      window.location.href = mailtoUrl;
+      const data = await response.json();
+      console.log("Web3Forms API response:", data);
 
-      setIsSuccess(true);
+      if (data.success) {
+        setIsSuccess(true);
+      } else {
+        setError(data.message || "Failed to submit callback request.");
+      }
     } catch (err) {
-      setError('Something went wrong. Please try again.');
+      setError('Failed to connect to submission server. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
