@@ -5,10 +5,12 @@ import React, { useState, useId } from 'react';
 import Link from 'next/link'; 
 
 export default function ParentPortalPage() {
-  const [openSection, setOpenSection] = useState<string | null>(null);
+  const [openSections, setOpenSections] = useState<string[]>([]);
 
   const toggleSection = (section: string) => {
-    setOpenSection(openSection === section ? null : section);
+    setOpenSections(prev =>
+      prev.includes(section) ? prev.filter(s => s !== section) : [...prev, section]
+    );
   };
 
   const benefits = [
@@ -112,7 +114,7 @@ export default function ParentPortalPage() {
           
           <AccordionSection
             title="Benefits for Parents & Schools"
-            isOpen={openSection === 'benefits'}
+            isOpen={openSections.includes('benefits')}
             onToggle={() => toggleSection('benefits')}
           >
             <p className="text-text-muted mb-8 leading-relaxed">
@@ -137,7 +139,7 @@ export default function ParentPortalPage() {
 
           <AccordionSection
             title="Uniform Guidelines"
-            isOpen={openSection === 'uniform'}
+            isOpen={openSections.includes('uniform')}
             onToggle={() => toggleSection('uniform')}
           >
             <p className="text-text-muted mb-6 text-sm leading-relaxed">
@@ -161,7 +163,7 @@ export default function ParentPortalPage() {
 
           <AccordionSection
             title="Transport Policies"
-            isOpen={openSection === 'transport'}
+            isOpen={openSections.includes('transport')}
             onToggle={() => toggleSection('transport')}
           >
             <p className="text-text-muted mb-6 text-sm leading-relaxed">
@@ -185,7 +187,7 @@ export default function ParentPortalPage() {
 
           <AccordionSection
             title="Comprehensive Rulebook"
-            isOpen={openSection === 'rulebook'}
+            isOpen={openSections.includes('rulebook')}
             onToggle={() => toggleSection('rulebook')}
           >
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-surface-alt p-6 rounded-lg border border-border">
