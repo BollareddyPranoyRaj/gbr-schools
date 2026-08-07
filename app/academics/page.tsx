@@ -29,11 +29,13 @@ const festivals = [
 ];
 
 export default function AcademicsAndLifePage() {
-  // State to track which accordion section is currently open
-  const [openSection, setOpenSection] = useState<string | null>('calendar');
+  // State to track which accordion sections are currently open
+  const [openSections, setOpenSections] = useState<string[]>(['calendar']);
 
   const toggleSection = (section: string) => {
-    setOpenSection(openSection === section ? null : section);
+    setOpenSections(prev =>
+      prev.includes(section) ? prev.filter(s => s !== section) : [...prev, section]
+    );
   };
 
   return (
@@ -54,7 +56,7 @@ export default function AcademicsAndLifePage() {
         <AccordionSection
           id="calendar"
           title="Academic Calendar"
-          isOpen={openSection === 'calendar'}
+          isOpen={openSections.includes('calendar')}
           onToggle={() => toggleSection('calendar')}
         >
           <p className="mb-6 text-sm leading-relaxed text-text-muted tabular-nums">
@@ -101,7 +103,7 @@ export default function AcademicsAndLifePage() {
         <AccordionSection
           id="timings"
           title="School Timings & Appointments"
-          isOpen={openSection === 'timings'}
+          isOpen={openSections.includes('timings')}
           onToggle={() => toggleSection('timings')}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -128,7 +130,7 @@ export default function AcademicsAndLifePage() {
         <AccordionSection
           id="assessment"
           title="Assessment & Promotion"
-          isOpen={openSection === 'assessment'}
+          isOpen={openSections.includes('assessment')}
           onToggle={() => toggleSection('assessment')}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -148,7 +150,7 @@ export default function AcademicsAndLifePage() {
         <AccordionSection
           id="awards"
           title="Path to Success: Award System"
-          isOpen={openSection === 'awards'}
+          isOpen={openSections.includes('awards')}
           onToggle={() => toggleSection('awards')}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -179,7 +181,7 @@ export default function AcademicsAndLifePage() {
         <AccordionSection
           id="rules"
           title="Guidelines, Uniform & Parent Info"
-          isOpen={openSection === 'rules'}
+          isOpen={openSections.includes('rules')}
           onToggle={() => toggleSection('rules')}
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
