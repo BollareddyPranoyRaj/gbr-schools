@@ -32,7 +32,6 @@ export default function AlumniClient() {
   const [isJoinFormOpen, setIsJoinFormOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [photoName, setPhotoName] = useState("");
   
   // NEW: State to track if the current modal image is still downloading
   const [isImageLoading, setIsImageLoading] = useState(true);
@@ -50,7 +49,6 @@ export default function AlumniClient() {
     setIsJoinFormOpen(false);
     setIsSubmitted(false);
     setIsSubmitting(false);
-    setPhotoName("");
   }, []);
 
   const handleJoinSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -280,11 +278,6 @@ export default function AlumniClient() {
                 </div>
 
                 <form className="flex flex-col gap-4" onSubmit={handleJoinSubmit}>
-                  <label>
-                    <span className="mb-1 block text-xs font-semibold text-primary">Profile photo</span>
-                    <input name="photo" type="file" accept="image/*" required onChange={(event) => setPhotoName(event.target.files?.[0]?.name ?? "")} className="block w-full rounded-[var(--radius-sm)] border border-border bg-background px-3 py-1.5 text-xs text-text-muted file:mr-3 file:rounded-[var(--radius-sm)] file:border-0 file:bg-primary file:px-3 file:py-1.5 file:font-semibold file:text-white hover:file:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20" />
-                    {photoName && <span className="mt-1 block text-xs text-text-muted">Selected: {photoName}</span>}
-                  </label>
 
                   <label>
                     <span className="mb-1 block text-xs font-semibold text-primary">Full name</span>
