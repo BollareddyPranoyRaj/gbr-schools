@@ -146,7 +146,7 @@ export default function HistoryPage() {
                   Removed lg:justify-between, changed gap to lg:gap-12 
                   to pull the text and image closer together 
                 */}
-                <section className={`flex flex-col gap-10 lg:items-center lg:justify-center lg:gap-12 ${isImageLeft ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
+                <section className={`flex flex-col-reverse gap-10 lg:items-center lg:justify-center lg:gap-12 ${isImageLeft ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
                   
                   {/* TEXT CONTAINER: Kept concise so lines don't stretch too long */}
                   <div className="w-full lg:w-1/2 space-y-6 max-w-xl">
