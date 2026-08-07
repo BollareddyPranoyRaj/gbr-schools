@@ -17,8 +17,8 @@ const menuSections = [
   { href: "/contact", title: "Contact Us", description: "Get in touch with GBR Group of Schools. Find our locations and contact numbers." },
 ];
 
-const VIDEO_POSTER_URL = "https://res.cloudinary.com/dkoxrayf2/video/upload/so_2,f_auto,q_auto/v1784303212/GBR_HomePage_umgwxo.jpg";
-const VIDEO_SRC_URL = "https://res.cloudinary.com/dkoxrayf2/video/upload/f_auto,q_auto/v1784303212/GBR_HomePage_umgwxo.mp4";
+const VIDEO_POSTER_URL = "https://res.cloudinary.com/dkoxrayf2/video/upload/so_2,f_auto,q_auto:eco,w_1280,h_720,c_scale/v1786125389/GBR_HomePage_2_-compressed_rgbv7q.jpg";
+const VIDEO_SRC_URL = "https://res.cloudinary.com/dkoxrayf2/video/upload/f_auto,q_auto:eco,w_1280,h_720,c_scale/v1786125389/GBR_HomePage_2_-compressed_rgbv7q.mp4";
 
 function HeroVideo() {
   const [playing, setPlaying] = useState(true);
