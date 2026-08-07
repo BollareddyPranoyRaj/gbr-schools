@@ -86,7 +86,13 @@ function ImageSlideshow({ images, altText }: { images: string[]; altText: string
     <div className={styles.imageContainer}>
       {images.map((src, index) => {
         // Fast-loading optimized image URL trick (only applies if it's a Cloudinary URL)
-        const isCloudinary = src.includes('cloudinary.com');
+        let isCloudinary = false;
+        try {
+          const hostname = new URL(src).hostname.toLowerCase();
+          isCloudinary = hostname === "cloudinary.com" || hostname.endsWith(".cloudinary.com");
+        } catch {
+          isCloudinary = false;
+        }
         const fastLoadingSrc = isCloudinary ? src.replace('/upload/', '/upload/q_auto,f_auto,w_800/') : src;
         
         return (
