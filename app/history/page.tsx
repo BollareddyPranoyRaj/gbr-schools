@@ -86,7 +86,13 @@ function ImageSlideshow({ images, altText }: { images: string[]; altText: string
     <div className={styles.imageContainer}>
       {images.map((src, index) => {
         // Fast-loading optimized image URL trick (only applies if it's a Cloudinary URL)
-        const isCloudinary = src.includes('cloudinary.com');
+        let isCloudinary = false;
+        try {
+          const hostname = new URL(src).hostname.toLowerCase();
+          isCloudinary = hostname === "cloudinary.com" || hostname.endsWith(".cloudinary.com");
+        } catch {
+          isCloudinary = false;
+        }
         const fastLoadingSrc = isCloudinary ? src.replace('/upload/', '/upload/q_auto,f_auto,w_800/') : src;
         
         return (
@@ -156,7 +162,7 @@ export default function HistoryPage() {
 
             return (
               <RevealOnScroll key={founder.id}>
-                <section className={`flex flex-col gap-10 lg:items-center lg:justify-center lg:gap-12 ${isImageLeft ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
+                <section className={`flex flex-col-reverse gap-10 lg:items-center lg:justify-center lg:gap-12 ${isImageLeft ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
                   
                   <div className="w-full lg:w-1/2 space-y-6 max-w-xl">
                     <div>
