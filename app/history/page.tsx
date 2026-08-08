@@ -15,10 +15,8 @@ const foundersData = [
       "Spearheaded the initial campus construction, working side-by-side with the architects to design spaces that inspire creativity."
     ],
     images: [
-      "https://res.cloudinary.com/dkoxrayf2/image/upload/v1785169485/SCANNED_OLD_PHOTOS-12_r5gidf.jpg",
-      "https://res.cloudinary.com/dkoxrayf2/image/upload/v1785169499/SCANNED_OLD_PHOTOS-06_ymyrar.jpg",
-      "https://res.cloudinary.com/dkoxrayf2/image/upload/v1785169538/SCANNED_OLD_PHOTOS-23_oi6s5k.jpg",
-      "https://res.cloudinary.com/dkoxrayf2/image/upload/v1785169612/SCANNED_OLD_PHOTOS-10_icezdn.jpg"
+      "https://res.cloudinary.com/dkoxrayf2/image/upload/v1786169181/ChatGPT_Image_Aug_8_2026_11_35_20_AM_dlid0o.png",
+      "https://res.cloudinary.com/dkoxrayf2/image/upload/v1786168923/ChatGPT_Image_Aug_8_2026_11_30_43_AM_ramdyj.png"
     ]
   },
   {
@@ -31,8 +29,9 @@ const foundersData = [
       "Created the foundational arts and culture programs that the GBR Group of Schools is known for today."
     ],
     images: [
-      "https://res.cloudinary.com/dkoxrayf2/image/upload/v1785169575/SCANNED_OLD_PHOTOS-40_w6qdsj.jpg",
-      "https://res.cloudinary.com/dkoxrayf2/image/upload/v1785169541/SCANNED_OLD_PHOTOS-28_x0kc9h.jpg"
+      "https://res.cloudinary.com/dkoxrayf2/image/upload/v1786168937/ChatGPT_Image_Aug_8_2026_11_31_00_AM_gufsoa.png",
+      "https://res.cloudinary.com/dkoxrayf2/image/upload/v1786168937/ChatGPT_Image_Aug_8_2026_11_30_55_AM_nqcqe9.png",
+      "https://res.cloudinary.com/dkoxrayf2/image/upload/v1786168931/ChatGPT_Image_Aug_8_2026_11_31_08_AM_qb44bm.png"
     ]
   },
   {
@@ -60,7 +59,6 @@ const foundersData = [
       "Second key insight or achievement about this founder.",
       "Third key insight or achievement about this founder."
     ],
-    // ADD YOUR CLOUDINARY LINKS FOR PERSON 4 HERE
     images: [
       "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop", 
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop"
@@ -85,7 +83,6 @@ function ImageSlideshow({ images, altText }: { images: string[]; altText: string
   return (
     <div className={styles.imageContainer}>
       {images.map((src, index) => {
-        // Fast-loading optimized image URL trick (only applies if it's a Cloudinary URL)
         let isCloudinary = false;
         try {
           const hostname = new URL(src).hostname.toLowerCase();
@@ -162,27 +159,44 @@ export default function HistoryPage() {
 
             return (
               <RevealOnScroll key={founder.id}>
-                <section className={`flex flex-col-reverse gap-10 lg:items-center lg:justify-center lg:gap-12 ${isImageLeft ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
+                {/* 
+                  LAYOUT FIX: Changed gap and justify settings to balance the widths 
+                  Mobile uses flex-col-reverse so images appear before text
+                */}
+                <section className={`flex flex-col-reverse gap-8 lg:items-center lg:justify-between lg:gap-16 ${isImageLeft ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
                   
-                  <div className="w-full lg:w-1/2 space-y-6 max-w-xl">
-                    <div>
+                  {/* TEXT CONTAINER: Given slightly more width (lg:w-7/12) to reduce vertical space */}
+                  <div className="w-full lg:w-7/12 space-y-8 max-w-2xl">
+                    <div className="px-2">
                       <h2 className="text-3xl font-bold text-primary sm:text-4xl">{founder.name}</h2>
                       <p className="mt-2 text-lg font-medium text-accent">{founder.role}</p>
                     </div>
                     
-                    <div className="space-y-4">
+                    <div className="space-y-2">
                       {founder.insights.map((insight, i) => (
-                        <div key={i} className="flex items-start gap-4">
-                          <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-surface)] border border-gray-200 shadow-sm text-accent text-xs">
+                        /* INTERACTIVE HOVER EFFECT: Turns bullet points into subtle hover cards */
+                        <div 
+                          key={i} 
+                          className="group flex items-start gap-4 p-4 rounded-2xl hover:bg-white hover:shadow-lg hover:shadow-blue-900/5 border border-transparent hover:border-gray-100 transition-all duration-300 cursor-default"
+                        >
+                          {/* CHECKMARK: Scales up and changes color on hover */}
+                          <span className="mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-surface)] border border-gray-200 shadow-sm text-accent text-sm group-hover:bg-accent group-hover:text-white group-hover:scale-110 group-hover:border-accent transition-all duration-300">
                             ✓
                           </span>
-                          <p className="text-base leading-7 text-text-muted">{insight}</p>
+                          {/* TEXT: Darkens slightly on hover */}
+                          <p className="text-base leading-7 text-text-muted group-hover:text-primary transition-colors duration-300">
+                            {insight}
+                          </p>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="w-full lg:w-1/2 relative h-[350px] sm:h-[450px] max-w-lg mx-auto rounded-3xl overflow-hidden border border-gray-100 bg-gray-50 shadow-[0_10px_40px_rgba(17,24,39,0.06)]">
+                  {/* 
+                    IMAGE CONTAINER: Reduced max width (lg:w-5/12) and reduced height to perfectly 
+                    match the height of the text block next to it 
+                  */}
+                  <div className="w-full lg:w-5/12 relative h-[320px] sm:h-[400px] max-w-md mx-auto rounded-3xl overflow-hidden border border-gray-100 bg-gray-50 shadow-[0_10px_40px_rgba(17,24,39,0.06)] group hover:shadow-[0_20px_50px_rgba(17,24,39,0.12)] transition-all duration-500">
                     <ImageSlideshow images={founder.images} altText={founder.name} />
                   </div>
 
