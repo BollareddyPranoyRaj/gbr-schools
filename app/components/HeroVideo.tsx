@@ -29,7 +29,7 @@ export default function HeroVideo() {
         preload="auto"
         className="absolute inset-0 h-full w-full object-cover opacity-60 pointer-events-none"
       >
-        <source src="https://res.cloudinary.com/demo/video/upload/v1689798418/samples/sea-turtle.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/demo/video/upload/f_auto,q_auto:eco,w_1280,h_720,c_scale/v1689798418/samples/sea-turtle.mp4" type="video/mp4" />
       </video>
 
       {/* Gradient overlay to ensure text readability while matching brand color */}
