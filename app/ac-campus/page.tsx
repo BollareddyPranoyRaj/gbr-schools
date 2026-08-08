@@ -128,7 +128,7 @@ export default function ACCampusPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden border border-border">
             <Image
-              src="/ac-classroom.jpg"
+              src="https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto,w_800,c_scale/v1786197264/ChatGPT_Image_Aug_8_2026_07_23_21_PM_pqxxhl.png"
               alt="Students in AC Classroom"
               fill
               className="object-cover transition-opacity duration-700"
