@@ -29,37 +29,39 @@ export default function ACCampusPage() {
     <div className="min-h-screen bg-background">
       
       {/* 1. EDITORIAL HERO SECTION */}
-      <section className="relative w-full h-[80vh] min-h-[600px] flex items-end pb-12 sm:pb-24">
+      <section className="relative w-full min-h-[85vh] lg:h-[80vh] lg:min-h-[600px] flex items-center justify-center text-center py-24 lg:py-0">
+        {/* Background Image */}
         <Image
-          src="/ac-campus-hero.jpg" 
+          src="https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto,w_1920,c_scale/v1786197922/ChatGPT_Image_Aug_8_2026_07_30_28_PM_xrowkb.png" 
           alt="GBR A.C. Campus"
           fill
           priority
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        {/* Clean gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/60 to-black/35" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-xl bg-white/95 backdrop-blur-md p-8 sm:p-12 rounded-lg border border-border shadow-2xl">
-            <div className="flex flex-wrap items-center gap-3 mb-4">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent bg-accent/10 px-3 py-1 rounded-full">
-                Premium Tier
-              </span>
-              <span className="text-xs font-bold uppercase tracking-[0.1em] text-primary bg-primary/10 px-3 py-1 rounded-full">
-                Class: NUR to X (AC)
-              </span>
-            </div>
-            
-            <h1 className="text-4xl sm:text-5xl font-bold text-primary leading-tight mb-6 [text-wrap:balance]">
-              A Global Standard of Excellence.
-            </h1>
-            <p className="text-lg text-text-muted mb-8 leading-relaxed">
-              Step into a learning environment designed for ultimate focus, comfort, and technological integration. The GBR A.C. Campus redefines modern education.
-            </p>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent bg-black/40 border border-accent/20 px-4 py-1.5 rounded-full backdrop-blur-sm">
+              Premium Tier
+            </span>
+            <span className="text-xs font-bold uppercase tracking-[0.1em] text-white bg-primary/80 border border-primary/20 px-4 py-1.5 rounded-full backdrop-blur-sm">
+              Class: NUR to X (AC)
+            </span>
+          </div>
+          
+          <h1 className="text-4xl sm:text-6xl font-bold text-white leading-tight mb-6 [text-wrap:balance]">
+            A Global Standard <br /> of Excellence.
+          </h1>
+          <p className="text-base sm:text-lg text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Step into a learning environment designed for ultimate focus, comfort, and technological integration. The GBR A.C. Campus redefines modern education.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
             <Link
               href="/admissions"
-              className="inline-block bg-primary text-white font-semibold px-8 py-4 rounded-[var(--radius-sm)] hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              className="bg-accent text-white text-center font-semibold px-8 py-4 rounded-[var(--radius-sm)] hover:bg-accent/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary w-full sm:w-auto shadow-lg"
             >
               Apply for A.C. Campus
             </Link>
@@ -128,7 +130,7 @@ export default function ACCampusPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden border border-border">
             <Image
-              src="/ac-classroom.jpg"
+              src="https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto,w_800,c_scale/v1786197264/ChatGPT_Image_Aug_8_2026_07_23_21_PM_pqxxhl.png"
               alt="Students in AC Classroom"
               fill
               className="object-cover transition-opacity duration-700"
@@ -173,12 +175,41 @@ export default function ACCampusPage() {
           </div>
           <div className="order-1 lg:order-2 relative aspect-[4/3] rounded-lg overflow-hidden border border-border">
             <Image
-              src="/ac-smartboard.jpg"
+              src="https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto,w_800,c_scale/v1786197931/WhatsApp_Image_2026-08-08_at_19.34.47_tkasjn.jpg"
               alt="Interactive Smart Board in use"
               fill
               className="object-cover transition-opacity duration-700"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
+          </div>
+        </div>
+
+        {/* Block 3: Image Left, Text Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="relative aspect-[4/3] rounded-lg overflow-hidden border border-border">
+            <Image
+              src="https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto,w_800,c_scale/v1786196828/WhatsApp_Image_2026-08-08_at_10.38.11_m7wn55.jpg"
+              alt="Students having lunch in dining corridor"
+              fill
+              className="object-cover transition-opacity duration-700"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
+          <div className="lg:pl-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-6 [text-wrap:balance]">
+              Hygienic Dining & Welfare
+            </h2>
+            <p className="text-lg text-text-muted leading-relaxed mb-6">
+              A clean and healthy environment is vital for active minds. Our campus features dedicated, spacious, and highly hygienic dining zones where students enjoy their meals together, under the warm supervision of our teachers, cultivating a sense of community, sharing, and healthy eating habits.
+            </p>
+            <ul className="space-y-3 text-text-muted">
+              <li className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-accent" /> Clean, bright, and ventilated dining areas
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-accent" /> Active supervision and guidance during lunch hours
+              </li>
+            </ul>
           </div>
         </div>
       </section>

@@ -6,9 +6,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const transportImages = [
-  "https://images.unsplash.com/photo-1557223562-6c77ef16210f?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1494516192674-b82b5f1e61db?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80"
+  "https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto,w_1200,c_scale/v1786168650/ChatGPT_Image_Aug_8_2026_11_11_07_AM_wpybdh.png",
+  "https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto,w_1200,c_scale/v1786168520/ChatGPT_Image_Aug_8_2026_11_15_55_AM_c6tgab.png"
 ];
 
 function TransportSlideshow() {

@@ -30,7 +30,7 @@ const festivals = [
 
 export default function AcademicsAndLifePage() {
   // State to track which accordion sections are currently open
-  const [openSections, setOpenSections] = useState<string[]>(['calendar']);
+  const [openSections, setOpenSections] = useState<string[]>([]);
 
   const toggleSection = (section: string) => {
     setOpenSections(prev =>
