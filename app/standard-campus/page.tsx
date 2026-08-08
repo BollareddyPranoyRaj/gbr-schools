@@ -27,10 +27,10 @@ export default function StandardCampusPage() {
     <div className="min-h-screen bg-background">
       
       {/* 1. HERITAGE & SCALE HERO SECTION */}
-      <section className="relative w-full h-[70vh] min-h-[500px] flex items-center justify-center text-center">
+      <section className="relative w-full min-h-[85vh] lg:h-[80vh] lg:min-h-[600px] flex items-center justify-center text-center py-24 lg:py-0">
         {/* Background Image */}
         <Image
-          src="/ems-campus-hero.jpg" 
+          src="https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto,w_1920,c_scale/v1786197181/WhatsApp_Image_2026-08-08_at_19.20.55_kxfrm3.jpg" 
           alt="GBR E.M.S. Campus Grounds"
           fill
           priority
@@ -38,9 +38,9 @@ export default function StandardCampusPage() {
           sizes="100vw"
         />
         {/* Clean gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/60 to-black/35" />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 flex flex-col items-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
           <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent bg-black/40 border border-accent/20 px-4 py-1.5 rounded-full backdrop-blur-sm">
               The Heart of GBR Schools
@@ -53,9 +53,23 @@ export default function StandardCampusPage() {
           <h1 className="text-4xl sm:text-6xl font-bold text-white leading-tight mb-6 [text-wrap:balance]">
             Rooted in Tradition. <br /> Focused on the Future.
           </h1>
-          <p className="text-lg text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed">
             Spacious, vibrant, and rich in history. The E.M.S. Campus provides a holistic, active environment where academic excellence meets traditional values.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
+            <Link
+              href="/admissions"
+              className="bg-accent text-white text-center font-semibold px-8 py-4 rounded-[var(--radius-sm)] hover:bg-accent/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary w-full sm:w-auto shadow-lg"
+            >
+              Apply for E.M. School
+            </Link>
+            <Link
+              href="/transport"
+              className="bg-white/10 border border-white/20 text-white text-center font-semibold px-8 py-4 rounded-[var(--radius-sm)] hover:bg-white/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white w-full sm:w-auto backdrop-blur-sm"
+            >
+              Explore Bus Routes
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -156,7 +170,7 @@ export default function StandardCampusPage() {
           </div>
           <div className="order-1 lg:order-2 relative aspect-[4/3] rounded-lg overflow-hidden border border-border">
             <Image
-              src="/ems-classroom.jpg"
+              src="https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto,w_800,c_scale/v1786197178/WhatsApp_Image_2026-08-08_at_19.20.40_nek0hp.jpg"
               alt="Airy naturally ventilated classroom"
               fill
               className="object-cover transition-opacity duration-700"
@@ -169,8 +183,8 @@ export default function StandardCampusPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden border border-border">
             <Image
-              src="/ems-playground.jpg"
-              alt="Massive outdoor sports playground"
+              src="https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto,w_800,c_scale/v1786197481/ChatGPT_Image_Aug_8_2026_07_26_28_PM_q6ycej.png"
+              alt="Students performing science experiments in laboratory"
               fill
               className="object-cover transition-opacity duration-700"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -178,17 +192,17 @@ export default function StandardCampusPage() {
           </div>
           <div className="lg:pl-8">
             <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-6 [text-wrap:balance]">
-              Room to Run, Play, and Grow
+              Practical & Experiential Learning
             </h2>
             <p className="text-lg text-text-muted leading-relaxed mb-6">
-              Physical education and active play are foundational to the E.M.S. experience. We boast some of the largest outdoor facilities in the region, providing students with the sheer space needed for massive sports meets, daily athletics, and large-scale morning assemblies.
+              Theory comes to life through hands-on experimentation. Our campus features modern, fully-equipped science laboratories where students engage in practical research. Under the close guidance of our qualified science educators, students develop vital analytical, problem-solving, and scientific inquiry skills.
             </p>
             <ul className="space-y-3 text-text-muted">
               <li className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-accent" /> Every day Games period
+                <span className="w-2 h-2 rounded-full bg-accent" /> Modern lab equipment and safety protocols
               </li>
               <li className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-accent" /> Weekend activities & skill-building
+                <span className="w-2 h-2 rounded-full bg-accent" /> Regular guided experiment periods for deep learning
               </li>
             </ul>
           </div>

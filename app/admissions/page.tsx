@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function AdmissionsPage() {
   // State to track which accordion sections are currently open
-  const [openSections, setOpenSections] = useState<string[]>(['why-gbr']);
+  const [openSections, setOpenSections] = useState<string[]>([]);
 
   const toggleSection = (section: string) => {
     console.log("Toggling section:", section);
