@@ -125,6 +125,28 @@ const baseEvents = [
     folder: "school-website/events/Republicday",
     images: ["school-website/events/Republicday/Republicday1", "school-website/events/Republicday/Republicday2"],
   },
+  {
+    id: "independence-day",
+    title: "Independence Day",
+    description: "Celebrating our nation's freedom with patriotic fervor, flag hoisting, and cultural programs.",
+    duration: 35,
+    folder: "school-website/events/independenceday",
+    images: [
+      "school-website/events/independenceday/day1",
+      "school-website/events/independenceday/day2"
+    ],
+  },
+  {
+    id: "krishna-janmashtami",
+    title: "Krishna Janmashtami Celebration",
+    description: "Joyous celebrations marking the birth of Lord Krishna with traditional music, dance, and festive spirit.",
+    duration: 30,
+    folder: "school-website/events/kristhanasthami",
+    images: [
+      "school-website/events/kristhanasthami/fest1",
+      "school-website/events/kristhanasthami/fest2" // Just add fest3, fest4, etc. if you have more!
+    ],
+  },
 ];
 
 // This must be an async function to fetch the data before rendering the page
