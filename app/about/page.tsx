@@ -1,4 +1,6 @@
-// app/about/page.tsx
+"use client";
+
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -39,6 +41,16 @@ const leadersData = [
 ];
 
 export default function AboutPage() {
+  const [activeMobileIndex, setActiveMobileIndex] = useState(0);
+
+  const handleMobilePrev = () => {
+    setActiveMobileIndex((prev) => (prev - 1 + leadersData.length) % leadersData.length);
+  };
+
+  const handleMobileNext = () => {
+    setActiveMobileIndex((prev) => (prev + 1) % leadersData.length);
+  };
+
   return (
     <div className="min-h-screen bg-background pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-16">
@@ -57,7 +69,7 @@ export default function AboutPage() {
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           <div className="w-full lg:w-1/2">
             <Image 
-              src="https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto/v1785475730/about-page_ayd1om.png" 
+              src="https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto,w_800,c_scale/v1785475730/about-page_ayd1om.png" 
               alt="GBR School Building" 
               width={800}
               height={500}
@@ -127,63 +139,117 @@ export default function AboutPage() {
 
         </div>
 
-        {/* Leadership Section (Zigzag Layout) */}
-        <div className="space-y-16 lg:space-y-24 pt-8">
+        {/* Leadership Section (Inline Grid Layout) */}
+        <div className="space-y-16 pt-8">
           <div className="border-b border-border pb-6">
             <h2 className="text-3xl font-bold text-primary tracking-wide">Our Leadership</h2>
             <p className="text-base text-text-muted mt-2">
               Meet the educational visionaries dedicated to maintaining GBR&apos;s legacy of academic rigor, holistic values, and discipline.
             </p>
           </div>
+        </div>
 
-          <div className="space-y-16 lg:space-y-20">
-            {leadersData.map((leader, index) => {
-              const isImageLeft = index % 2 === 0;
-              return (
-                <div 
-                  key={leader.role} 
-                  className={`flex flex-col lg:flex-row gap-10 lg:gap-16 items-center ${
-                    isImageLeft ? '' : 'lg:flex-row-reverse'
-                  }`}
-                >
-                  {/* Leader Image */}
-                  <div className="w-full lg:w-2/5 flex justify-center">
-                    <div className="relative aspect-square w-full max-w-[280px] sm:max-w-[320px] overflow-hidden rounded-xl border border-border bg-surface shadow-sm">
-                      <Image
-                        src={leader.image}
-                        alt={`${leader.name} - ${leader.role}`}
-                        fill
-                        className="object-cover transition-transform duration-300 hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, 320px"
-                      />
-                    </div>
+        {/* TWO-TONE BLUE BACKGROUND ZONE FOR LEADERSHIP */}
+        <div className="relative mt-20">
+          {/* Deep blue bottom band */}
+          <div className="absolute inset-x-0 bottom-0 top-32 bg-primary" aria-hidden="true" />
+
+          <div className="relative mx-auto max-w-7xl z-10">
+            
+            {/* DESKTOP VIEW: Grid of all 3 leaders */}
+            <div className="hidden lg:grid grid-cols-3 gap-8">
+              {leadersData.map((leader) => (
+                <div key={leader.role} className="flex flex-col h-full group">
+                  {/* Photo Container */}
+                  <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden shadow-lg border border-border/10 bg-surface">
+                    <Image
+                      src={leader.image}
+                      alt={`${leader.name} - ${leader.role}`}
+                      fill
+                      className="object-cover transition-transform duration-300 hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 320px"
+                    />
                   </div>
-
-                  {/* Leader Details */}
-                  <div className="w-full lg:w-3/5 space-y-4 text-left">
-                    <div>
-                      <span className="inline-block px-3 py-1 bg-primary/10 border border-primary/20 text-primary rounded-full text-xs font-bold uppercase tracking-wider mb-2">
-                        {leader.role}
-                      </span>
-                      <h3 className="text-2xl font-bold text-text-main">{leader.name}</h3>
-                    </div>
-                    <p className="text-base text-text-muted leading-relaxed">
+                  {/* Name and Role Details */}
+                  <div className="pt-6 pb-8 text-left space-y-2 select-none min-h-[140px] flex flex-col justify-start">
+                    <h3 className="text-lg font-bold text-white tracking-tight sm:text-xl line-clamp-2">
+                      {leader.name}
+                    </h3>
+                    <p className="text-xs font-bold uppercase tracking-wider text-accent">
+                      {leader.role}
+                    </p>
+                    <p className="text-xs text-blue-100/70 leading-relaxed font-medium line-clamp-3">
                       {leader.description}
                     </p>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
-                      {leader.highlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-sm text-text-muted">
-                          <svg className="w-4 h-4 text-accent shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
-              );
-            })}
+              ))}
+            </div>
+
+            {/* MOBILE/TABLET VIEW: Carousel with Arrow Buttons */}
+            <div className="block lg:hidden max-w-sm mx-auto overflow-hidden">
+              
+              {/* Sliding Track Wrapper */}
+              <div className="overflow-hidden rounded-xl">
+                <div 
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${activeMobileIndex * 100}%)` }}
+                >
+                  {leadersData.map((leader) => (
+                    <div key={leader.role} className="w-full flex-shrink-0 px-10 flex flex-col">
+                      {/* Photo Container */}
+                      <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden shadow-lg border border-border/10 bg-surface">
+                        <Image
+                          src={leader.image}
+                          alt={`${leader.name} - ${leader.role}`}
+                          fill
+                          className="object-cover transition-transform duration-300 hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, 320px"
+                        />
+                      </div>
+                      {/* Name and Role Details */}
+                      <div className="pt-6 pb-4 text-left space-y-2 select-none flex flex-col justify-start">
+                        <h3 className="text-xl font-bold text-white tracking-tight">
+                          {leader.name}
+                        </h3>
+                        <p className="text-xs font-bold uppercase tracking-wider text-accent">
+                          {leader.role}
+                        </p>
+                        <p className="text-sm text-blue-100/70 leading-relaxed font-medium">
+                          {leader.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Slider Navigation Buttons */}
+              <div className="flex items-center gap-3 pt-2 pb-8 px-10">
+                <button 
+                  type="button" 
+                  onClick={handleMobilePrev}
+                  aria-label="Previous leadership card"
+                  className="grid h-10 w-10 place-items-center rounded bg-white border border-border text-primary hover:bg-surface-alt transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary shadow-sm"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button 
+                  type="button" 
+                  onClick={handleMobileNext}
+                  aria-label="Next leadership card"
+                  className="grid h-10 w-10 place-items-center rounded bg-white border border-border text-primary hover:bg-surface-alt transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary shadow-sm"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+
           </div>
         </div>
 
