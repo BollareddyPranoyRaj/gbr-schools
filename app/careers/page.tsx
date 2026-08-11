@@ -138,7 +138,7 @@ export default function CareersPage() {
     try {
       const dataObj = new FormData();
       // NOTE: Replace this access_key with the Web3Forms key registered to hrteamschoolteachers@gmail.com
-      dataObj.append("access_key", "2915ca6b-7152-436c-979a-e8a5a13baada");
+      dataObj.append("access_key", "bebc200d-e240-46c1-ba1d-266c6783d270");
       dataObj.append("subject", `New Job Application: ${formData.position} - ${formData.name}`);
       dataObj.append("from_name", "GBR Careers Portal");
       dataObj.append("to_email", "hrteamschoolteachers@gmail.com");
