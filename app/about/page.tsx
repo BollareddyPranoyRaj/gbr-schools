@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const leadersData = [
   {
-    name: "Sri. Bollareddy Pranoy Raj",
+    name: "Sri. XXX",
     role: "Dean",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600&h=600",
     description: "Leading the strategic vision and academic growth of GBR Group of Schools, ensuring world-class infrastructure and pedagogical innovations to nurture future leaders.",
@@ -17,7 +17,7 @@ const leadersData = [
     ]
   },
   {
-    name: "Dr. K. Srinivasa Rao",
+    name: "Dr. XXX",
     role: "Principal",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=600&h=600",
     description: "Directing the academic administration, fostering school discipline, and guiding teachers and students towards achieving 100% academic excellence.",
@@ -28,7 +28,7 @@ const leadersData = [
     ]
   },
   {
-    name: "Smt. M. Padmavathi",
+    name: "Smt.XXX",
     role: "Headmistress (HM)",
     image: "https://images.unsplash.com/photo-1580894732444-8febeb78fb3e?auto=format&fit=crop&q=80&w=600&h=600",
     description: "Directing primary and department level operations, supervising curriculum delivery, and ensuring daily discipline and student welfare.",
