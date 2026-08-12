@@ -44,7 +44,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-6 gap-12 lg:gap-8">
           
           {/* Branding & Contact */}
           <div className="lg:col-span-2 space-y-8">
@@ -89,31 +89,33 @@ export default function Footer() {
                 <svg className="w-4 h-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                 </svg>
-                <a href="mailto:info@gbrschools.edu.in" className="text-sm hover:text-white transition-colors" aria-label="Email GBR Schools">
-                  info@gbrschools.edu.in
+                <a href="mailto:emschool@gbrcolleges.com" className="text-sm hover:text-white transition-colors" aria-label="Email GBR Schools">
+                  emschool@gbrcolleges.com
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Link Sections */}
-          {footerSections.map((section) => (
-            <div key={section.title} className="lg:col-span-1">
-              <h3 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">
-                {section.title}
-              </h3>
-              
-              <ul className="space-y-3">
-                {section.links.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Links Grid: 2 columns on mobile, 4 columns on large screens */}
+          <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {footerSections.map((section) => (
+              <div key={section.title} className="space-y-4">
+                <h3 className="text-white text-xs font-bold uppercase tracking-wider border-b border-white/10 pb-2">
+                  {section.title}
+                </h3>
+                <ul className="space-y-3">
+                  {section.links.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
         </div>
 
         {/* Bottom Bar */}
