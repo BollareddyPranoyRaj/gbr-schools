@@ -2,7 +2,7 @@
 
 export default function RulesPage() {
   return (
-    <div className="min-h-screen bg-background pt-16 sm:pt-20 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div className="min-h-screen bg-background pt-10 sm:pt-12 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
       <div className="text-center mb-12">
         <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4">School Rules & Guidelines</h1>
         <p className="text-text-muted max-w-2xl mx-auto text-sm">

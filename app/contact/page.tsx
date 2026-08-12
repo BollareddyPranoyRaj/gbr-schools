@@ -35,10 +35,10 @@ const campusContacts = [
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-background pt-24 pb-16">
+    <div className="min-h-screen bg-background pb-16">
       
       {/* 1. HEADER SECTION */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 pt-12 sm:pt-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 pt-10 sm:pt-12">
         <p className="text-sm font-bold uppercase tracking-[0.2em] text-accent mb-3">
           Get In Touch
         </p>

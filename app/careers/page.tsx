@@ -99,7 +99,7 @@ export default function CareersPage() {
     <div className="min-h-screen bg-background pb-16">
       
       {/* 1. HERO HEADER */}
-      <section className="bg-surface pt-32 pb-16 border-b border-border">
+      <section className="bg-surface py-16 border-b border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent bg-accent/10 px-3 py-1 rounded-full">
             GBR Careers

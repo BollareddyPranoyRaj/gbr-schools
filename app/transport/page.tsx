@@ -58,7 +58,7 @@ export default function TransportPage() {
     <div className="flex flex-col bg-background min-h-screen">
       
       {/* Hero Section */}
-      <section className="w-full bg-surface border-b border-border pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-surface border-b border-border pt-12 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
           
           {/* Text Content */}

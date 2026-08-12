@@ -87,7 +87,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="w-full fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm"
+      className="w-full bg-white/95 backdrop-blur-sm border-b border-border shadow-sm"
       aria-label="Main navigation"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

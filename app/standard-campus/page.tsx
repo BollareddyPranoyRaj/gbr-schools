@@ -207,6 +207,35 @@ export default function StandardCampusPage() {
             </ul>
           </div>
         </div>
+
+        {/* Block 3: Text Left, Image Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="order-2 lg:order-1 lg:pr-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-6 [text-wrap:balance]">
+              Room to Run, Play & Grow
+            </h2>
+            <p className="text-lg text-text-muted leading-relaxed mb-6">
+              Our campus features a colorful, interactive indoor play area designed specifically for our younger students. Equipped with slides, rockers, and creative wall murals, this play zone fosters social integration, motor skill development, and active play in a safe, fully supervised setting.
+            </p>
+            <ul className="space-y-3 text-text-muted">
+              <li className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-accent" /> Child-safe play equipment and toys
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-accent" /> Dedicated supervision by trained activity staff
+              </li>
+            </ul>
+          </div>
+          <div className="order-1 lg:order-2 relative aspect-[4/3] rounded-lg overflow-hidden border border-border">
+            <Image
+              src="https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto,w_800,c_scale/v1786529579/ChatGPT_Image_Aug_12_2026_03_41_14_PM_v9emue.png"
+              alt="Vibrant indoor kindergarten play area with toys and slides"
+              fill
+              className="object-cover transition-opacity duration-700"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
+        </div>
       </section>
 
       {/* 5. SPECIAL FEATURES LIST (NEW) */}

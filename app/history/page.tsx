@@ -134,7 +134,7 @@ export default function HistoryPage() {
   };
 
   return (
-    <main className="min-h-screen bg-background pt-28 pb-20">
+    <main className="min-h-screen bg-background pt-12 pb-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         <RevealOnScroll>
