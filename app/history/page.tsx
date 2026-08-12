@@ -37,16 +37,16 @@ const foundersData = [
       "https://res.cloudinary.com/dkoxrayf2/image/upload/v1786168931/ChatGPT_Image_Aug_8_2026_11_31_08_AM_qb44bm.png"
     ]
   },
-  {
-    id: "founder-4",
-    name: "Sri Bollareddy Ratna Reddy",
-    role: "Former President & Advisor",
-    description: "Anaparthi Educational Society and GBR Educational Institutions",
-    images: [
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop"
-    ]
-  }
+  // {
+  //   id: "founder-4",
+  //   name: "Sri Bollareddy Ratna Reddy",
+  //   role: "Former President & Advisor",
+  //   description: "Anaparthi Educational Society and GBR Educational Institutions",
+  //   images: [
+  //     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+  //     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop"
+  //   ]
+  // }
 ];
 
 // Reusable Slideshow Component

@@ -3,7 +3,7 @@ import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Us | GBR Group of Schools",
-  description: "Get in touch with GBR Group of Schools. Find contact numbers, emails, location details for Pre-Primary, Primary, High School, and A.C. Campus, and submit a call-back request.",
+  description: "Get in touch with GBR Group of Schools. Find contact numbers, emails, location details for Pre-Primary, Primary, High School, and A.C Campus, and submit a call-back request.",
 };
 
 const campusContacts = [
@@ -11,33 +11,25 @@ const campusContacts = [
     name: "Pre-Primary School",
     phone: "6302599212",
     displayPhone: "+91 63025 99212",
-    email: "preprimary@gbrschools.edu.in",
-    tagline: "Nursery, LKG & UKG Program",
-    badgeColor: "bg-amber-100 text-amber-800 border-amber-200"
+    tagline: "Nursery, LKG & UKG Program"
   },
   {
     name: "Primary School",
     phone: "9347733555",
     displayPhone: "+91 93477 33555",
-    email: "primary@gbrschools.edu.in",
-    tagline: "Grades 1st to 5th",
-    badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200"
+    tagline: "Grades 1st to 5th"
   },
   {
     name: "High School",
     phone: "9963329395",
     displayPhone: "+91 99633 29395",
-    email: "highschool@gbrschools.edu.in",
-    tagline: "Grades 6th to 10th (State Board)",
-    badgeColor: "bg-blue-100 text-blue-800 border-blue-200"
+    tagline: "Grades 6th to 10th (State Board)"
   },
   {
-    name: "A.C. Campus",
+    name: "A.C Campus",
     phone: "9912340922",
     displayPhone: "+91 99123 40922",
-    email: "accampus@gbrschools.edu.in",
-    tagline: "Air-Conditioned Digital Classes",
-    badgeColor: "bg-purple-100 text-purple-800 border-purple-200"
+    tagline: "Air-Conditioned Digital Classes"
   }
 ];
 
@@ -54,65 +46,81 @@ export default function ContactPage() {
           Contact GBR Schools
         </h1>
         <p className="text-lg text-text-muted max-w-3xl mx-auto leading-relaxed">
-          Have questions about admissions, curriculum, or school timings? Select the appropriate campus desk below or request an automated callback.
+          Have questions about admissions, curriculum, or school timings? Reach out directly using our official contacts or request an automated callback.
         </p>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-12 items-start">
           
-          {/* 2. FORM COLUMN (5 cols wide on large screens) */}
+          {/* 2. FORM COLUMN */}
           <div className="lg:col-span-5 w-full">
             <ContactForm />
           </div>
 
-          {/* 3. CAMPUS DIRECT LINES GRID (7 cols wide on large screens) */}
-          <div className="lg:col-span-7 space-y-8 w-full">
-            <div className="border-b border-border pb-4">
-              <h2 className="text-2xl font-bold text-primary">Direct Department Desks</h2>
-              <p className="text-sm text-text-muted mt-1">Call or email the respective program coordinator directly.</p>
-            </div>
+          {/* 3. CONSOLIDATED CONTACT DIRECTORY CARD */}
+          <div className="lg:col-span-7 w-full">
+            <div className="bg-surface p-6 sm:p-8 rounded-xl border border-border shadow-sm space-y-8">
+              <div>
+                <h2 className="text-2xl font-bold text-primary mb-2">Contact Details</h2>
+                <p className="text-sm text-text-muted">
+                  Send a general email inquiry or dial the respective department coordinator directly.
+                </p>
+              </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {campusContacts.map((campus) => (
-                <div 
-                  key={campus.name} 
-                  className="bg-surface p-6 rounded-lg border border-border shadow-sm hover:shadow-md hover:border-accent/40 transition-all duration-200"
-                >
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="font-bold text-lg text-primary">{campus.name}</h3>
-                  </div>
-                  <p className="text-xs text-text-muted mb-4 font-medium italic">{campus.tagline}</p>
-                  
-                  <div className="space-y-3 pt-3 border-t border-border/60">
-                    {/* Phone Link */}
-                    <div className="flex items-center gap-3">
-                      <svg className="w-4 h-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                      <a 
-                        href={`tel:+91${campus.phone}`} 
-                        className="text-sm text-primary font-semibold hover:text-accent transition-colors tabular-nums"
-                      >
-                        {campus.displayPhone}
-                      </a>
-                    </div>
-
-                    {/* Email Link */}
-                    <div className="flex items-center gap-3">
-                      <svg className="w-4 h-4 text-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                      <a 
-                        href={`mailto:${campus.email}`} 
-                        className="text-sm text-text-muted hover:text-accent transition-colors break-all"
-                      >
-                        {campus.email}
-                      </a>
-                    </div>
-                  </div>
+              {/* General Email Channel */}
+              <div className="bg-white p-5 rounded-lg border border-border flex items-center gap-4 hover:border-primary/20 transition-all">
+                <div className="bg-primary/5 p-3.5 rounded-full text-accent shrink-0 border border-primary/10">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
                 </div>
-              ))}
+                <div>
+                  <p className="text-[10px] font-bold text-text-muted uppercase tracking-wider">General Email Inquiry</p>
+                  <a 
+                    href="mailto:emschool@gbrcolleges.com" 
+                    className="text-base sm:text-lg font-bold text-primary hover:text-accent transition-colors break-all mt-0.5 block"
+                  >
+                    emschool@gbrcolleges.com
+                  </a>
+                </div>
+              </div>
+
+              {/* Direct Phone Lines Directory */}
+              <div className="space-y-4">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-text-muted">Direct Campus Phones</h3>
+                <div className="divide-y divide-border border border-border bg-white rounded-lg overflow-hidden">
+                  {campusContacts.map((campus) => (
+                    <div key={campus.name} className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-surface transition-colors">
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2.5">
+                          <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${
+                            campus.name === 'Pre-Primary School' ? 'bg-amber-400' :
+                            campus.name === 'Primary School' ? 'bg-emerald-400' :
+                            campus.name === 'High School' ? 'bg-blue-400' : 'bg-purple-400'
+                          }`} />
+                          <h4 className="font-bold text-primary text-sm sm:text-base leading-tight">{campus.name}</h4>
+                        </div>
+                        <p className="text-xs text-text-muted font-medium pl-5">{campus.tagline}</p>
+                      </div>
+                      
+                      <div className="flex items-center gap-3 pl-5 sm:pl-0">
+                        <div className="w-8 h-8 rounded-full bg-primary/5 border border-primary/10 flex items-center justify-center text-accent shrink-0">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                          </svg>
+                        </div>
+                        <a 
+                          href={`tel:+91${campus.phone}`} 
+                          className="text-sm sm:text-base font-bold text-primary hover:text-accent transition-colors tabular-nums"
+                        >
+                          {campus.displayPhone}
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 

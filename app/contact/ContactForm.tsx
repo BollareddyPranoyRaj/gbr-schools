@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 
-type CourseType = 'Pre-Primary School' | 'Primary School' | 'High School' | 'A.C. Campus';
+type CourseType = 'Pre-Primary School' | 'Primary School' | 'High School' | 'A.C Campus';
 
 interface FormData {
   name: string;
@@ -192,7 +192,7 @@ export default function ContactForm() {
               <option value="Pre-Primary School">Pre-Primary School</option>
               <option value="Primary School">Primary School</option>
               <option value="High School">High School</option>
-              <option value="A.C. Campus">A.C. Campus</option>
+              <option value="A.C Campus">A.C Campus</option>
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-primary">
               <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

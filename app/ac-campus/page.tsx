@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Premium A.C. Campus | GBR Group of Schools",
+  title: "Premium A.C Campus | GBR Group of Schools",
   description: "Experience a global standard of excellence with our centralized air-conditioned campus, interactive smart boards, and premium facilities.",
 };
 
@@ -33,7 +33,7 @@ export default function ACCampusPage() {
         {/* Background Image */}
         <Image
           src="https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto,w_1920,c_scale/v1786197922/ChatGPT_Image_Aug_8_2026_07_30_28_PM_xrowkb.png" 
-          alt="GBR A.C. Campus"
+          alt="GBR A.C Campus"
           fill
           priority
           className="object-cover"
@@ -56,14 +56,14 @@ export default function ACCampusPage() {
             A Global Standard <br /> of Excellence.
           </h1>
           <p className="text-base sm:text-lg text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Step into a learning environment designed for ultimate focus, comfort, and technological integration. The GBR A.C. Campus redefines modern education.
+            Step into a learning environment designed for ultimate focus, comfort, and technological integration. The GBR A.C Campus redefines modern education.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
             <Link
               href="/admissions"
               className="bg-accent text-white text-center font-semibold px-8 py-4 rounded-[var(--radius-sm)] hover:bg-accent/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary w-full sm:w-auto shadow-lg"
             >
-              Apply for A.C. Campus
+              Apply for A.C Campus
             </Link>
           </div>
         </div>
@@ -162,7 +162,7 @@ export default function ACCampusPage() {
               Technologically Immersive
             </h2>
             <p className="text-lg text-text-muted leading-relaxed mb-6">
-              We have replaced traditional chalkboards with state-of-the-art interactive smart boards in every single A.C. classroom. This allows our educators to bring complex concepts to life through 3D models, rich media, and instant internet access.
+              We have replaced traditional chalkboards with state-of-the-art interactive smart boards in every single A.C classroom. This allows our educators to bring complex concepts to life through 3D models, rich media, and instant internet access.
             </p>
             <ul className="space-y-3 text-text-muted">
               <li className="flex items-center gap-3">
@@ -220,7 +220,7 @@ export default function ACCampusPage() {
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">Special Features</h2>
             <p className="text-lg text-text-muted">
-              The A.C. Campus provides comprehensive support, tools, and training to ensure every student succeeds.
+              The A.C Campus provides comprehensive support, tools, and training to ensure every student succeeds.
             </p>
           </div>
 
@@ -246,7 +246,7 @@ export default function ACCampusPage() {
             Ready to secure their future?
           </h2>
           <p className="text-xl text-text-muted mb-10">
-            Admissions for the upcoming academic year at the GBR A.C. Campus are currently open for Classes NUR to X. Seats are highly limited.
+            Admissions for the upcoming academic year at the GBR A.C Campus are currently open for Classes NUR to X. Seats are highly limited.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

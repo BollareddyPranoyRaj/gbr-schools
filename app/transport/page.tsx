@@ -10,6 +10,20 @@ const transportImages = [
   "https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto,w_1200,c_scale/v1786168520/ChatGPT_Image_Aug_8_2026_11_15_55_AM_c6tgab.png"
 ];
 
+const BUS_ROUTES = [
+  { no: 1, route: "Anaparthi 1 (Devi Chowk to GBR)" },
+  { no: 2, route: "Anaparthi 2 (Old Town, Police Station Area, M.L. Peta)" },
+  { no: 3, route: "Duppalapudi" },
+  { no: 4, route: "Apt. Savaram, Ch. Polamuru, Singaraya Clny, Sri Puram" },
+  { no: 5, route: "Polamuru, Kothuru" },
+  { no: 6, route: "L.N. Puram, Dwarapudi, Vemulapalli, Z. Medapadu, PRC Puram, Koppavaram" },
+  { no: 7, route: "Kapavaram, BB Puram, Ramavaram, Mahendrawada, Arthamuru, Ch. Dwarapudi" },
+  { no: 8, route: "Mukkinada, Ramavaram Clny, M. Pakalu, Kuthukoluru, P. Thungapadu, K. Thungapadu" },
+  { no: 9, route: "Kesavaram, Thokada, Mallampudi, P. Veerampalem, K. Veerampalem, Komaripalem, Pandalapaka, Tossipudi, Rayavaram" },
+  { no: 10, route: "Machavaram, Pulagurtha, Konkuduru, Vedurupaka, V. Savaram, Biccavolu, R.S. Peta, G. Yarrampalem" },
+  { no: 11, route: "Balavaram, Donthamuru, Elakolanu, Kanavaram, Atchutapuram, Singampalli" }
+];
+
 function TransportSlideshow() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -150,7 +164,7 @@ export default function TransportPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                 </svg>
                 <div className="flex flex-col">
-                  <span className="text-xs text-primary-200 uppercase tracking-wider">A.C. & High School Admin</span>
+                  <span className="text-xs text-primary-200 uppercase tracking-wider">A.C & High School Admin</span>
                   <a href="tel:+919494700666" className="font-semibold hover:text-accent transition-colors">+91 94947 00666</a>
                   <a href="tel:+919912340922" className="font-semibold hover:text-accent transition-colors">+91 99123 40922</a>
                 </div>
@@ -173,14 +187,8 @@ export default function TransportPage() {
           <div className="bg-surface p-6 rounded-lg border border-border">
             <h3 className="text-lg font-bold text-primary mb-4">Related Links</h3>
             <div className="flex flex-col gap-3">
-              <Link href="/admissions" className="text-text-muted hover:text-accent transition-colors flex items-center gap-2 text-sm font-medium">
-                <span>→</span> Transport Fee Structure
-              </Link>
               <Link href="/parents" className="text-text-muted hover:text-accent transition-colors flex items-center gap-2 text-sm font-medium">
                 <span>→</span> Download Parent App
-              </Link>
-              <Link href="/contact" className="text-text-muted hover:text-accent transition-colors flex items-center gap-2 text-sm font-medium">
-                <span>→</span> View Campus Map
               </Link>
             </div>
           </div>
@@ -188,6 +196,45 @@ export default function TransportPage() {
         </div>
 
       </section>
+
+      {/* 3. BUS ROUTES SECTION */}
+      <section className="w-full bg-surface-alt border-t border-border py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent bg-accent/10 px-3 py-1 rounded-full">
+              Route Directory
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary">Official Bus Routes & Villages</h2>
+            <p className="text-base sm:text-lg text-text-muted">
+              We operate an extensive transport network covering Anaparthy and major surrounding villages.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {BUS_ROUTES.map((route) => (
+              <div 
+                key={route.no} 
+                className="bg-white p-6 rounded-xl border border-border shadow-sm flex flex-col gap-4 hover:border-primary/20 hover:shadow-md transition-all duration-200"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/5 border border-primary/10 flex items-center justify-center text-accent font-bold text-sm">
+                    {route.no}
+                  </div>
+                  <span className="text-xs font-bold text-text-muted uppercase tracking-wider">
+                    Route
+                  </span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-primary text-sm sm:text-base leading-relaxed">
+                    {route.route}
+                  </h4>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

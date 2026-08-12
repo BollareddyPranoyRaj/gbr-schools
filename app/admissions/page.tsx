@@ -122,7 +122,7 @@ export default function AdmissionsPage() {
                       </td>
                     </tr>
                     <tr className="hover:bg-surface-alt transition-colors">
-                      <td className="border-r border-border p-4 font-bold text-red-700">A.C. CAMPUS</td>
+                      <td className="border-r border-border p-4 font-bold text-red-700">A.C CAMPUS</td>
                       <td className="border-r border-border p-4 tabular-nums">
                         <span className="block text-base font-bold text-text-main">50%</span>
                         <span className="text-xs text-text-muted">(JUN 1st to 10th)</span>
