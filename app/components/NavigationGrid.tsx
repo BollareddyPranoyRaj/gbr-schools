@@ -15,18 +15,18 @@ const menuSections = [
     href: "/history", // <-- Added right here!
   },
   { 
-    title: "A.C. Campus", 
-    description: "Explore the modern facilities and vibrant student life at our A.C. Campus.",
+    title: "A.C Campus", 
+    description: "Explore the modern facilities and vibrant student life at our A.C Campus.",
     href: "/ac-campus", 
   },
   { 
-    title: "E.M.S. Campus", 
-    description: "Discover the rich heritage and academic excellence of our E.M.S. Campus.",
+    title: "E.M.S Campus", 
+    description: "Discover the rich heritage and academic excellence of our E.M.S Campus.",
     href: "/standard-campus",
   },
   {
     title: "Our Campuses",
-    description: "Explore the facilities and student life at our A.C. and E.M.S. campuses.",
+    description: "Explore the facilities and student life at our A.C and E.M.S campuses.",
     href: "/campuses", 
   },
   {

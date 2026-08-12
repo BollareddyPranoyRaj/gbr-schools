@@ -7,8 +7,8 @@ export default function FAQPage() {
       answer: "Nursery runs from 9.00 am to 12.00 pm. Pre-Primary & Primary runs from 9.00 am to 4.10 pm. High School operates from 8.00 am to 5.30 pm."
     },
     {
-      question: "What is the difference between the A.C. Campus and E.M.S Campus?",
-      answer: "The A.C. Campus offers a fully air-conditioned environment designed for optimal comfort. The E.M.S Campus features expansive green spaces and natural ventilation. Both campuses share the same rigorous academic curriculum and teaching standards."
+      question: "What is the difference between the A.C Campus and E.M.S Campus?",
+      answer: "The A.C Campus offers a fully air-conditioned environment designed for optimal comfort. The E.M.S Campus features expansive green spaces and natural ventilation. Both campuses share the same rigorous academic curriculum and teaching standards."
     },
     {
       question: "How can I track my child's academic progress?",

@@ -7,7 +7,7 @@ export default function ApplyPage() {
         <div className="mb-10 text-center">
           <h1 className="mb-4 text-3xl sm:text-4xl font-bold text-primary">Apply to GBR Schools</h1>
           <p className="mx-auto max-w-2xl text-text-muted text-sm">
-            Start the admission process for A.C. Campus or E.M.S Campus. Our admissions team will guide you through documents, campus selection, and next steps.
+            Start the admission process for A.C Campus or E.M.S Campus. Our admissions team will guide you through documents, campus selection, and next steps.
           </p>
         </div>
 

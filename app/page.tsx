@@ -6,8 +6,8 @@ import { schoolData } from './lib/schoolData';
 
 const menuSections = [
   { href: "/about", title: "About GBR", description: "Learn about our legacy and vision." },
-  { href: "/ac-campus", title: "A.C. Campus", description: "Explore the modern facilities and vibrant student life at our A.C. Campus." },
-  { href: "/standard-campus", title: "E.M.S. Campus", description: "Discover the rich heritage and academic excellence of our E.M.S. Campus." },
+  { href: "/ac-campus", title: "A.C Campus", description: "Explore the modern facilities and vibrant student life at our A.C Campus." },
+  { href: "/standard-campus", title: "E.M.S Campus", description: "Discover the rich heritage and academic excellence of our E.M.S Campus." },
   { href: "/academics", title: "Academics", description: "Explore school timings, curriculum, and award systems." },
   { href: "/admissions", title: "Admissions & Fee Policy", description: "View fee policy, admission procedures, and common parent questions." },
   { href: "/events", title: "Events", description: "Browse campus celebrations and animated event highlights." },
@@ -155,7 +155,7 @@ export default function HomePage() {
               href="/ac-campus" 
               className="px-6 py-3.5 bg-primary text-white rounded-[var(--radius-sm)] font-medium hover:bg-primary/90 transition-colors w-full sm:w-auto text-center min-h-[48px] flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
-              Explore A.C. Campus
+              Explore A.C Campus
             </Link>
             <Link 
               href="/standard-campus" 

@@ -3,8 +3,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "E.M.S. Campus | GBR Group of Schools",
-  description: "Rooted in a 40-year legacy, the GBR E.M.S. Campus offers expansive grounds, natural ventilation, and a vibrant, culturally rich student life.",
+  title: "E.M.S Campus | GBR Group of Schools",
+  description: "Rooted in a 40-year legacy, the GBR E.M.S Campus offers expansive grounds, natural ventilation, and a vibrant, culturally rich student life.",
 };
 
 export default function StandardCampusPage() {
@@ -31,7 +31,7 @@ export default function StandardCampusPage() {
         {/* Background Image */}
         <Image
           src="https://res.cloudinary.com/dkoxrayf2/image/upload/f_auto,q_auto,w_1920,c_scale/v1786197181/WhatsApp_Image_2026-08-08_at_19.20.55_kxfrm3.jpg" 
-          alt="GBR E.M.S. Campus Grounds"
+          alt="GBR E.M.S Campus Grounds"
           fill
           priority
           className="object-cover"
@@ -54,7 +54,7 @@ export default function StandardCampusPage() {
             Rooted in Tradition. <br /> Focused on the Future.
           </h1>
           <p className="text-base sm:text-lg text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Spacious, vibrant, and rich in history. The E.M.S. Campus provides a holistic, active environment where academic excellence meets traditional values.
+            Spacious, vibrant, and rich in history. The E.M.S Campus provides a holistic, active environment where academic excellence meets traditional values.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
             <Link

@@ -3,7 +3,7 @@ import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Us | GBR Group of Schools",
-  description: "Get in touch with GBR Group of Schools. Find contact numbers, emails, location details for Pre-Primary, Primary, High School, and A.C. Campus, and submit a call-back request.",
+  description: "Get in touch with GBR Group of Schools. Find contact numbers, emails, location details for Pre-Primary, Primary, High School, and A.C Campus, and submit a call-back request.",
 };
 
 const campusContacts = [
@@ -26,7 +26,7 @@ const campusContacts = [
     tagline: "Grades 6th to 10th (State Board)"
   },
   {
-    name: "A.C. Campus",
+    name: "A.C Campus",
     phone: "9912340922",
     displayPhone: "+91 99123 40922",
     tagline: "Air-Conditioned Digital Classes"

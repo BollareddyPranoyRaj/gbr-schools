@@ -32,15 +32,16 @@ const navItems: NavItem[] = [
     label: 'About Us',
     links: [
       { href: '/about', label: 'About GBR' },
-      { href: '/history', label: 'Our History' }
+      { href: '/history', label: 'Our History' },
+      { href: '/careers', label: 'Careers' }
     ]
   },
   {
     type: 'dropdown',
     label: 'Campuses',
     links: [
-      { href: '/ac-campus', label: 'A.C. Campus' },
-      { href: '/standard-campus', label: 'E.M.S. Campus' }
+      { href: '/ac-campus', label: 'A.C Campus' },
+      { href: '/standard-campus', label: 'E.M.S Campus' }
     ]
   },
   { type: 'link', href: '/academics', label: 'Academics' },
