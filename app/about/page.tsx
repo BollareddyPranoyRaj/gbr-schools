@@ -56,7 +56,7 @@ export default function AboutPage() {
       <div className="max-w-7xl mx-auto space-y-16">
         
         {/* Page Header */}
-        <div className="text-center mb-12 pt-16 sm:pt-20">
+        <div className="text-center mb-12 pt-10 sm:pt-12">
           <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 [text-wrap:balance]">
             About GBR Schools
           </h1>

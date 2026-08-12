@@ -17,11 +17,11 @@ export default function AdmissionsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-background pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto space-y-2">
         
         {/* Page Header */}
-        <div className="text-center mb-12 pt-16 sm:pt-20">
+        <div className="text-center mb-12 pt-10 sm:pt-12">
           <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 [text-wrap:balance]">
             Admissions & Fee Policy
           </h1>

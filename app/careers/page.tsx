@@ -96,7 +96,7 @@ export default function CareersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-24 pb-16">
+    <div className="min-h-screen bg-background pb-16">
       
       {/* 1. HERO HEADER */}
       <section className="bg-surface py-16 border-b border-border">

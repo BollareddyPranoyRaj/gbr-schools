@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import NoticeBanner from "./components/NoticeBanner";
 import BackButton from "./components/BackButton";
 
 export const metadata: Metadata = {
@@ -44,7 +43,6 @@ export default function RootLayout({
       <body className="antialiased flex flex-col min-h-dvh">
         {/* HEADER: Notice Banner and Navbar */}
         <header className="sticky top-0 z-[60] flex flex-col w-full">
-          <NoticeBanner />
           <Navbar />
         </header>
 
