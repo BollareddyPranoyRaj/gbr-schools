@@ -107,7 +107,7 @@ export default function StandardCampusPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Pre-KG */}
             <div className="bg-white rounded-xl p-8 border border-border shadow-sm flex flex-col items-center">
-              <div className="h-16 w-16 rounded-full bg-accent/20 text-accent flex items-center justify-center font-bold text-xl mb-6">
+              <div className="h-16 w-16 rounded-full bg-accent/20 text-accent flex items-center justify-center font-bold text-[15px] whitespace-nowrap mb-6">
                 Pre-KG
               </div>
               <h3 className="text-xl font-bold text-primary mb-3">Early Years</h3>

@@ -65,6 +65,12 @@ export default function ACCampusPage() {
             >
               Apply for A.C Campus
             </Link>
+            <Link
+              href="/transport"
+              className="bg-white/10 border border-white/20 text-white text-center font-semibold px-8 py-4 rounded-[var(--radius-sm)] hover:bg-white/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white w-full sm:w-auto backdrop-blur-sm"
+            >
+              Explore Bus Routes
+            </Link>
           </div>
         </div>
       </section>
@@ -83,7 +89,7 @@ export default function ACCampusPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Pre-KG */}
             <div className="bg-white rounded-xl p-8 border border-border shadow-sm flex flex-col items-center">
-              <div className="h-16 w-16 rounded-full bg-accent/20 text-accent flex items-center justify-center font-bold text-xl mb-6">
+              <div className="h-16 w-16 rounded-full bg-accent/20 text-accent flex items-center justify-center font-bold text-[15px] whitespace-nowrap mb-6">
                 Pre-KG
               </div>
               <h3 className="text-xl font-bold text-primary mb-3">Early Years</h3>
